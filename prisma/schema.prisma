@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id                  Int       @id @default(autoincrement())
+  slug                String    @unique
+  title               String
+  excerpt             String?   // short teaser for lists
+  content             String    // markdown or html
+  published           Boolean   @default(false)
+  category            String
+  author              String
+  readingTimeMinutes  Int       @default(1) // we compute it from content length
+  labels              Json      @default("[]") // expect string[]
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
