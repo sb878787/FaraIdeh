@@ -1,0 +1,14 @@
+# Unrelated folders
+node_modules
+.next
+out
+build
+dist
+
+# Lockfiles and system files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Build outputs
+coverage
