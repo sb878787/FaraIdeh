@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Blogs {
   id                  Int       @id @default(autoincrement())
   slug                String    @unique
   title               String
@@ -20,4 +20,19 @@ model Post {
   labels              Json      @default("[]") // expect string[]
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
+}
+
+model TeamMember {
+  id            Int      @id @default(autoincrement())
+  photo         String   // URL or path to the photo
+  firstName     String
+  lastName      String
+  jobTitles     Json    @default("[]") // expect string[]
+  githubLink    String?
+  linkedinLink  String?
+  instagramLink String?
+  resumeFile    String   // URL or path to the resume file
+  viewCount     Int      @default(0)   // track number of resume views
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
