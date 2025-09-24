@@ -36,3 +36,18 @@ model TeamMember {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
+
+model Project {
+  id            Int      @id @default(autoincrement())
+  photos        Json     @default("[]") // array of photo URLs/paths
+  viewCount     Int      @default(0)    // track number of project views
+  name          String
+  description   String
+  year          Int
+  category      String
+  projectLink   String?  // optional since some projects might not have a live link
+  technologies  Json     @default("[]") // array of technology names
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
