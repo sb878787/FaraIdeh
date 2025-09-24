@@ -10,18 +10,22 @@ import ProjectIcon from '@/component/icons/ProjectIcon';
 import UnionSVGInformation from '@/component/icons/UnionSVGInformation';
 import UsersIcon from '@/component/icons/UsersIcon';
 
-// Utils
-import { getTeamMemberCount } from '@/utils/teamMembers';
+// Server Actions
+import { getInformationCounts } from '@/app/actions/information';
 
 const Information = () => {
-  const [teamCount, setTeamCount] = useState<number>(0);
+  const [counts, setCounts] = useState({
+    teamMembers: 0,
+    projects: 0,
+    orders: 0,
+  });
 
   useEffect(() => {
-    const fetchTeamCount = async () => {
-      const count = await getTeamMemberCount();
-      setTeamCount(count);
+    const fetchCounts = async () => {
+      const data = await getInformationCounts();
+      setCounts(data);
     };
-    fetchTeamCount();
+    fetchCounts();
   }, []);
 
   return (
@@ -35,7 +39,9 @@ const Information = () => {
         <div className="flex flex-row-reverse items-center gap-4">
           <UsersIcon />
           <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">{teamCount}</p>
+            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
+              {counts.teamMembers}
+            </p>
             <p className="text-right w-full font-iranYekan text-text-information">اعضای تیم</p>
           </div>
         </div>
@@ -44,7 +50,9 @@ const Information = () => {
         <div className="flex flex-row-reverse items-center gap-4">
           <ProjectIcon />
           <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">+1</p>
+            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
+              {counts.projects > 0 ? `+${counts.projects}` : '0'}
+            </p>
             <p className="text-right w-full font-iranYekan text-text-information">
               پروژه های انجام شده
             </p>
@@ -55,7 +63,9 @@ const Information = () => {
         <div className="flex flex-row-reverse items-center gap-4">
           <OrderIcon />
           <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">1</p>
+            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
+              {counts.orders}
+            </p>
             <p className="text-right w-full font-iranYekan text-text-information">سفارشات</p>
           </div>
         </div>
@@ -64,7 +74,7 @@ const Information = () => {
         <div className="flex flex-row-reverse items-center gap-4">
           <AchievementIcon />
           <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">0</p>
+            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">1</p>
             <p className="text-right w-full font-iranYekan text-text-information">دستاورد ها</p>
           </div>
         </div>
