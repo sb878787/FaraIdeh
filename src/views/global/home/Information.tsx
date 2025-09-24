@@ -1,15 +1,31 @@
 'use client';
 
+// React Imports
+import { useEffect, useState } from 'react';
+
 // Components
+import AchievementIcon from '@/component/icons/AchievementIcon';
+import OrderIcon from '@/component/icons/OrderIcon';
+import ProjectIcon from '@/component/icons/ProjectIcon';
 import UnionSVGInformation from '@/component/icons/UnionSVGInformation';
 import UsersIcon from '@/component/icons/UsersIcon';
-import ProjectIcon from '@/component/icons/ProjectIcon';
-import OrderIcon from '@/component/icons/OrderIcon';
-import AchievementIcon from '@/component/icons/AchievementIcon';
+
+// Utils
+import { getTeamMemberCount } from '@/utils/teamMembers';
 
 const Information = () => {
+  const [teamCount, setTeamCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetchTeamCount = async () => {
+      const count = await getTeamMemberCount();
+      setTeamCount(count);
+    };
+    fetchTeamCount();
+  }, []);
+
   return (
-    <div className="absolute inset-x-0 bottom-0 h-[156px] z-10">
+    <div className="absolute inset-x-0 -bottom-1 h-[156px] z-10">
       <div className="absolute inset-0 pointer-events-none">
         <UnionSVGInformation />
       </div>
@@ -19,7 +35,7 @@ const Information = () => {
         <div className="flex flex-row-reverse items-center gap-4">
           <UsersIcon />
           <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">16</p>
+            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">{teamCount}</p>
             <p className="text-right w-full font-iranYekan text-text-information">اعضای تیم</p>
           </div>
         </div>
