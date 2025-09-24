@@ -51,3 +51,12 @@ model Project {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  category    String
+  users       Json     // array of user objects with firstName, lastName, contactNumber, and email
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
