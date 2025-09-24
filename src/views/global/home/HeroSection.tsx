@@ -12,6 +12,7 @@ import TelegramIcon from '@/component/icons/TelegramIcon';
 import Navbar from '@/component/Navbar';
 import CustomIconEmoji from '@/component/icons/CustomIconEmoji';
 import GitHubIcon from '@/component/icons/GitHubIcon';
+import Information from './Information';
 
 // Images
 import heroImage from '@/assets/images/bg-HeroSection.png';
@@ -82,6 +83,8 @@ const HeroSection = () => {
           <Navbar />
         </div>
       </Container>
+
+      <Information />
     </div>
   );
 };

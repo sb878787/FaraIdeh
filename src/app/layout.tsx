@@ -16,6 +16,28 @@ const iranYekan = localFont({
   display: 'swap',
 });
 
+const yekanBakhFaNum = localFont({
+  src: [
+    { path: '../assets/fonts/numbers/YekanBakhFaNum-Light.ttf', weight: '300', style: 'normal' },
+    { path: '../assets/fonts/numbers/YekanBakhFaNum-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../assets/fonts/numbers/YekanBakhFaNum-SemiBold.ttf', weight: '500', style: 'normal' },
+    { path: '../assets/fonts/numbers/YekanBakhFaNum-Bold.ttf', weight: '600', style: 'normal' },
+    { path: '../assets/fonts/numbers/YekanBakhFaNum-Black.ttf', weight: '700', style: 'normal' },
+    {
+      path: '../assets/fonts/numbers/YekanBakhFaNum-ExtraBold.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/numbers/YekanBakhFaNum-ExtraBlack.ttf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-yekanBakhFaNum',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   title: {
     default: 'FaraIdeh | فراایده',
@@ -30,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={iranYekan.variable}>
+    <html lang="en" className={`${iranYekan.variable} ${yekanBakhFaNum.variable}`}>
       <body>{children}</body>
     </html>
   );

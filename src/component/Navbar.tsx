@@ -1,4 +1,4 @@
-'use clint';
+'use client';
 
 // Next Imports
 import Image from 'next/image';

@@ -5,6 +5,8 @@
   --color-orange: #ff6300;
   --color-text-link: #343434;
   --color-text: #bcbcbc;
+  --color-text-information: #acacac;
 
   --font-iranYekan: var(--font-iranYekan), system-ui, sans-serif;
+  --font-yekanBakhFaNum: var(--font-yekanBakhFaNum), system-ui, sans-serif;
 }
