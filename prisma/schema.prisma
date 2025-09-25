@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Blogs {
+  id                  Int       @id @default(autoincrement())
+  slug                String    @unique
+  title               String
+  excerpt             String?   // short teaser for lists
+  content             String    // markdown or html
+  published           Boolean   @default(false)
+  category            String
+  author              String
+  readingTimeMinutes  Int       @default(1) // we compute it from content length
+  labels              Json      @default("[]") // expect string[]
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+model TeamMember {
+  id            Int      @id @default(autoincrement())
+  photo         String   // URL or path to the photo
+  firstName     String
+  lastName      String
+  jobTitles     Json    @default("[]") // expect string[]
+  githubLink    String?
+  linkedinLink  String?
+  instagramLink String?
+  resumeFile    String   // URL or path to the resume file
+  viewCount     Int      @default(0)   // track number of resume views
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Project {
+  id            Int      @id @default(autoincrement())
+  photos        Json     @default("[]") // array of photo URLs/paths
+  viewCount     Int      @default(0)    // track number of project views
+  name          String
+  description   String
+  year          Int
+  category      String
+  projectLink   String?  // optional since some projects might not have a live link
+  technologies  Json     @default("[]") // array of technology names
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  category    String
+  users       Json     // array of user objects with firstName, lastName, contactNumber, and email
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Achievement {
+  id          Int      @id @default(autoincrement())
+  photo       String   // URL or path to the achievement photo
+  title       String
+  description String
+  year        Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
