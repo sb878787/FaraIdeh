@@ -3,6 +3,8 @@
 // Components
 import Container from '@/component/Container';
 import HeroSection from './HeroSection';
+import OurStory from './OurStory';
+import Services from './Services';
 
 const LandingPageWrapper = () => {
   return (
@@ -11,6 +13,8 @@ const LandingPageWrapper = () => {
       <Container>
         <div className="w-full border-b border-[#EBEBEB] mt-1"></div>
       </Container>
+      <OurStory />
+      <Services />
     </>
   );
 };
