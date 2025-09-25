@@ -18,6 +18,7 @@ const Information = () => {
     teamMembers: 0,
     projects: 0,
     orders: 0,
+    achievements: 0,
   });
 
   useEffect(() => {
@@ -74,7 +75,9 @@ const Information = () => {
         <div className="flex flex-row-reverse items-center gap-4">
           <AchievementIcon />
           <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">1</p>
+            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
+              {counts.achievements}
+            </p>
             <p className="text-right w-full font-iranYekan text-text-information">دستاورد ها</p>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 export async function getInformationCounts() {
   try {
-    const [teamMembers, projects, orders] = await Promise.all([
+    const [teamMembers, projects, orders, achievements] = await Promise.all([
       prisma.teamMember.count(),
       prisma.project.count({
         where: {
@@ -12,12 +12,14 @@ export async function getInformationCounts() {
         },
       }),
       prisma.order.count(),
+      prisma.achievement.count(),
     ]);
 
     return {
       teamMembers,
       projects,
       orders,
+      achievements,
     };
   } catch (error) {
     console.error('Failed to fetch information counts:', error);
@@ -25,6 +27,7 @@ export async function getInformationCounts() {
       teamMembers: 0,
       projects: 0,
       orders: 0,
+      achievements: 0,
     };
   }
 }
