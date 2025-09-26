@@ -46,6 +46,7 @@ model Project {
   year          Int
   category      String
   projectLink   String?  // optional since some projects might not have a live link
+  requesterName String?  // optional name of the project requester
   technologies  Json     @default("[]") // array of technology names
   isActive      Boolean  @default(true)
   createdAt     DateTime @default(now())
