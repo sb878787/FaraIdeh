@@ -5,6 +5,7 @@ import Container from '@/component/Container';
 import HeroSection from './HeroSection';
 import OurStory from './OurStory';
 import Services from './Services';
+import Projects from './Projects';
 
 const LandingPageWrapper = () => {
   return (
@@ -15,6 +16,7 @@ const LandingPageWrapper = () => {
       </Container>
       <OurStory />
       <Services />
+      <Projects />
     </>
   );
 };

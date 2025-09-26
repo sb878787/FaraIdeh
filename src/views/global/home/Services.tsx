@@ -30,6 +30,7 @@ const Services = () => {
         </div>
       </div>
 
+      {/* Services */}
       <div className="grid grid-cols-3 rtl gap-8 gap-x-52 mt-14">
         <WebsiteDesign />
         <StartUp />
