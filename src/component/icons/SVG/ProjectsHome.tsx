@@ -3,8 +3,8 @@
 const ProjectsHome = () => {
   return (
     <svg
-      width="252"
-      height="216"
+      width="232"
+      height="196"
       viewBox="0 0 252 216"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
