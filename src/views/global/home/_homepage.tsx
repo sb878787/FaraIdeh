@@ -4,6 +4,7 @@ import HeroSection from './HeroSection';
 import OurStory from './OurStory';
 import Services from './Services';
 import Projects from './Projects';
+import Contact from './Contact';
 
 const LandingPageWrapper = () => {
   return (
@@ -15,6 +16,7 @@ const LandingPageWrapper = () => {
       <OurStory />
       <Services />
       <Projects />
+      <Contact />
     </>
   );
 };
