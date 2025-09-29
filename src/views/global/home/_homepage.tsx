@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import Container from '@/component/Container';
 import HeroSection from './HeroSection';
