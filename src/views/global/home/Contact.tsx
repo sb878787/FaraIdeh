@@ -1,5 +1,9 @@
 'use client';
 
+// React Imports
+import { useActionState, useEffect } from 'react';
+import { toast } from 'sonner';
+
 // Components
 import Container from '@/component/Container';
 import EmailIcon from '@/component/icons/contact/EmailIcon';
@@ -13,7 +17,22 @@ import SmallLabel from '@/component/SmallLabel';
 // Utils
 import { normalizePhoneInput } from '@/utils/normalizePhoneInput';
 
+// Actions
+import { createContact } from '@/app/actions/createContact';
+
 const Contact = () => {
+  const [state, formAction] = useActionState(createContact, null);
+
+  useEffect(() => {
+    if (!state) return;
+
+    if (state.ok) {
+      toast.success(state.message || 'پیام شما با موفقیت ثبت شد.');
+    } else {
+      toast.error(state.message || 'مشکلی پیش آمد. لطفاً دوباره تلاش کنید.');
+    }
+  }, [state]);
+
   return (
     <Container>
       <div className="relative w-full flex flex-col items-center justify-center mt-36 py-20 bg-[#F2F3F5] rounded-2xl">
@@ -31,7 +50,7 @@ const Contact = () => {
         </div>
 
         {/* Form */}
-        <div className="grid grid-cols-2 rtl mt-10 w-full px-52 gap-8">
+        <form action={formAction} className="grid grid-cols-2 rtl mt-10 w-full px-52 gap-8">
           {/* Name */}
           <div
             className="flex items-center justify-center pr-5 w-full bg-white rounded-full shadow-md shadow-[#EDEFF1] transition ring-0
@@ -48,6 +67,8 @@ const Contact = () => {
                 name="name"
                 id="name"
                 placeholder=" "
+                required
+                aria-invalid={!!state?.fieldErrors?.firstName}
               />
 
               <label
@@ -64,6 +85,12 @@ const Contact = () => {
               >
                 نام
               </label>
+
+              {!!state?.fieldErrors?.firstName && (
+                <span className="text-xs text-red-600 absolute -bottom-5 right-2 font-iranYekan">
+                  {state.fieldErrors.firstName[0]}
+                </span>
+              )}
             </div>
           </div>
 
@@ -83,6 +110,8 @@ const Contact = () => {
                 name="family"
                 id="family"
                 placeholder=" "
+                required
+                aria-invalid={!!state?.fieldErrors?.lastName}
               />
 
               <label
@@ -99,6 +128,12 @@ const Contact = () => {
               >
                 نام خانوادگی
               </label>
+
+              {!!state?.fieldErrors?.lastName && (
+                <span className="text-xs text-red-600 absolute -bottom-5 right-2 font-iranYekan">
+                  {state.fieldErrors.lastName[0]}
+                </span>
+              )}
             </div>
           </div>
 
@@ -122,6 +157,7 @@ const Contact = () => {
                 pattern="[0-9]*"
                 autoComplete="tel"
                 onInput={(e) => normalizePhoneInput(e, { maxLength: 11 })}
+                aria-invalid={!!state?.fieldErrors?.phone}
               />
 
               <label
@@ -138,6 +174,12 @@ const Contact = () => {
               >
                 شماره تماس
               </label>
+
+              {!!state?.fieldErrors?.phone && (
+                <span className="text-xs text-red-600 absolute -bottom-5 right-2 font-iranYekan">
+                  {state.fieldErrors.phone[0]}
+                </span>
+              )}
             </div>
           </div>
 
@@ -157,6 +199,7 @@ const Contact = () => {
                 name="email"
                 id="email"
                 placeholder=" "
+                aria-invalid={!!state?.fieldErrors?.email}
               />
 
               <label
@@ -173,6 +216,12 @@ const Contact = () => {
               >
                 ایمیل
               </label>
+
+              {!!state?.fieldErrors?.email && (
+                <span className="text-xs text-red-600 absolute -bottom-5 right-2 font-iranYekan">
+                  {state.fieldErrors.email[0]}
+                </span>
+              )}
             </div>
           </div>
 
@@ -192,6 +241,8 @@ const Contact = () => {
                 name="message"
                 id="message"
                 placeholder=" "
+                required
+                aria-invalid={!!state?.fieldErrors?.message}
               />
 
               <label
@@ -208,13 +259,24 @@ const Contact = () => {
               >
                 پیام
               </label>
+
+              {!!state?.fieldErrors?.message && (
+                <span className="text-xs text-red-600 absolute -bottom-5 right-2 font-iranYekan">
+                  {state.fieldErrors.message[0]}
+                </span>
+              )}
             </div>
           </div>
-        </div>
 
-        <button className="bg-primary text-white font-iranYekan text-center rounded-full mt-10 px-14 py-4 font-semibold border-b-4 border-[#000a75] cursor-pointer hover:border-transparent hover:translate-y-1 transition-all duration-200">
-          ارسال
-        </button>
+          <div className="col-span-2 flex justify-center">
+            <button
+              className="bg-primary text-white font-iranYekan text-center rounded-full mt-10 px-14 py-4 font-semibold border-b-4 border-[#000a75] cursor-pointer hover:border-transparent hover:translate-y-1 transition-all duration-200"
+              type="submit"
+            >
+              ارسال
+            </button>
+          </div>
+        </form>
       </div>
     </Container>
   );
