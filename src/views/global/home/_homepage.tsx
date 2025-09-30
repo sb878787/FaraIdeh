@@ -5,6 +5,7 @@ import OurStory from './OurStory';
 import Services from './Services';
 import Projects from './Projects';
 import Contact from './Contact';
+import Footer from '@/component/Footer';
 
 const LandingPageWrapper = () => {
   return (
@@ -17,6 +18,7 @@ const LandingPageWrapper = () => {
       <Services />
       <Projects />
       <Contact />
+      <Footer />
     </>
   );
 };
