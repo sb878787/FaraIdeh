@@ -38,22 +38,21 @@ const Projects = async () => {
   return (
     <div className="relative w-full">
       <Container>
-        <div className="relative w-full flex flex-col items-center justify-center mt-20">
+        <div className="relative w-full flex flex-col items-center justify-center mt-10 sm:mt-16 md:mt-20 px-4 sm:px-6 lg:px-0">
           <SmallLabel title="PROJECTS" color="#FF6633" bgColor="#FFF0EB" />
-
           <LargeLabel label="PROJECTS" subLabel="ما خدمات گسترده‌ای به مشتریان ارائه می‌دهیم" />
 
-          <p className="text-[#7D8FB3] text-center font-iranYekan leading-8 px-96 rtl -mt-8">
+          <p className="text-[#7D8FB3] text-center font-iranYekan leading-7 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-3 font-light sm:font-medium lg:-mt-8 text-sm sm:text-base">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
             است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
           </p>
         </div>
 
         {/* Projects */}
-        <div className="mt-16">
+        <div className="lg:mt-16 mt-8">
           {!hasData ? (
             <div className="flex items-center justify-center">
-              <p className="text-center bg-[#7D8FB3] font-iranYekan rtl text-white py-3 rounded w-3/4">
+              <p className="lg:text-center text-justify bg-[#7D8FB3] font-iranYekan rtl text-white py-5 lg:py-3 px-5 lg:px-0 rounded w-3/4">
                 به دلیل تازه‌ توسعه بودن سایت، فعلاً پروژه‌ای ثبت نشده است. به‌ زودی پروژه‌های جدید
                 اینجا نمایش داده خواهند شد.
               </p>
@@ -83,7 +82,7 @@ const Projects = async () => {
         </div>
       </Container>
 
-      <div className="absolute top-52 right-0">
+      <div className="absolute top-52 right-0 hidden xl:block">
         <ProjectsHome />
       </div>
     </div>

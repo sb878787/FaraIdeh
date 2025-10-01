@@ -15,7 +15,7 @@ import Container from './Container';
 import GitHubIcon from './icons/GitHubIcon';
 import InstagramIcon from './icons/InstagramIcon';
 import TelegramIcon from './icons/TelegramIcon';
-import LinkedInIcon40 from './icons/LinkedInIcon';
+import LinkedInIcon from './icons/LinkedInIcon';
 import ArrNewsletterIcon from './icons/ArrNewsletterIcon';
 import FooterSVG from './icons/SVG/FooterSVG';
 import FooterSVGright from './icons/SVG/FooterSVGright';
@@ -28,9 +28,9 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className="bg-primary w-full mt-32 pt-16 pb-4 relative">
+    <div className="bg-primary w-full lg:mt-32 mt-16 lg:pt-16 pt-8 pb-4 relative">
       <Container>
-        <div className="grid grid-cols-3 rtl items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-8 rtl items-end">
           {/* Bio */}
           <div>
             <Image src={LogoType} alt="logoType" className="w-60" />
@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
 
           {/* Site sections */}
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex items-start justify-between lg:items-center lg:justify-center">
             <div>
               <p className="text-white font-iranYekan font-semibold text-xl">بخش های سایت</p>
 
@@ -85,12 +85,51 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+
+            <ul className="flex flex-col items-center lg:gap-5 gap-4 lg:hidden">
+              <li>
+                <Link href="https://github.com/sb878787" className="group">
+                  <GitHubIcon
+                    size={30}
+                    className="text-white transition-all duration-200 group-hover:-translate-y-2"
+                  />
+                </Link>
+              </li>
+
+              <li>
+                <Link href="https://www.instagram.com/mohammad_ali_saberi87" className="group">
+                  <InstagramIcon
+                    size={30}
+                    className="text-white transition-all duration-200 group-hover:-translate-y-2"
+                  />
+                </Link>
+              </li>
+
+              <li>
+                <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
+                  <TelegramIcon
+                    width={30}
+                    height={30}
+                    className="text-white transition-all duration-200 group-hover:-translate-y-2"
+                  />
+                </Link>
+              </li>
+
+              <li>
+                <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
+                  <LinkedInIcon
+                    size={30}
+                    className="text-white transition-all duration-200 group-hover:-translate-y-2"
+                  />
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Newsletter */}
           <div>
             {/* Social media */}
-            <ul className="flex items-center gap-5">
+            <ul className="lg:flex items-center gap-5 hidden">
               <li>
                 <Link href="https://github.com/sb878787" className="group">
                   <GitHubIcon
@@ -121,7 +160,7 @@ const Footer = () => {
 
               <li>
                 <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
-                  <LinkedInIcon40
+                  <LinkedInIcon
                     size={40}
                     className="text-white transition-all duration-200 group-hover:-translate-y-2"
                   />
@@ -154,35 +193,44 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="flex items-center justify-center mt-24">
-          <p className="text-white font-iranYekan rtl">
+        <div className="flex items-center justify-center lg:mt-24 mt-10">
+          <p className="text-white font-iranYekan rtl text-xs md:text-base leading-6 text-center">
             تمامی حقوق مادی و معنوی برای گروه توسعه نرم‌افزار و استارتاپی فراایده محفوظ است.
           </p>
         </div>
       </Container>
 
       {/* SVGs */}
-      <div className="absolute top-0 left-0">
+      <div className="absolute top-0 left-0 hidden xl:block">
         <FooterSVG />
       </div>
 
-      <div className="absolute bottom-0 right-0">
+      <div className="absolute bottom-0 right-0 hidden xl:block">
         <FooterSVGright />
       </div>
 
-      <div className="absolute top-2 right-60">
+      <div className="absolute top-2 right-60 hidden xl:block">
         <FooterShadowSVG />
       </div>
 
-      <div className="absolute bottom-0 left-96">
+      <div className="absolute bottom-0 left-96 hidden xl:block">
         <FooterShadowSVG />
       </div>
 
-      {/* Scroll to Top */}
+      {/* Desktop Scroll to Top */}
       <button
         type="button"
         onClick={handleScrollTop}
-        className="flex items-center justify-center bg-primary p-4 border-4 border-white rounded-full absolute -top-10 right-12 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group"
+        className="lg:flex items-center justify-center bg-primary p-4 border-4 border-white rounded-full absolute -top-10 right-12 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group hidden"
+      >
+        <ArrToTop className="text-white transition-colors duration-200 group-hover:text-primary" />
+      </button>
+
+      {/* Mobile Scroll to Top */}
+      <button
+        type="button"
+        onClick={handleScrollTop}
+        className="flex items-center justify-center bg-primary p-4 border-4 border-white rounded-full absolute -top-10 left-8 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group lg:hidden"
       >
         <ArrToTop className="text-white transition-colors duration-200 group-hover:text-primary" />
       </button>

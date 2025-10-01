@@ -8,7 +8,7 @@ type Props = {
   title?: string;
 };
 
-export default function LinkedInIcon40({ size = 40, className, title = 'LinkedIn icon' }: Props) {
+export default function LinkedInIcon({ size = 40, className, title = 'LinkedIn icon' }: Props) {
   const dimension = typeof size === 'number' ? `${size}px` : size;
   return (
     <svg

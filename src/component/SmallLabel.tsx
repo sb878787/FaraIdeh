@@ -9,10 +9,10 @@ interface ISmallLabelProps {
 const SmallLabel = ({ title, color, bgColor }: ISmallLabelProps) => {
   return (
     <div
-      className={`px-4 py-2 flex items-center justify-center rounded-full`}
+      className={`px-3 sm:px-4 py-2 flex items-center justify-center rounded-full`}
       style={{ backgroundColor: bgColor }}
     >
-      <p className={`font-bold text-sm`} style={{ color: color }}>
+      <p className={`font-bold text-xs sm:text-sm`} style={{ color: color }}>
         {title}
       </p>
     </div>
