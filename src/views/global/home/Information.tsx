@@ -29,58 +29,68 @@ const Information = () => {
     fetchCounts();
   }, []);
 
+  const stats = [
+    {
+      icon: <UsersIcon />,
+      count: counts.teamMembers,
+      label: 'اعضای تیم',
+    },
+    {
+      icon: <ProjectIcon />,
+      count: counts.projects > 0 ? `+${counts.projects}` : '0',
+      label: 'پروژه های انجام شده',
+    },
+    {
+      icon: <OrderIcon />,
+      count: counts.orders,
+      label: 'سفارشات',
+    },
+    {
+      icon: <AchievementIcon />,
+      count: counts.achievements,
+      label: 'دستاورد ها',
+    },
+  ];
+
   return (
-    <div className="absolute inset-x-0 -bottom-1 h-[156px] z-10">
-      <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute inset-x-0 -bottom-52 sm:-bottom-10 h-auto lg:h-[156px] z-10">
+      {/* Desktop SVG Background */}
+      <div className="hidden lg:block absolute inset-0 pointer-events-none">
         <UnionSVGInformation />
       </div>
 
-      <div className="relative flex flex-row-reverse items-center justify-between container mx-auto mt-8 px-8">
-        {/* Team members */}
-        <div className="flex flex-row-reverse items-center gap-4">
-          <UsersIcon />
-          <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
-              {counts.teamMembers}
-            </p>
-            <p className="text-right w-full font-iranYekan text-text-information">اعضای تیم</p>
-          </div>
+      {/* Mobile/Tablet Background */}
+      <div className="lg:hidden bg-white rounded-t-xl rtl">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 sm:p-6">
+          {stats.map((stat, index) => (
+            <div key={index} className="flex flex-col items-center justify-between text-center p-2">
+              <div className="scale-75 sm:scale-90 md:scale-100">{stat.icon}</div>
+              <div>
+                <p className="font-yekanBakhFaNum font-bold text-xl sm:text-2xl md:text-3xl">
+                  {stat.count}
+                </p>
+                <p className="font-iranYekan text-text-information text-xs sm:text-sm mt-1">
+                  {stat.label}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Completed projects */}
-        <div className="flex flex-row-reverse items-center gap-4">
-          <ProjectIcon />
-          <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
-              {counts.projects > 0 ? `+${counts.projects}` : '0'}
-            </p>
-            <p className="text-right w-full font-iranYekan text-text-information">
-              پروژه های انجام شده
-            </p>
+      {/* Desktop Layout */}
+      <div className="hidden lg:flex relative flex-row-reverse items-center justify-between container mx-auto mt-8 px-8">
+        {stats.map((stat, index) => (
+          <div key={index} className="flex flex-row-reverse items-center gap-4">
+            {stat.icon}
+            <div className="flex flex-col items-start">
+              <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
+                {stat.count}
+              </p>
+              <p className="text-right w-full font-iranYekan text-text-information">{stat.label}</p>
+            </div>
           </div>
-        </div>
-
-        {/* Orders */}
-        <div className="flex flex-row-reverse items-center gap-4">
-          <OrderIcon />
-          <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
-              {counts.orders}
-            </p>
-            <p className="text-right w-full font-iranYekan text-text-information">سفارشات</p>
-          </div>
-        </div>
-
-        {/* Achievements */}
-        <div className="flex flex-row-reverse items-center gap-4">
-          <AchievementIcon />
-          <div className="flex flex-col items-start">
-            <p className="text-right w-full font-yekanBakhFaNum font-bold text-3xl">
-              {counts.achievements}
-            </p>
-            <p className="text-right w-full font-iranYekan text-text-information">دستاورد ها</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

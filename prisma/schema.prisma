@@ -46,6 +46,7 @@ model Project {
   year          Int
   category      String
   projectLink   String?  // optional since some projects might not have a live link
+  requesterName String?  // optional name of the project requester
   technologies  Json     @default("[]") // array of technology names
   isActive      Boolean  @default(true)
   createdAt     DateTime @default(now())
@@ -69,4 +70,18 @@ model Achievement {
   year        Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Contact {
+  id         Int      @id @default(autoincrement())
+  firstName  String
+  lastName   String
+  phone      String?     // optional
+  email      String?     // optional
+  message    String
+  createdAt  DateTime  @default(now())
+
+  @@index([createdAt])
+  @@index([email])
+  @@index([phone])
 }
