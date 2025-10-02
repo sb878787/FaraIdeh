@@ -53,7 +53,7 @@ const Information = () => {
   ];
 
   return (
-    <div className="absolute inset-x-0 -bottom-52 sm:-bottom-1 h-auto lg:h-[156px] z-10">
+    <div className="absolute inset-x-0 -bottom-52 sm:-bottom-10 h-auto lg:h-[156px] z-10">
       {/* Desktop SVG Background */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none">
         <UnionSVGInformation />

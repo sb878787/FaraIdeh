@@ -27,7 +27,7 @@ const OurStory = () => {
           </button>
         </Link>
 
-        <div className="hidden lg:block absolute top-0 right-4 lg:right-24 scale-50 lg:scale-100 origin-top-right">
+        <div className="hidden xl:block absolute top-0 right-0 2xl:right-16 scale-50 lg:scale-100 origin-top-right">
           <OurStoryHome />
         </div>
       </div>

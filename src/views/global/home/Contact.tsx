@@ -35,22 +35,24 @@ const Contact = () => {
 
   return (
     <Container>
-      <div className="relative w-full flex flex-col items-center justify-center mt-36 py-20 bg-[#F2F3F5] rounded-2xl">
+      <div className="relative w-full flex flex-col items-center justify-center mt-16 lg:mt-36 lg:py-20 py-12 px-4 sm:px-6 lg:px-0 bg-[#F2F3F5] rounded-2xl">
         <SmallLabel title="CONTACTS" color="#3361FF" bgColor="#DFE5F6" />
-
         <LargeLabel label="IN TOUCH" subLabel="همین حالا لمسش کن" color="#EAECF1" />
 
-        <p className="text-[#7D8FB3] text-center font-iranYekan leading-8 px-96 rtl -mt-8">
+        <p className="text-[#7D8FB3] text-center font-iranYekan leading-7 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-3 font-light sm:font-medium lg:-mt-8 text-sm sm:text-base">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
           است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
         </p>
 
-        <div className="absolute -top-16 -left-12">
+        <div className="absolute -top-16 -left-12 hidden xl:block">
           <ContactHome />
         </div>
 
         {/* Form */}
-        <form action={formAction} className="grid grid-cols-2 rtl mt-10 w-full px-52 gap-8">
+        <form
+          action={formAction}
+          className="grid grid-cols-1 lg:grid-cols-2 rtl mt-10 w-full lg:px-8 xl:px-52 gap-8"
+        >
           {/* Name */}
           <div
             className="flex items-center justify-center pr-5 w-full bg-white rounded-full shadow-md shadow-[#EDEFF1] transition ring-0
@@ -230,7 +232,7 @@ const Contact = () => {
             className="flex items-center justify-center pr-5 w-full bg-white rounded-full shadow-md shadow-[#EDEFF1] transition ring-0
             focus-within:ring-2 focus-within:ring-blue-500
             focus-within:ring-offset-2 focus-within:ring-offset-white
-            focus-within:shadow-lg col-span-2"
+            focus-within:shadow-lg lg:col-span-2"
           >
             <MessageIcon />
 
@@ -268,9 +270,9 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="col-span-2 flex justify-center">
+          <div className="lg:col-span-2 flex justify-center">
             <button
-              className="bg-primary text-white font-iranYekan text-center rounded-full mt-10 px-14 py-4 font-semibold border-b-4 border-[#000a75] cursor-pointer hover:border-transparent hover:translate-y-1 transition-all duration-200"
+              className="bg-primary text-white font-iranYekan text-center rounded-full mt-4 lg:mt-10 px-14 py-4 font-semibold border-b-4 border-[#000a75] cursor-pointer hover:border-transparent hover:translate-y-1 transition-all duration-200"
               type="submit"
             >
               ارسال

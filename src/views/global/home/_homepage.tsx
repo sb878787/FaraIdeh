@@ -12,7 +12,7 @@ const LandingPageWrapper = () => {
     <>
       <HeroSection />
       <Container>
-        <div className="w-full border-b border-[#EBEBEB] mt-56 sm:mt-24 md:mt-28 lg:mt-1"></div>
+        <div className="w-full border-b border-[#EBEBEB] mt-56 sm:mt-16 md:mt-14 lg:mt-11"></div>
       </Container>
       <OurStory />
       <Services />

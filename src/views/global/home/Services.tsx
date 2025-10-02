@@ -25,7 +25,7 @@ const Services = () => {
         </p>
 
         {/* Decorative SVG - hidden on mobile */}
-        <div className="hidden lg:block absolute bottom-6 left-32 2xl:left-60">
+        <div className="hidden xl:block absolute bottom-6 left-32 2xl:left-60">
           <ServicesHome />
         </div>
       </div>
