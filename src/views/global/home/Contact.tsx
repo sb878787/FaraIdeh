@@ -39,7 +39,7 @@ const Contact = () => {
         <SmallLabel title="CONTACTS" color="#3361FF" bgColor="#DFE5F6" />
         <LargeLabel label="IN TOUCH" subLabel="همین حالا لمسش کن" color="#EAECF1" />
 
-        <p className="text-[#7D8FB3] text-center font-iranYekan leading-7 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-3 font-light sm:font-medium lg:-mt-8 text-sm sm:text-base">
+        <p className="text-text-description text-center font-iranYekan leading-7 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-3 font-light sm:font-medium lg:-mt-8 text-sm sm:text-base">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
           است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
         </p>
@@ -64,7 +64,7 @@ const Contact = () => {
 
             <div className="relative w-full">
               <input
-                className="peer text-[#7D8FB3] placeholder:text-[#7D8FB3] font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
+                className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
                 type="text"
                 name="name"
                 id="name"
@@ -78,7 +78,7 @@ const Contact = () => {
                 className="absolute right-0
                 px-2 rounded py-1 bg-white pointer-events-none
                 transition-all duration-200 ease-out
-                text-[#7D8FB3]
+                text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
                 peer-[&:not(:placeholder-shown)]:top-0
@@ -107,7 +107,7 @@ const Contact = () => {
 
             <div className="relative w-full">
               <input
-                className="peer text-[#7D8FB3] placeholder:text-[#7D8FB3] font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
+                className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
                 type="text"
                 name="family"
                 id="family"
@@ -121,7 +121,7 @@ const Contact = () => {
                 className="absolute right-0
                 px-2 rounded py-1 bg-white pointer-events-none
                 transition-all duration-200 ease-out
-                text-[#7D8FB3]
+                text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
                 peer-[&:not(:placeholder-shown)]:top-0
@@ -150,7 +150,7 @@ const Contact = () => {
 
             <div className="relative w-full">
               <input
-                className="peer text-[#7D8FB3] placeholder:text-[#7D8FB3] font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
+                className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
                 type="tel"
                 name="phone"
                 id="phone"
@@ -167,7 +167,7 @@ const Contact = () => {
                 className="absolute right-0
                 px-2 rounded py-1 bg-white pointer-events-none
                 transition-all duration-200 ease-out
-                text-[#7D8FB3]
+                text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
                 peer-[&:not(:placeholder-shown)]:top-0
@@ -196,7 +196,7 @@ const Contact = () => {
 
             <div className="relative w-full">
               <input
-                className="peer text-[#7D8FB3] placeholder:text-[#7D8FB3] font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
+                className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
                 type="email"
                 name="email"
                 id="email"
@@ -209,7 +209,7 @@ const Contact = () => {
                 className="absolute right-0
                 px-2 rounded py-1 bg-white pointer-events-none
                 transition-all duration-200 ease-out
-                text-[#7D8FB3]
+                text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
                 peer-[&:not(:placeholder-shown)]:top-0
@@ -238,7 +238,7 @@ const Contact = () => {
 
             <div className="relative w-full">
               <input
-                className="peer text-[#7D8FB3] placeholder:text-[#7D8FB3] font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
+                className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-bg-transparent rounded-l-full w-full p-3 py-5"
                 type="text"
                 name="message"
                 id="message"
@@ -252,7 +252,7 @@ const Contact = () => {
                 className="absolute right-0
                 px-2 rounded py-1 bg-white pointer-events-none
                 transition-all duration-200 ease-out
-                text-[#7D8FB3]
+                text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
                 peer-[&:not(:placeholder-shown)]:top-0

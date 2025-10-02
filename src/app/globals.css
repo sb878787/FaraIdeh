@@ -2,10 +2,12 @@
 
 @theme {
   --color-primary: #0a2fb6;
+  --color-text-primary: #0217fc;
   --color-orange: #ff6300;
   --color-text-link: #343434;
   --color-text: #bcbcbc;
   --color-text-information: #acacac;
+  --color-text-description: #7d8fb3;
 
   --font-iranYekan: var(--font-iranYekan), system-ui, sans-serif;
   --font-yekanBakhFaNum: var(--font-yekanBakhFaNum), system-ui, sans-serif;
