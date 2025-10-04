@@ -56,8 +56,13 @@ const HeroSection = () => {
         {/* Hero Section */}
         <div className="lg:mt-20 mt-8 flex flex-col lg:flex-row items-center justify-between gap-x-28 gap-y-10">
           {/* Desktop */}
-          <div className="flex-1 hidden lg:block">
+          <div className="flex-1 hidden xl:block">
             <HeroSVGAbout />
+          </div>
+
+          {/* Tablet */}
+          <div className="flex-1 hidden lg:block xl:hidden">
+            <HeroSVGAbout width="450" height="450" />
           </div>
 
           {/* Mobile */}
@@ -71,11 +76,11 @@ const HeroSection = () => {
               <HandSVGAbout />
             </div>
 
-            <p className="font-iranYekan text-2xl lg:text-4xl font-semibold leading-10 lg:leading-14 w-full lg:w-3/4 mt-4">
+            <p className="font-iranYekan text-2xl lg:text-4xl font-semibold leading-10 lg:leading-14 w-full xl::w-3/4 mt-4">
               ما یک تیم دیجیتالی و آژانس نرم‌افزاری در ایران هستیم. <br /> استراتژی، طراحی و توسعه
               در تمام سیستم عامل ها.
             </p>
-            <p className="text-text-description font-iranYekan leading-7 text-justify lg:mt-8 mt-4">
+            <p className="text-text-description font-iranYekan leading-7 text-justify lg:mt-6 mt-4">
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
               گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
               شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می

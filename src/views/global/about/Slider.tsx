@@ -15,15 +15,13 @@ import { Slide } from '@/types/SlidesType';
 
 // Components
 import Container from '@/component/Container';
-import SliderSVGCircleAbout from '@/component/icons/SVG/SliderSVGCircleAbout';
-import SliderSVGAbout from '@/component/icons/SVG/SliderSVGAbout';
 
 const Slider = ({ slides }: { slides: Slide[] }) => {
   if (!slides?.length) return null;
 
   return (
     <Container>
-      <div className="w-full mt-8 lg:mt-16 lg:rounded-2xl rounded-md relative">
+      <div className="w-full mt-8 lg:mt-20 xl:mt-16 lg:rounded-2xl rounded-md relative">
         <Swiper
           modules={[Autoplay, Pagination]}
           autoplay={{ delay: 3500, disableOnInteraction: false }}
@@ -35,7 +33,7 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <div className="relative w-full h-32 lg:h-auto aspect-[3/1] overflow-hidden">
+              <div className="relative w-full h-40 md:h-52 lg:h-auto aspect-[3/1] overflow-hidden">
                 <Image
                   src={slide.photo}
                   alt={slide.caption ?? 'slideImage'}
@@ -53,14 +51,6 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <div className="absolute -top-16 -right-16 hidden lg:block scale-75 2xl:scale-100">
-          <SliderSVGCircleAbout />
-        </div>
-
-        <div className="absolute -bottom-24 -left-24 hidden lg:block scale-75 2xl:scale-100">
-          <SliderSVGAbout />
-        </div>
       </div>
     </Container>
   );
