@@ -13,6 +13,34 @@
   --font-yekanBakhFaNum: var(--font-yekanBakhFaNum), system-ui, sans-serif;
 }
 
+:root {
+  --bullet-size: clamp(6px, 1.4vw, 10px);
+  --bullet-gap: clamp(2px, 0.6vw, 3px);
+  --bullet-border: clamp(1px, 0.25vw, 2px);
+  --swiper-pagination-color: var(--color-text-primary);
+  --swiper-pagination-bullet-inactive-color: var(--color-text-primary);
+  --swiper-pagination-bullet-size: var(--bullet-size);
+  --swiper-pagination-bullet-horizontal-gap: var(--bullet-gap);
+}
+
+.swiper-pagination-bullet {
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  border-radius: 9999px;
+}
+
+.swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+  background: transparent !important;
+  border: var(--bullet-border) solid var(--swiper-pagination-bullet-inactive-color);
+  opacity: var(--swiper-pagination-bullet-inactive-opacity, 1);
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--swiper-pagination-color) !important;
+  border: 0;
+  transform: scale(1.15);
+}
+
 html {
   scroll-behavior: smooth;
 }
