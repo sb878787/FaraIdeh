@@ -39,7 +39,7 @@ const Contact = () => {
         <SmallLabel title="CONTACTS" color="#3361FF" bgColor="#DFE5F6" />
         <LargeLabel label="IN TOUCH" subLabel="همین حالا لمسش کن" color="#EAECF1" />
 
-        <p className="text-text-description text-center font-iranYekan leading-7 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-3 font-light sm:font-medium lg:-mt-8 text-sm sm:text-base">
+        <p className="text-text-description text-center font-iranYekan leading-5 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-2 font-light sm:font-medium lg:-mt-8 text-xs sm:text-base">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
           است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
         </p>

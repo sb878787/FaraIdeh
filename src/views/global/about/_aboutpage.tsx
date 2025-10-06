@@ -5,11 +5,13 @@ import Footer from '@/component/Footer';
 import HeroSection from './HeroSection';
 import Slider from './Slider';
 import Services from './Services';
+import OurTeam from './OurTeam';
 
 // Types
 import { Slide } from '@/types/SlidesType';
+import { TeamMemberType } from '@/types/TeamMemberType';
 
-const AboutPageWrapper = ({ slides }: { slides: Slide[] }) => {
+const AboutPageWrapper = ({ slides, members }: { slides: Slide[]; members: TeamMemberType[] }) => {
   if (!slides?.length) return null;
 
   return (
@@ -17,6 +19,7 @@ const AboutPageWrapper = ({ slides }: { slides: Slide[] }) => {
       <HeroSection />
       <Slider slides={slides} />
       <Services />
+      <OurTeam members={members} />
       <Footer />
     </>
   );

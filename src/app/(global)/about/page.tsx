@@ -1,15 +1,23 @@
-// Components
-import AboutPageWrapper from '@/views/global/about/_aboutpage';
+// Libs
 import { prisma } from '@/lib/prisma';
 
-const page = async () => {
-  const slides = await prisma.slider.findMany({
-    where: { isActive: true },
-    orderBy: [{ sortOrder: 'asc' }, { createdAt: 'asc' }],
-    select: { id: true, photo: true, caption: true },
-  });
+// Actions
+import { getTeamMembers } from '@/app/actions/getTeamMembers';
 
-  return <AboutPageWrapper slides={slides} />;
+// Components
+import AboutPageWrapper from '@/views/global/about/_aboutpage';
+
+const AboutPage = async () => {
+  const [slides, members] = await Promise.all([
+    prisma.slider.findMany({
+      where: { isActive: true },
+      orderBy: [{ sortOrder: 'asc' }, { createdAt: 'asc' }],
+      select: { id: true, photo: true, caption: true },
+    }),
+    getTeamMembers(),
+  ]);
+
+  return <AboutPageWrapper slides={slides} members={members} />;
 };
 
-export default page;
+export default AboutPage;
