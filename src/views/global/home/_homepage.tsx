@@ -1,3 +1,5 @@
+'use client';
+
 // Components
 import HeroSection from './HeroSection';
 import OurStory from './OurStory';
@@ -7,14 +9,17 @@ import Contact from './Contact';
 import Footer from '@/component/Footer';
 import Line from '@/component/Line';
 
-const LandingPageWrapper = () => {
+// Types
+import type { ProjectsType } from '@/types/ProjectsType';
+
+const LandingPageWrapper = ({ projects }: { projects: ProjectsType[] }) => {
   return (
     <>
       <HeroSection />
       <Line className="mt-56 sm:mt-16 md:mt-14 lg:mt-11" />
       <OurStory />
       <Services />
-      <Projects />
+      <Projects projects={projects} />
       <Contact />
       <Footer />
     </>
