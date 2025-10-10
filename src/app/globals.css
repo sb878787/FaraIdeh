@@ -49,3 +49,7 @@ html {
 .rtl {
   direction: rtl;
 }
+
+.ltr {
+  direction: ltr;
+}
