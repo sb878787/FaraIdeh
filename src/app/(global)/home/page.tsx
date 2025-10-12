@@ -20,6 +20,7 @@ const LandingPage = async () => {
     viewCount: p.viewCountLabel,
     projectLink: p.projectLink ?? undefined,
     photo: p.photo,
+    category: p.category,
   }));
 
   return <LandingPageWrapper projects={projects} />;
