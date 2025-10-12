@@ -1,18 +1,24 @@
 'use client';
 
-import Footer from '@/component/Footer';
 // Components
 import HeroSection from './HeroSection';
 import Projects from './Projects';
+import Footer from '@/component/Footer';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
+import { ProjectCategory } from '@/features/projects/categories';
 
-const ProjectsPageWrapper = ({ projects }: { projects: ProjectsType[] }) => {
+interface ProjectsPageWrapperProps {
+  projects: ProjectsType[];
+  selectedCategory: ProjectCategory;
+}
+
+const ProjectsPageWrapper = ({ projects, selectedCategory }: ProjectsPageWrapperProps) => {
   return (
     <>
       <HeroSection />
-      <Projects projects={projects} />
+      <Projects projects={projects} selectedCategory={selectedCategory} />
       <Footer />
     </>
   );

@@ -3,29 +3,39 @@
 // Components
 import Container from '@/component/Container';
 import ProjectCard from './ProjectCard';
+import Filters from './Filters';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
+import { ProjectCategory } from '@/features/projects/categories';
 
 // Utils
 import { columnise } from '@/utils/columnise';
 
 const columnOffsetClasses = ['md:mt-16', '', 'md:mt-28'];
 
-const Projects = ({ projects }: { projects: ProjectsType[] }) => {
+interface ProjectsProps {
+  projects: ProjectsType[];
+  selectedCategory: ProjectCategory;
+}
+
+const Projects = ({ projects, selectedCategory }: ProjectsProps) => {
   const hasData = projects.length > 0;
   const columnisedProjects = hasData ? columnise(projects, 3) : [];
 
   return (
     <>
+      <Filters selectedCategory={selectedCategory} />
+
       <Container>
         {/* Projects */}
-        <div className="lg:mt-16 mt-8">
+        <div className="lg:mt-20 mt-8">
           {!hasData ? (
             <div className="flex items-center justify-center">
               <p className="lg:text-center text-justify bg-text-description font-iranYekan rtl text-white py-5 lg:py-3 px-5 lg:px-0 rounded w-3/4">
-                به دلیل تازه‌ توسعه بودن سایت، فعلاً پروژه‌ای ثبت نشده است. به‌ زودی پروژه‌های جدید
-                اینجا نمایش داده خواهند شد.
+                {selectedCategory === 'all'
+                  ? 'به دلیل تازه‌ توسعه بودن سایت، فعلاً پروژه‌ای ثبت نشده است. به‌ زودی پروژه‌های جدید اینجا نمایش داده خواهند شد.'
+                  : 'در حال حاضر در این دسته‌بندی پروژه نیست.'}
               </p>
             </div>
           ) : (
