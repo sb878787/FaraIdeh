@@ -3,7 +3,7 @@
 const HeroSectionSquareSVGProjects = () => {
   return (
     <svg
-      width="169"
+      width="129"
       height="174"
       viewBox="0 0 169 174"
       fill="none"

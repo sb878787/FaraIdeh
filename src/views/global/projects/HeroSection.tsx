@@ -2,7 +2,6 @@
 
 // Next Imports
 import Link from 'next/link';
-import Image from 'next/image';
 
 // Components
 import Container from '@/component/Container';
@@ -60,11 +59,11 @@ const HeroSection = () => {
           <div className="w-full relative hidden lg:block">
             <HeroSectionSVGProjects />
 
-            <div className="absolute -top-24 right-0">
+            <div className="absolute -top-24 right-8">
               <HeroSectionSquareSVGProjects />
             </div>
 
-            <div className="absolute -bottom-3 -left-16">
+            <div className="absolute -bottom-3 -left-12">
               <HeroSectionCircleSVGProjects />
             </div>
           </div>
