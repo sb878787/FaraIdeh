@@ -29,10 +29,10 @@ const Projects = ({ projects, selectedCategory }: ProjectsProps) => {
 
       <Container>
         {/* Projects */}
-        <div className="lg:mt-20 mt-8">
+        <div className=" mt-11 md:mt-14 lg:mt-20">
           {!hasData ? (
             <div className="flex items-center justify-center">
-              <p className="lg:text-center text-justify bg-text-description font-iranYekan rtl text-white py-5 lg:py-3 px-5 lg:px-0 rounded w-3/4">
+              <p className="lg:text-center text-center bg-text-description font-iranYekan rtl text-white py-5 lg:py-3 px-5 lg:px-0 rounded w-3/4">
                 {selectedCategory === 'all'
                   ? 'به دلیل تازه‌ توسعه بودن سایت، فعلاً پروژه‌ای ثبت نشده است. به‌ زودی پروژه‌های جدید اینجا نمایش داده خواهند شد.'
                   : 'در حال حاضر در این دسته‌بندی پروژه نیست.'}
@@ -40,13 +40,13 @@ const Projects = ({ projects, selectedCategory }: ProjectsProps) => {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-10 md:hidden">
+              <div className="grid grid-cols-1 gap-10 lg:hidden">
                 {projects.map((project) => (
                   <ProjectCard key={`mobile-${project.id}`} {...project} />
                 ))}
               </div>
 
-              <div className="hidden md:grid md:grid-cols-3 md:gap-x-10">
+              <div className="hidden lg:grid lg:grid-cols-3 lg:gap-x-10">
                 {columnisedProjects.map((columnProjects, columnIndex) => (
                   <div
                     key={`column-${columnIndex}`}

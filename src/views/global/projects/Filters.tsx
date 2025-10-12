@@ -59,20 +59,20 @@ const Filters = ({ selectedCategory }: FiltersProps) => {
   };
 
   return (
-    <div className="w-full border-b border-[#CBCBCB] mt-20 flex justify-center items-center overflow-x-auto">
-      <ul className="flex rtl font-iranYekan font-medium text-[#4C4C4C] gap-x-10 px-4 md:px-0">
+    <div className="w-full border-b border-[#CBCBCB] mt-9 md:mt-11 lg:mt-20 flex justify-start lg:justify-center items-center overflow-x-auto [--webkit-overflow-scrolling:touch] px-0 sm:px-3 lg:px-0">
+      <ul className="rtl font-iranYekan font-medium text-[#4C4C4C] flex w-max gap-x-10 px-4 md:px-0">
         {filterItems.map((item) => {
           const isActive = selectedCategory === item.key;
           const Icon = item.icon;
 
           return (
-            <li key={item.key} className="whitespace-nowrap">
+            <li key={item.key} className="whitespace-nowrap flex-shrink-0">
               <Link
                 href={getFilterUrl(item.key)}
                 scroll={false}
                 replace
                 className={`
-                  flex gap-2 border-b-[3px] pb-6 group transition-all duration-200
+                  flex gap-2 border-b-[3px] lg:pb-6 pb-4 group transition-all duration-200
                   ${
                     isActive
                       ? 'text-text-primary border-text-primary'
