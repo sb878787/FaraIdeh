@@ -30,7 +30,7 @@ const Footer = () => {
   return (
     <div className="bg-primary w-full lg:mt-32 mt-16 lg:pt-16 pt-8 pb-4 relative">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-8 rtl items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-9 rtl items-end">
           {/* Bio */}
           <div>
             <Image src={LogoType} alt="logoType" className="w-60" />
@@ -168,7 +168,7 @@ const Footer = () => {
               </li>
             </ul>
 
-            <div className="mt-4">
+            <div className="md:mt-4">
               <p className="text-white font-iranYekan font-semibold text-xl">خبرنامه</p>
 
               <p className="rtl text-white font-iranYekan mt-2">
