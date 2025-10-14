@@ -4,6 +4,7 @@
 import HeroSection from './HeroSection';
 import Projects from './Projects';
 import Footer from '@/component/Footer';
+import PlaceAnOrder from '@/component/PlaceAnOrder';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
@@ -19,6 +20,7 @@ const ProjectsPageWrapper = ({ projects, selectedCategory }: ProjectsPageWrapper
     <>
       <HeroSection />
       <Projects projects={projects} selectedCategory={selectedCategory} />
+      <PlaceAnOrder />
       <Footer />
     </>
   );
