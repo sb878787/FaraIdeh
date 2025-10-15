@@ -60,9 +60,9 @@ const Footer = () => {
                 <li>
                   <Link
                     className="text-white font-iranYekan border-b-2 pb-1 border-transparent hover:border-white transition-all"
-                    href="/about"
+                    href="/blogs"
                   >
-                    درباره ما
+                    وبلاگ
                   </Link>
                 </li>
 
@@ -78,7 +78,7 @@ const Footer = () => {
                 <li>
                   <Link
                     className="text-white font-iranYekan border-b-2 pb-1 border-transparent hover:border-white transition-all"
-                    href="/"
+                    href="/about#services"
                   >
                     خدمات فراایده
                   </Link>

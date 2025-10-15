@@ -22,7 +22,7 @@ const Navbar = () => {
     { name: 'صفحه نخست', path: '/home' },
     { name: 'درباره ما', path: '/about' },
     { name: 'پروژه ها', path: '/projects' },
-    { name: 'خدمات فراایده', path: '/services' },
+    { name: 'خدمات فراایده', path: '/about#services' },
     { name: 'وبلاگ', path: '/blogs' },
   ];
 

@@ -35,7 +35,10 @@ const Contact = () => {
 
   return (
     <Container>
-      <div className="relative w-full flex flex-col items-center justify-center mt-16 lg:mt-36 lg:py-20 py-12 px-4 sm:px-6 lg:px-0 bg-[#F2F3F5] rounded-2xl">
+      <div
+        id="contact"
+        className="relative w-full flex flex-col items-center justify-center mt-16 lg:mt-36 lg:py-20 py-12 px-4 sm:px-6 lg:px-0 bg-[#F2F3F5] rounded-2xl"
+      >
         <SmallLabel title="CONTACTS" color="#3361FF" bgColor="#DFE5F6" />
         <LargeLabel label="IN TOUCH" subLabel="همین حالا لمسش کن" color="#EAECF1" />
 
