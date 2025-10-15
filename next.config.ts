@@ -11,6 +11,9 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [{ protocol: 'https', hostname: 's6.uupload.ir' }],
+  },
 };
 
 export default nextConfig;

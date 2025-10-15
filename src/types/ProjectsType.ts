@@ -8,4 +8,5 @@ export type ProjectsType = {
   viewCount: string;
   projectLink?: string | null;
   photo: string;
+  category: string;
 };

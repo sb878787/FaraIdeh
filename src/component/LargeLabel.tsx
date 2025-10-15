@@ -20,7 +20,7 @@ const LargeLabel = ({ label, subLabel, color }: ILargeLabelProps) => {
       </div>
 
       {/* Mobile/Tablet */}
-      <div className="xl:hidden mt-4 mb-1 lg:mb-12">
+      <div className="xl:hidden mt-3 mb-1 lg:mb-12">
         <h2
           className="text-[#F7F8FB] font-bold text-5xl sm:text-7xl md:text-8xl text-center relative"
           style={{ color: color }}

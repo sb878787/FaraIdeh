@@ -85,3 +85,16 @@ model Contact {
   @@index([email])
   @@index([phone])
 }
+
+model Slider {
+  id        Int      @id @default(autoincrement())
+  photo     String   // URL or local path to the image
+  caption   String?  // optional text shown over/under the image
+  linkUrl   String?  // optional link when clicking the slide
+  sortOrder Int      @default(0) // control display order
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([isActive, sortOrder])
+}

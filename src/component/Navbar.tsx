@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="w-full bg-white mt-3 rounded-md shadow-md py-3 px-4 sm:px-6 md:px-8 lg:px-10 flex flex-row-reverse items-center justify-between">
+      <div className="w-full bg-white mt-3 rounded-md shadow shadow-black/10 py-3 px-4 sm:px-6 md:px-8 lg:px-10 flex flex-row-reverse items-center justify-between">
         {/* Hamburger Menu Button */}
         <button
           type="button"
@@ -67,8 +67,8 @@ const Navbar = () => {
                 <Link
                   href={link.path}
                   className={`font-iranYekan font-medium text-sm xl:text-base ${
-                    pathname === link.path ? 'text-primary' : 'text-text-link'
-                  } group-hover:text-primary transition-colors`}
+                    pathname === link.path ? 'text-text-primary' : 'text-text-link'
+                  } group-hover:text-text-primary transition-colors`}
                 >
                   {link.name}
                 </Link>
@@ -94,9 +94,9 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       <div
-        className={`lg:hidden bg-white rounded-md shadow-md mt-2 overflow-hidden transition-all duration-300 ${
+        className={`lg:hidden bg-white rounded-md shadow shadow-black/10 mt-2 overflow-hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        } absolute w-full`}
       >
         <ul className="py-3 px-4">
           {routeLinks.map((link, index) => (
@@ -105,8 +105,8 @@ const Navbar = () => {
                 href={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`font-iranYekan block text-right py-1 ${
-                  pathname === link.path ? 'text-primary' : 'text-text-link'
-                } hover:text-primary transition-colors`}
+                  pathname === link.path ? 'text-text-primary' : 'text-text-link'
+                } hover:text-text-primary transition-colors`}
               >
                 {link.name}
               </Link>

@@ -8,7 +8,7 @@ export async function getInformationCounts() {
       prisma.teamMember.count(),
       prisma.project.count({
         where: {
-          isActive: false, // Completed projects
+          isActive: true, // Completed projects
         },
       }),
       prisma.order.count(),
