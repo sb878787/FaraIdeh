@@ -1,8 +1,19 @@
 'use client';
 
-const EmailIcon = () => {
+interface IEmailIconProps {
+  width?: string;
+  height?: string;
+}
+
+const EmailIcon = ({ width = '35', height = '30' }: IEmailIconProps) => {
   return (
-    <svg width="35" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"
