@@ -1,12 +1,94 @@
 'use client';
 
+// React Imports
+import { useState } from 'react';
+
+// Components
 import EmailIcon from '@/component/icons/contact/EmailIcon';
 import MessageIcon from '@/component/icons/contact/MessageIcon';
 import PhoneIcon from '@/component/icons/contact/PhoneIcon';
 import UserIcon from '@/component/icons/contact/UserIcon';
 import ContactHome from '@/component/icons/SVG/ContactHome';
 
-const FormRequest = () => {
+interface FormRequestProps {
+  selectedCategories: string[];
+  onSubmit: (formData: {
+    name: string;
+    family: string;
+    phone: string;
+    email: string;
+    message: string;
+  }) => Promise<void>;
+  isSubmitting: boolean;
+}
+
+const FormRequest = ({ selectedCategories, onSubmit, isSubmitting }: FormRequestProps) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    family: '',
+    phone: '',
+    email: '',
+    message: '',
+  });
+
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    // Validation
+    if (selectedCategories.length === 0) {
+      setError('لطفا حداقل یک دسته را انتخاب کنید');
+      return;
+    }
+
+    if (!formData.name.trim()) {
+      setError('لطفا نام خود را وارد کنید');
+      return;
+    }
+
+    if (!formData.family.trim()) {
+      setError('لطفا نام خانوادگی خود را وارد کنید');
+      return;
+    }
+
+    if (!formData.phone.trim()) {
+      setError('لطفا شماره تماس خود را وارد کنید');
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      setError('لطفا توضیحات پروژه را وارد کنید');
+      return;
+    }
+
+    try {
+      await onSubmit(formData);
+      setFormData({
+        name: '',
+        family: '',
+        phone: '',
+        email: '',
+        message: '',
+      });
+      setSuccess('سفارش شما با موفقیت ثبت شد!');
+      setTimeout(() => setSuccess(''), 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی در ثبت سفارش رخ داد');
+    }
+  };
+
   return (
     <div className="flex flex-col lg:flex-row items-start justify-between xl:pl-32 lg:gap-x-44">
       <div className="relative w-full lg:w-44 flex-shrink-0 -mt-10">
@@ -22,7 +104,24 @@ const FormRequest = () => {
       </div>
 
       {/* Form */}
-      <form className="grid grid-cols-1 lg:grid-cols-2 rtl mt-3 lg:mt-10 w-full gap-5">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 lg:grid-cols-2 rtl mt-3 lg:mt-10 w-full gap-5"
+      >
+        {/* Error Message */}
+        {error && (
+          <div className="col-span-full bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded font-iranYekan">
+            {error}
+          </div>
+        )}
+
+        {/* Success Message */}
+        {success && (
+          <div className="col-span-full bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded font-iranYekan">
+            {success}
+          </div>
+        )}
+
         {/* Name */}
         <div
           className="flex items-center justify-center pr-3 w-full bg-white rounded-lg shadow-md shadow-[#EDEFF1] transition ring-0
@@ -32,14 +131,17 @@ const FormRequest = () => {
         >
           <UserIcon size="40" />
 
-          <div className="relative w-full">
+          <div className="relative w-full pr-3">
             <input
               className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-transparent w-full p-3 py-5"
               type="text"
               name="name"
               id="name"
               placeholder=" "
+              value={formData.name}
+              onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
 
             <label
@@ -68,14 +170,17 @@ const FormRequest = () => {
         >
           <UserIcon size="40" />
 
-          <div className="relative w-full">
+          <div className="relative w-full pr-3">
             <input
               className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-transparent w-full p-3 py-5"
               type="text"
               name="family"
               id="family"
               placeholder=" "
+              value={formData.family}
+              onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
 
             <label
@@ -104,7 +209,7 @@ const FormRequest = () => {
         >
           <PhoneIcon size="40" />
 
-          <div className="relative w-full">
+          <div className="relative w-full pr-3">
             <input
               className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-transparent w-full p-3 py-5"
               type="tel"
@@ -114,7 +219,10 @@ const FormRequest = () => {
               inputMode="numeric"
               pattern="[0-9]*"
               autoComplete="tel"
+              value={formData.phone}
+              onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
 
             <label
@@ -143,13 +251,16 @@ const FormRequest = () => {
         >
           <EmailIcon width="40" height="35" />
 
-          <div className="relative w-full">
+          <div className="relative w-full pr-3">
             <input
               className="peer text-text-description placeholder:text-text-description font-iranYekan outline-none bg-transparent w-full p-3 py-5"
               type="email"
               name="email"
               id="email"
               placeholder=" "
+              value={formData.email}
+              onChange={handleChange}
+              disabled={isSubmitting}
             />
 
             <label
@@ -185,7 +296,10 @@ const FormRequest = () => {
               id="message"
               placeholder=" "
               rows={10}
+              value={formData.message}
+              onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
 
             <label
@@ -208,10 +322,11 @@ const FormRequest = () => {
 
         <div className="lg:col-span-2 flex justify-end relative">
           <button
-            className="bg-orange text-white font-iranYekan text-center rounded-lg mt-4 lg:mt-8 w-full md:w-auto md:px-14 py-4 font-semibold border-b-4 border-[#9c3c00] cursor-pointer hover:border-transparent hover:translate-y-1 transition-all duration-200"
+            className="bg-orange text-white font-iranYekan text-center rounded-lg mt-4 lg:mt-8 w-full md:w-auto md:px-14 py-4 font-semibold border-b-4 border-[#9c3c00] cursor-pointer hover:border-transparent hover:translate-y-1 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             type="submit"
+            disabled={isSubmitting}
           >
-            ثبت سفارش
+            {isSubmitting ? 'در حال ثبت...' : 'ثبت سفارش'}
           </button>
 
           <div className="absolute -top-12 -left-42 hidden xl:block">

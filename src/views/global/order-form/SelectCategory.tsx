@@ -20,15 +20,19 @@ import InstagramIcon from '@/component/icons/services/InstagramIcon';
 import UiUxIcon from '@/component/icons/services/UiUxIcon';
 import ContentManagementIcon from '@/component/icons/services/ContentManagementIcon';
 
-const SelectCategory = () => {
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+interface SelectCategoryProps {
+  selectedCategories: string[];
+  onCategoriesChange: (categories: string[]) => void;
+}
+
+const SelectCategory = ({ selectedCategories, onCategoriesChange }: SelectCategoryProps) => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
 
   const services = [
     { id: 'website', name: 'وب سایت', icon: SiteIcon },
-    { id: 'app', name: 'اپلیکیشن', icon: PhoneIcon },
+    { id: 'application', name: 'اپلیکیشن', icon: PhoneIcon },
     { id: 'startup', name: 'استارت آپ', icon: StartUpIcon },
     { id: 'instagram', name: 'صفحه اینستاگرام', icon: InstagramIcon },
     { id: 'uiux', name: 'طراحی UI, UX', icon: UiUxIcon },
@@ -36,9 +40,10 @@ const SelectCategory = () => {
   ];
 
   const handleCheckboxChange = (serviceId: string) => {
-    setSelectedServices((prev) =>
-      prev.includes(serviceId) ? prev.filter((id) => id !== serviceId) : [...prev, serviceId],
-    );
+    const updated = selectedCategories.includes(serviceId)
+      ? selectedCategories.filter((id) => id !== serviceId)
+      : [...selectedCategories, serviceId];
+    onCategoriesChange(updated);
   };
 
   return (
@@ -85,7 +90,7 @@ const SelectCategory = () => {
         >
           {services.map((service) => {
             const Icon = service.icon;
-            const isChecked = selectedServices.includes(service.id);
+            const isChecked = selectedCategories.includes(service.id);
 
             return (
               <SwiperSlide key={service.id} style={{ height: 'auto' }}>
