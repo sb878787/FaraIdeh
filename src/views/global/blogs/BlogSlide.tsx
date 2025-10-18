@@ -8,7 +8,7 @@ import Image from 'next/image';
 import CategoryIcon from '@/component/icons/blogs/CategoryIcon';
 import CalendarIcon from '@/component/icons/blogs/CalendarIcon';
 
-interface BlogSlide {
+interface IBlogSlide {
   id: number;
   image: string;
   category: string;
@@ -16,11 +16,11 @@ interface BlogSlide {
   title: string;
 }
 
-interface BlogCardProps {
-  blog: BlogSlide;
+interface IBlogSlideProps {
+  blog: IBlogSlide;
 }
 
-const BlogCard = ({ blog }: BlogCardProps) => {
+const BlogSlide = ({ blog }: IBlogSlideProps) => {
   return (
     <Link href={`/blogs/${blog.id}`}>
       <div className="w-full h-96 rounded-2xl overflow-hidden relative">
@@ -57,4 +57,4 @@ const BlogCard = ({ blog }: BlogCardProps) => {
   );
 };
 
-export default BlogCard;
+export default BlogSlide;

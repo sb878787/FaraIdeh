@@ -14,9 +14,9 @@ import 'swiper/css/navigation';
 
 // Components
 import Header from '@/component/Header';
-import BlogCard from './BlogCard';
+import BlogSlide from './BlogSlide';
 
-interface BlogSlide {
+interface IBlogSlide {
   id: number;
   image: string;
   category: string;
@@ -29,7 +29,7 @@ const HeroSection = () => {
   const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
 
-  const blogs: BlogSlide[] = [
+  const blogs: IBlogSlide[] = [
     {
       id: 1,
       image: 'https://s6.uupload.ir/files/adobestock_271347901_1_3hoz.png',
@@ -94,7 +94,7 @@ const HeroSection = () => {
         >
           {blogs.map((blog) => (
             <SwiperSlide key={blog.id}>
-              <BlogCard blog={blog} />
+              <BlogSlide blog={blog} />
             </SwiperSlide>
           ))}
         </Swiper>
