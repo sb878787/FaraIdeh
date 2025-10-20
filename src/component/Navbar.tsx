@@ -96,7 +96,7 @@ const Navbar = () => {
       <div
         className={`lg:hidden bg-white rounded-md shadow shadow-black/10 mt-2 overflow-hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        } absolute w-full`}
+        }`}
       >
         <ul className="py-3 px-4">
           {routeLinks.map((link, index) => (
