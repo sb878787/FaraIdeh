@@ -1,10 +1,15 @@
 'use client';
 
-const OurStoryHome = () => {
+interface IOurStoryHomeProps {
+  width?: string;
+  height?: string;
+}
+
+const OurStoryHome = ({ width = '154', height = '134' }: IOurStoryHomeProps) => {
   return (
     <svg
-      width="154"
-      height="134"
+      width={width}
+      height={height}
       viewBox="0 0 154 134"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
