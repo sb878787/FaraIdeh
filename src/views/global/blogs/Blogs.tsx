@@ -101,7 +101,7 @@ const Blogs = ({ blogs, setBlogs, hasMore: initialHasMore }: IBlogsProps) => {
           </>
         )}
 
-        <div className="hidden xl:block absolute top-0 right-0 2xl:right-90 scale-50 lg:scale-100 origin-top-right">
+        <div className="hidden xl:block absolute top-0 right-0 xl:right-52 2xl:right-90 scale-50 lg:scale-100 origin-top-right">
           <OurStoryHome width="124" height="104" />
         </div>
       </div>
