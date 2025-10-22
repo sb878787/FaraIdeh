@@ -8,31 +8,36 @@ datasource db {
 }
 
 model Blogs {
-  id                  Int       @id @default(autoincrement())
-  slug                String    @unique
-  title               String
-  excerpt             String?   // short teaser for lists
-  content             String    // markdown or html
-  published           Boolean   @default(false)
-  category            String
-  author              String
-  readingTimeMinutes  Int       @default(1) // we compute it from content length
-  labels              Json      @default("[]") // expect string[]
-  createdAt           DateTime  @default(now())
-  updatedAt           DateTime  @updatedAt
+  id                 Int      @id @default(autoincrement())
+  slug               String   @unique
+  title              String
+  excerpt            String?
+  content            String
+  contentType        String   @default("markdown")
+  published          Boolean  @default(false)
+  category           String
+  author             String
+  featuredImage      String?
+  readingTimeMinutes Int      @default(1)
+  labels             String   @default("[]")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@index([slug])
+  @@index([published, createdAt])
 }
 
 model TeamMember {
   id            Int      @id @default(autoincrement())
-  photo         String   // URL or path to the photo
+  photo         String // URL or path to the photo
   firstName     String
   lastName      String
-  jobTitles     Json    @default("[]") // expect string[]
+  jobTitles     Json     @default("[]") // expect string[]
   githubLink    String?
   linkedinLink  String?
   instagramLink String?
-  resumeFile    String   // URL or path to the resume file
-  viewCount     Int      @default(0)   // track number of resume views
+  resumeFile    String // URL or path to the resume file
+  viewCount     Int      @default(0) // track number of resume views
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
@@ -40,13 +45,13 @@ model TeamMember {
 model Project {
   id            Int      @id @default(autoincrement())
   photos        Json     @default("[]") // array of photo URLs/paths
-  viewCount     Int      @default(0)    // track number of project views
+  viewCount     Int      @default(0) // track number of project views
   name          String
   description   String
   year          Int
   category      String
-  projectLink   String?  // optional since some projects might not have a live link
-  requesterName String?  // optional name of the project requester
+  projectLink   String? // optional since some projects might not have a live link
+  requesterName String? // optional name of the project requester
   technologies  Json     @default("[]") // array of technology names
   isActive      Boolean  @default(true)
   createdAt     DateTime @default(now())
@@ -56,7 +61,7 @@ model Project {
 model Order {
   id          Int      @id @default(autoincrement())
   category    Json
-  users       Json     // array of user objects with firstName, lastName, contactNumber, and email
+  users       Json // array of user objects with firstName, lastName, contactNumber, and email
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -64,7 +69,7 @@ model Order {
 
 model Achievement {
   id          Int      @id @default(autoincrement())
-  photo       String   // URL or path to the achievement photo
+  photo       String // URL or path to the achievement photo
   title       String
   description String
   year        Int
@@ -73,13 +78,13 @@ model Achievement {
 }
 
 model Contact {
-  id         Int      @id @default(autoincrement())
-  firstName  String
-  lastName   String
-  phone      String?     // optional
-  email      String?     // optional
-  message    String
-  createdAt  DateTime  @default(now())
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  phone     String? // optional
+  email     String? // optional
+  message   String
+  createdAt DateTime @default(now())
 
   @@index([createdAt])
   @@index([email])
@@ -88,9 +93,9 @@ model Contact {
 
 model Slider {
   id        Int      @id @default(autoincrement())
-  photo     String   // URL or local path to the image
-  caption   String?  // optional text shown over/under the image
-  linkUrl   String?  // optional link when clicking the slide
+  photo     String // URL or local path to the image
+  caption   String? // optional text shown over/under the image
+  linkUrl   String? // optional link when clicking the slide
   sortOrder Int      @default(0) // control display order
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
