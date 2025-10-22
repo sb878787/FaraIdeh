@@ -8,24 +8,28 @@ import Image from 'next/image';
 import CategoryIcon from '@/component/icons/blogs/CategoryIcon';
 import CalendarIcon from '@/component/icons/blogs/CalendarIcon';
 
-interface IBlogSlide {
-  id: number;
-  image: string;
-  category: string;
-  date: string;
-  title: string;
-}
+// Types
+import { BlogPost } from '@/types/BlogsType';
 
 interface IBlogSlideProps {
-  blog: IBlogSlide;
+  blog: BlogPost;
 }
 
 const BlogSlide = ({ blog }: IBlogSlideProps) => {
+  // Format date to Persian
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat('fa-IR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(new Date(date));
+  };
+
   return (
     <Link href={`/blogs/${blog.id}`}>
       <div className="w-full h-72 lg:h-96 rounded-2xl overflow-hidden relative">
         <Image
-          src={blog.image}
+          src={blog.featuredImage || '/placeholder-blog.jpg'}
           alt={blog.title}
           fill
           className="absolute object-cover object-center -z-10"
@@ -45,7 +49,9 @@ const BlogSlide = ({ blog }: IBlogSlideProps) => {
 
               <div className="flex items-center gap-2">
                 <CalendarIcon size="21" className="text-white" />
-                <p className="text-white font-yekanBakhFaNum text-sm pt-1">{blog.date}</p>
+                <p className="text-white font-yekanBakhFaNum text-sm pt-1">
+                  {formatDate(blog.createdAt)}
+                </p>
               </div>
             </div>
 

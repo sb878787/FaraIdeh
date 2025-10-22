@@ -14,14 +14,15 @@ import { BlogPost } from '@/types/BlogsType';
 interface IBlogsPageWrapperProps {
   initialBlogs: BlogPost[];
   hasMore: boolean;
+  latestBlogs: BlogPost[];
 }
 
-const BlogsPageWrapper = ({ initialBlogs, hasMore }: IBlogsPageWrapperProps) => {
+const BlogsPageWrapper = ({ initialBlogs, hasMore, latestBlogs }: IBlogsPageWrapperProps) => {
   const [blogs, setBlogs] = useState<BlogPost[]>(initialBlogs);
 
   return (
     <>
-      <HeroSection />
+      <HeroSection latestBlogs={latestBlogs} />
       <Blogs blogs={blogs} setBlogs={setBlogs} hasMore={hasMore} />
       <Footer />
     </>
