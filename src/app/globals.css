@@ -12,6 +12,8 @@
 
   --font-iranYekan: var(--font-iranYekan), system-ui, sans-serif;
   --font-yekanBakhFaNum: var(--font-yekanBakhFaNum), system-ui, sans-serif;
+
+  --breakpoint-xs: 22.5rem; /* 360px */
 }
 
 :root {

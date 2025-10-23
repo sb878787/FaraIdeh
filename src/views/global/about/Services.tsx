@@ -42,7 +42,7 @@ const Services = () => {
   ];
 
   return (
-    <div className="bg-[#F9F9F9] mt-14 lg:mt-32 rtl py-10 lg:py-20 relative" id="services">
+    <div className="bg-[#F9F9F9] mt-10 lg:mt-22 xl:mt-32 rtl py-10 lg:py-20 relative" id="services">
       <Container>
         <h1 className="font-iranYekan font-semibold text-3xl">خدمات فراایده</h1>
 
