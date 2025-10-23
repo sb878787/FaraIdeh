@@ -11,26 +11,20 @@ import CalendarIcon from '@/component/icons/blogs/CalendarIcon';
 // Types
 import { BlogPost } from '@/types/BlogsType';
 
+// Utils
+import { formatDate } from '@/utils/formatDate';
+
 interface IBlogCardsProps {
   blogs: BlogPost[];
 }
 
 const BlogCards = ({ blogs }: IBlogCardsProps) => {
-  // Format date to Persian
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('fa-IR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(new Date(date));
-  };
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6 lg:gap-y-10 w-full rtl mt-8 lg:mt-16">
       {blogs.map((blog) => (
         <Link
           key={blog.id}
-          href={`/blogs/${blog.id}`}
+          href={`/blogs/${blog.slug}`}
           className="hover:shadow-md hover:-translate-y-2 rounded-2xl pb-6 transition-all duration-200"
         >
           <div className="relative">

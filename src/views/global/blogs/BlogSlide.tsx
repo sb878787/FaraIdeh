@@ -11,22 +11,16 @@ import CalendarIcon from '@/component/icons/blogs/CalendarIcon';
 // Types
 import { BlogPost } from '@/types/BlogsType';
 
+// Utils
+import { formatDate } from '@/utils/formatDate';
+
 interface IBlogSlideProps {
   blog: BlogPost;
 }
 
 const BlogSlide = ({ blog }: IBlogSlideProps) => {
-  // Format date to Persian
-  const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('fa-IR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }).format(new Date(date));
-  };
-
   return (
-    <Link href={`/blogs/${blog.id}`}>
+    <Link href={`/blogs/${blog.slug}`}>
       <div className="w-full h-72 lg:h-96 rounded-2xl overflow-hidden relative">
         <Image
           src={blog.featuredImage || '/placeholder-blog.jpg'}

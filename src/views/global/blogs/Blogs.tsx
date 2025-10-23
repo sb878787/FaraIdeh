@@ -82,7 +82,7 @@ const Blogs = ({ blogs, setBlogs, hasMore: initialHasMore }: IBlogsProps) => {
         {/* Blog Cards */}
         {blogs.length === 0 && !isLoading ? (
           <div className="w-full flex items-center justify-center mt-8 lg:mt-16">
-            <p className="lg:text-center text-center bg-text-description font-iranYekan rtl text-white py-3 px-5 lg:px-0 rounded w-3/4">
+            <p className="text-center bg-text-description font-iranYekan rtl text-white py-3 px-5 lg:px-0 rounded w-3/4">
               مقاله‌ای یافت نشد
             </p>
           </div>

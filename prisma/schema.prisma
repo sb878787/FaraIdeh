@@ -19,7 +19,7 @@ model Blogs {
   author             String
   featuredImage      String?
   readingTimeMinutes Int      @default(1)
-  labels             String   @default("[]")
+  labels             Json     @default("[]")
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
