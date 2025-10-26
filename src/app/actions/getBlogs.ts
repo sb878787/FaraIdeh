@@ -92,3 +92,50 @@ export async function getBlogBySlug(slug: string) {
     return null;
   }
 }
+
+export async function getRelatedBlogs(category: string, currentSlug: string, limit: number = 3) {
+  try {
+    const where: Prisma.BlogsWhereInput = {
+      category: category,
+      slug: {
+        not: currentSlug,
+      },
+      published: true,
+    };
+
+    const blogs = await prisma.blogs.findMany({
+      where,
+      orderBy: {
+        createdAt: 'desc',
+      },
+      take: limit,
+      select: {
+        id: true,
+        slug: true,
+        title: true,
+        excerpt: true,
+        category: true,
+        featuredImage: true,
+        readingTimeMinutes: true,
+        createdAt: true,
+      },
+    });
+
+    // Convert to BlogPost type (partial)
+    const formattedBlogs = blogs.map((blog) => ({
+      id: blog.id,
+      slug: blog.slug,
+      title: blog.title,
+      excerpt: blog.excerpt,
+      category: blog.category,
+      featuredImage: blog.featuredImage,
+      readingTimeMinutes: blog.readingTimeMinutes,
+      createdAt: blog.createdAt,
+    }));
+
+    return formattedBlogs;
+  } catch (error) {
+    console.error('Error fetching related blogs:', error);
+    return [];
+  }
+}

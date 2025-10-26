@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Actions
-import { getBlogBySlug } from '@/app/actions/getBlogs';
+import { getBlogBySlug, getRelatedBlogs } from '@/app/actions/getBlogs';
 
 // Components
 import Container from '@/component/Container';
@@ -37,6 +37,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
   if (!blog) {
     notFound();
   }
+
+  // Get related blogs
+  const relatedBlogs = await getRelatedBlogs(blog.category, blog.slug, 3);
 
   // Parse labels
   const labels = (() => {
@@ -141,7 +144,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Image */}
             <div className="w-full h-52 md:h-72 lg:h-115 overflow-hidden relative rounded-2xl lg:mt-6 mt-2 sm:mt-3">
               <Image
-                src={blog.featuredImage || ''}
+                src={blog.featuredImage || '/placeholder-blog.jpg'}
                 alt="BlogImage"
                 fill
                 className="object-cover object-center"
@@ -163,146 +166,61 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
 
             {/* Related Articles */}
             <div className="lg:mt-8 mt-6 flex flex-col gap-y-5 lg:max-xl:grid lg:max-xl:grid-cols-2 lg:max-xl:gap-x-7 lg:max-xl:gap-y-3">
-              <Link href="/blogs/slug">
-                <div className="flex items-center gap-x-5 rounded-xl pb-1.5 px-1.5 border-b-2 border-transparent hover:border-text-primary hover:-translate-y-1 transition-all duration-200">
-                  {/* Image */}
-                  <div className="relative w-full sm:w-3/4 h-38 sm:h-32 rounded-xl overflow-hidden">
-                    <Image
-                      src="https://s6.uupload.ir/files/adobestock_271347901_1_3hoz.png"
-                      alt="BlogImage"
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
-
-                  {/* Detail */}
-                  <div className="w-full mt-1.5">
-                    {/* Category & Reading Time */}
-                    <div className="w-full flex flex-col sm:flex-row gap-x-4 gap-y-2">
-                      {/* Category */}
-                      <div className="flex gap-2">
-                        <CategoryIcon size="17" className="text-black" />
-                        <p className="font-iranYekan text-sm">{blog.category}</p>
+              {relatedBlogs.length > 0 ? (
+                relatedBlogs.map((relatedBlog) => (
+                  <Link key={relatedBlog.id} href={`/blogs/${relatedBlog.slug}`}>
+                    <div className="flex items-center gap-x-5 rounded-xl pb-1.5 px-1.5 border-b-2 border-transparent hover:border-text-primary hover:-translate-y-1 transition-all duration-200">
+                      {/* Image */}
+                      <div className="relative w-full sm:w-3/4 h-38 sm:h-32 rounded-xl overflow-hidden">
+                        <Image
+                          src={relatedBlog.featuredImage || '/placeholder-blog.jpg'}
+                          alt={relatedBlog.title}
+                          fill
+                          className="object-cover object-center"
+                        />
                       </div>
 
-                      {/* Reading Time */}
-                      <div className="flex gap-2 items-center">
-                        <TimeIcon size="20" className="text-black" />
-                        <p className="font-iranYekan text-sm">
-                          مطالعه{' '}
-                          <span className="font-yekanBakhFaNum">{blog.readingTimeMinutes}</span>{' '}
-                          دقیقه
+                      {/* Detail */}
+                      <div className="w-full mt-1.5">
+                        {/* Category & Reading Time */}
+                        <div className="w-full flex flex-col sm:flex-row gap-x-4 gap-y-2">
+                          {/* Category */}
+                          <div className="flex gap-2">
+                            <CategoryIcon size="17" className="text-black" />
+                            <p className="font-iranYekan text-sm">{relatedBlog.category}</p>
+                          </div>
+
+                          {/* Reading Time */}
+                          <div className="flex gap-2 items-center">
+                            <TimeIcon size="20" className="text-black" />
+                            <p className="font-iranYekan text-sm">
+                              مطالعه{' '}
+                              <span className="font-yekanBakhFaNum">
+                                {relatedBlog.readingTimeMinutes}
+                              </span>{' '}
+                              دقیقه
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Title */}
+                        <p className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
+                          {relatedBlog.title}
+                        </p>
+
+                        {/* Excerpt */}
+                        <p className="font-iranYekan text-[#4C4C4C] line-clamp-2 text-sm text-justify leading-6 mt-2 font-medium">
+                          {relatedBlog.excerpt}
                         </p>
                       </div>
                     </div>
-
-                    {/* Title */}
-                    <p className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
-                      هزینه ساخت یک وبسایت
-                    </p>
-
-                    {/* Excerpt */}
-                    <p className="font-iranYekan text-[#4C4C4C] line-clamp-2 text-sm text-justify leading-6 mt-2 font-medium">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                      طراحان گرافیک است، چاپگرها و
-                    </p>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/blogs/slug">
-                <div className="flex items-center gap-x-5 rounded-xl pb-1.5 px-1.5 border-b-2 border-transparent hover:border-text-primary hover:-translate-y-1 transition-all duration-200">
-                  {/* Image */}
-                  <div className="relative w-full sm:w-3/4 h-38 sm:h-32 rounded-xl overflow-hidden">
-                    <Image
-                      src="https://s6.uupload.ir/files/adobestock_271347901_1_3hoz.png"
-                      alt="BlogImage"
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
-
-                  {/* Detail */}
-                  <div className="w-full mt-1.5">
-                    {/* Category & Reading Time */}
-                    <div className="w-full flex flex-col sm:flex-row gap-x-4 gap-y-2">
-                      {/* Category */}
-                      <div className="flex gap-2">
-                        <CategoryIcon size="17" className="text-black" />
-                        <p className="font-iranYekan text-sm">{blog.category}</p>
-                      </div>
-
-                      {/* Reading Time */}
-                      <div className="flex gap-2 items-center">
-                        <TimeIcon size="20" className="text-black" />
-                        <p className="font-iranYekan text-sm">
-                          مطالعه{' '}
-                          <span className="font-yekanBakhFaNum">{blog.readingTimeMinutes}</span>{' '}
-                          دقیقه
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <p className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
-                      هزینه ساخت یک وبسایت
-                    </p>
-
-                    {/* Excerpt */}
-                    <p className="font-iranYekan text-[#4C4C4C] line-clamp-2 text-sm text-justify leading-6 mt-2 font-medium">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                      طراحان گرافیک است، چاپگرها و
-                    </p>
-                  </div>
-                </div>
-              </Link>
-
-              <Link href="/blogs/slug">
-                <div className="flex items-center gap-x-5 rounded-xl pb-1.5 px-1.5 border-b-2 border-transparent hover:border-text-primary hover:-translate-y-1 transition-all duration-200">
-                  {/* Image */}
-                  <div className="relative w-full sm:w-3/4 h-38 sm:h-32 rounded-xl overflow-hidden">
-                    <Image
-                      src="https://s6.uupload.ir/files/adobestock_271347901_1_3hoz.png"
-                      alt="BlogImage"
-                      fill
-                      className="object-cover object-center"
-                    />
-                  </div>
-
-                  {/* Detail */}
-                  <div className="w-full mt-1.5">
-                    {/* Category & Reading Time */}
-                    <div className="w-full flex flex-col sm:flex-row gap-x-4 gap-y-2">
-                      {/* Category */}
-                      <div className="flex gap-2">
-                        <CategoryIcon size="17" className="text-black" />
-                        <p className="font-iranYekan text-sm">{blog.category}</p>
-                      </div>
-
-                      {/* Reading Time */}
-                      <div className="flex gap-2 items-center">
-                        <TimeIcon size="20" className="text-black" />
-                        <p className="font-iranYekan text-sm">
-                          مطالعه{' '}
-                          <span className="font-yekanBakhFaNum">{blog.readingTimeMinutes}</span>{' '}
-                          دقیقه
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Title */}
-                    <p className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
-                      هزینه ساخت یک وبسایت
-                    </p>
-
-                    {/* Excerpt */}
-                    <p className="font-iranYekan text-[#4C4C4C] line-clamp-2 text-sm text-justify leading-6 mt-2 font-medium">
-                      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
-                      طراحان گرافیک است، چاپگرها و
-                    </p>
-                  </div>
-                </div>
-              </Link>
+                  </Link>
+                ))
+              ) : (
+                <p className="text-center bg-text-description font-iranYekan rtl text-white rounded-lg py-4 px-6">
+                  در این دسته‌بندی مقاله دیگری نیست.
+                </p>
+              )}
             </div>
 
             {/* Labels Title */}
