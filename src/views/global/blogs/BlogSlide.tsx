@@ -49,7 +49,7 @@ const BlogSlide = ({ blog }: IBlogSlideProps) => {
               </div>
             </div>
 
-            <p className="text-white font-iranYekan font-extrabold text-2xl lg:text-3xl">
+            <p className="text-white font-iranYekan font-extrabold text-2xl lg:text-3xl line-clamp-1 pl-4">
               {blog.title}
             </p>
           </div>
