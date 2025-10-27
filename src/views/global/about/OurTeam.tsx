@@ -18,7 +18,7 @@ import { TeamMemberType } from '@/types/TeamMemberType';
 
 const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" id="ourteam">
       <Container>
         <div className="relative w-full flex flex-col items-center justify-center mt-10 sm:mt-16 md:mt-20 rtl">
           <SmallLabel title="OUR TEAM" color="#FF6633" bgColor="#FFF0EB" />
