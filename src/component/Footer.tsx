@@ -230,9 +230,12 @@ const Footer = () => {
       <button
         type="button"
         onClick={handleScrollTop}
-        className="flex items-center justify-center bg-primary p-4 border-4 border-white rounded-full absolute -top-10 left-8 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group lg:hidden"
+        className="flex items-center justify-center bg-primary p-3 border-4 border-white rounded-full absolute -top-8 left-8 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group lg:hidden"
       >
-        <ArrToTop className="text-white transition-colors duration-200 group-hover:text-primary" />
+        <ArrToTop
+          size="30"
+          className="text-white transition-colors duration-200 group-hover:text-primary"
+        />
       </button>
     </div>
   );

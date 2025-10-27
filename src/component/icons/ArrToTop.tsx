@@ -1,14 +1,15 @@
 'use client';
 
 interface IArrToTopProps {
+  size?: string;
   className?: string;
 }
 
-const ArrToTop = ({ className }: IArrToTopProps) => {
+const ArrToTop = ({ size = '38', className }: IArrToTopProps) => {
   return (
     <svg
-      width="38"
-      height="38"
+      width={size}
+      height={size}
       className={className}
       viewBox="0 0 38 38"
       fill="none"
