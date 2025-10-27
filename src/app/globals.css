@@ -36,12 +36,13 @@
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb, var(--color-text-primary));
+  background: var(--sb-thumb, var(--color-orange));
   /* border-radius: 8px; */
   /* border: 2px solid var(--sb-track, #111827); */ /* creates a gap look */
 }
 *::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
+  cursor: pointer;
 }
 
 .swiper-pagination-bullet {
