@@ -26,6 +26,24 @@
   --swiper-pagination-bullet-horizontal-gap: var(--bullet-gap);
 }
 
+/* Chromium/WebKit (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; /* for horizontal bars */
+}
+*::-webkit-scrollbar-track {
+  /* background: var(--sb-track, #111827); */
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb, var(--color-text-primary));
+  /* border-radius: 8px; */
+  /* border: 2px solid var(--sb-track, #111827); */ /* creates a gap look */
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
 .swiper-pagination-bullet {
   width: var(--bullet-size);
   height: var(--bullet-size);
