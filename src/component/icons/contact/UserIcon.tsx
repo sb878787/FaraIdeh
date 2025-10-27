@@ -1,8 +1,18 @@
-import React from 'react';
+'use client';
 
-const UserIcon = () => {
+interface IUserIconProps {
+  size?: string;
+}
+
+const UserIcon = ({ size = '35' }: IUserIconProps) => {
   return (
-    <svg width="35" height="35" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 30 30"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         fillRule="evenodd"
         clipRule="evenodd"

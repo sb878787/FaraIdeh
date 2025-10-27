@@ -20,7 +20,7 @@ const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
   return (
     <div className="relative w-full">
       <Container>
-        <div className="relative w-full flex flex-col items-center justify-center mt-10 sm:mt-16 md:mt-20 px-4 sm:px-6 lg:px-0 rtl">
+        <div className="relative w-full flex flex-col items-center justify-center mt-10 sm:mt-16 md:mt-20 rtl">
           <SmallLabel title="OUR TEAM" color="#FF6633" bgColor="#FFF0EB" />
           <LargeLabel label="OUR TEAM" subLabel="تیم فراایده" />
 
@@ -57,7 +57,7 @@ const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
                       {m.fullName}
                     </p>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-y-1">
                       <p className="text-white font-iranYekan text-sm pt-1 line-clamp-1">
                         {m.jobTitles?.length ? m.jobTitles.join(' • ') : 'Member'}
                       </p>
@@ -65,12 +65,12 @@ const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
                       <div className="flex gap-3">
                         {m.githubLink && (
                           <Link href={m.githubLink} className="group" target="_blank">
-                            <GitHubIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5" />
+                            <GitHubIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5 mt-0.5" />
                           </Link>
                         )}
                         {m.instagramLink && (
                           <Link href={m.instagramLink} className="group" target="_blank">
-                            <InstagramIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5" />
+                            <InstagramIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5 mt-0.5" />
                           </Link>
                         )}
                         {m.linkedinLink && (

@@ -33,7 +33,7 @@ const Slider = ({ slides }: { slides: Slide[] }) => {
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide.id}>
-              <div className="relative w-full h-40 md:h-52 lg:h-auto aspect-[3/1] overflow-hidden">
+              <div className="relative w-full h-52 md:h-64 lg:h-auto aspect-[3/1] overflow-hidden">
                 <Image
                   src={slide.photo}
                   alt={slide.caption ?? 'slideImage'}

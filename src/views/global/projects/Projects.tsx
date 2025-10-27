@@ -32,7 +32,7 @@ const Projects = ({ projects, selectedCategory }: ProjectsProps) => {
         <div className=" mt-11 md:mt-14 lg:mt-20">
           {!hasData ? (
             <div className="flex items-center justify-center">
-              <p className="lg:text-center text-center bg-text-description font-iranYekan rtl text-white py-5 lg:py-3 px-5 lg:px-0 rounded w-3/4">
+              <p className="text-center bg-text-description font-iranYekan rtl text-white py-5 lg:py-3 px-5 lg:px-0 rounded w-3/4">
                 {selectedCategory === 'all'
                   ? 'به دلیل تازه‌ توسعه بودن سایت، فعلاً پروژه‌ای ثبت نشده است. به‌ زودی پروژه‌های جدید اینجا نمایش داده خواهند شد.'
                   : 'در حال حاضر در این دسته‌بندی پروژه نیست.'}
