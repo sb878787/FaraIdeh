@@ -16,7 +16,7 @@ const LandingPageWrapper = ({ projects }: { projects: ProjectsType[] }) => {
   return (
     <>
       <HeroSection />
-      <Line className="mt-56 sm:mt-16 md:mt-14 lg:mt-11" />
+      <Line className="mt-56 sm:mt-12 md:mt-14 lg:mt-10" />
       <OurStory />
       <Services />
       <Projects projects={projects} />
