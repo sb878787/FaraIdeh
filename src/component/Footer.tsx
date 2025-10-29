@@ -1,7 +1,7 @@
 'use client';
 
 // React Imports
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 // Next Imports
 import Image from 'next/image';
@@ -22,10 +22,54 @@ import FooterSVGright from './icons/SVG/FooterSVGright';
 import FooterShadowSVG from './icons/SVG/FooterShadowSVG';
 import ArrToTop from './icons/ArrToTop';
 
+// Actions
+import { createNewsletterSubscription } from '@/app/actions/createNewsletterSubscription';
+
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
   const handleScrollTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email.trim()) {
+      setMessage({ type: 'error', text: 'لطفاً ایمیل خود را وارد کنید' });
+      return;
+    }
+
+    setIsLoading(true);
+    setMessage(null);
+
+    try {
+      const result = await createNewsletterSubscription(email);
+
+      setMessage({
+        type: result.success ? 'success' : 'error',
+        text: result.message,
+      });
+
+      if (result.success) {
+        setEmail(''); // پاک کردن فیلد ایمیل
+      }
+    } catch (error) {
+      setMessage({
+        type: 'error',
+        text: 'خطایی رخ داد. لطفاً دوباره تلاش کنید',
+      });
+    } finally {
+      setIsLoading(false);
+
+      // پاک کردن پیام بعد از 5 ثانیه
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+    }
+  };
 
   return (
     <div className="bg-primary w-full lg:mt-32 mt-16 lg:pt-16 pt-8 pb-4 relative">
@@ -175,19 +219,44 @@ const Footer = () => {
                 عضو خبرنامه فراایده شوید و از جدیدترین مطالب و خدمات ویژه با خبر شوید!
               </p>
 
-              <div className="mt-5 bg-white rounded overflow-hidden flex items-center">
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="لطفا ایمیل خود را وارد کنید..."
-                  className="placeholder:text-[#b1b1b1] font-iranYekan rtl outline-none bg-white w-full p-5"
-                />
+              <form onSubmit={handleNewsletterSubmit} className="mt-5">
+                <div className="bg-white rounded overflow-hidden flex items-center">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="لطفا ایمیل خود را وارد کنید..."
+                    disabled={isLoading}
+                    className="placeholder:text-[#b1b1b1] font-iranYekan rtl outline-none bg-white w-full p-5 disabled:opacity-50"
+                  />
 
-                <div className="w-20 h-16 flex items-center justify-center cursor-pointer group hover:bg-gray-200 transition-all">
-                  <ArrNewsletterIcon className="group-hover:-translate-x-2 transition-all duration-200" />
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="w-20 h-16 flex items-center justify-center cursor-pointer group hover:bg-gray-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <ArrNewsletterIcon
+                      className={`transition-all duration-200 ${
+                        isLoading ? 'animate-pulse' : 'group-hover:-translate-x-2'
+                      }`}
+                    />
+                  </button>
                 </div>
-              </div>
+
+                {/* {message && (
+                  <div
+                    className={`mt-3 p-3 rounded font-iranYekan text-sm rtl ${
+                      message.type === 'success'
+                        ? 'bg-green-100 text-green-800 border border-green-300'
+                        : 'bg-red-100 text-red-800 border border-red-300'
+                    }`}
+                  >
+                    {message.text}
+                  </div>
+                )} */}
+              </form>
             </div>
           </div>
         </div>

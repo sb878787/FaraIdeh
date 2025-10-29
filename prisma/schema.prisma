@@ -103,3 +103,14 @@ model Slider {
 
   @@index([isActive, sortOrder])
 }
+
+model Newsletter {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  isActive     Boolean  @default(true)
+  subscribedAt DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([email])
+  @@index([isActive])
+}
