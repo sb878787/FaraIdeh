@@ -6,7 +6,7 @@ const ProjectIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       width="72"
-      height="72"
+      height="86"
       viewBox="0 0 75 75"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

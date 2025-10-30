@@ -66,8 +66,8 @@ const Information = () => {
         <UnionSVGInformation />
       </div>
 
-      {/* Mobile/Tablet Background */}
-      <div className="lg:hidden bg-white rounded-t-xl rtl">
+      {/* Mobile/Tablet */}
+      <div className="lg:hidden bg-white rounded-t-xl">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 sm:p-6">
           {stats.map((stat, index) => (
             <Link key={index} href={stat.href}>
