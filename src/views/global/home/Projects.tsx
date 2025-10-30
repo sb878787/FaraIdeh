@@ -43,13 +43,15 @@ const Projects = ({ projects }: { projects: ProjectsType[] }) => {
             </div>
           ) : (
             <>
+              {/* Mobile */}
               <div className="grid grid-cols-1 gap-10 md:hidden">
                 {projects.map((project) => (
                   <ProjectCard key={`mobile-${project.id}`} {...project} />
                 ))}
               </div>
 
-              <div className="hidden md:grid md:grid-cols-3 md:gap-x-10">
+              {/* Desktop */}
+              <div className="hidden md:grid md:grid-cols-3 md:gap-x-10 rtl">
                 {columnisedProjects.map((columnProjects, columnIndex) => (
                   <div
                     key={`column-${columnIndex}`}
@@ -66,7 +68,7 @@ const Projects = ({ projects }: { projects: ProjectsType[] }) => {
         </div>
       </Container>
 
-      <div className="absolute top-52 right-0 hidden xl:block">
+      <div className="absolute top-44 right-0 hidden xl:block">
         <ProjectsHome />
       </div>
     </div>

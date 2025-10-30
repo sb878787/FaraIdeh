@@ -26,7 +26,7 @@ const ProjectCard = ({
   const href = normalizeUrl(projectLink);
 
   return (
-    <div className="group rounded-2xl overflow-hidden shadow-md relative">
+    <div className="group rounded-2xl overflow-hidden shadow-md relative ltr">
       <Link href={href} target="_blank" rel="noopener noreferrer">
         <div className="relative w-full h-72 overflow-hidden flex flex-row-reverse justify-end">
           <Image
