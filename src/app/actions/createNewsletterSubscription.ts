@@ -45,7 +45,7 @@ export async function createNewsletterSubscription(email: string) {
 
     return {
       success: true,
-      message: 'ایمیل شما با موفقیت در خبرنامه ثبت شد!',
+      message: 'ایمیل شما با موفقیت ثبت شد!',
     };
   } catch (error) {
     if (error instanceof z.ZodError) {
