@@ -51,11 +51,15 @@ const Contact = () => {
           className="relative w-full flex flex-col items-center justify-center mt-16 lg:mt-36 lg:py-20 py-12 px-4 sm:px-6 lg:px-0 bg-[#F2F3F5] rounded-2xl"
         >
           <SmallLabel title="CONTACTS" color="#3361FF" bgColor="#DFE5F6" />
-          <LargeLabel label="IN TOUCH" subLabel="همین حالا لمسش کن" color="#EAECF1" />
+          <LargeLabel
+            label="IN TOUCH"
+            subLabel="می‌خواهید عضو تیم شوید یا همکاری کنیم؟"
+            color="#EAECF1"
+          />
 
           <p className="text-text-description text-center font-iranYekan leading-5 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-2 font-light sm:font-medium lg:-mt-8 text-xs sm:text-base">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+            از عضویت در تیم تا همکاری‌های پروژه‌ای و حتی نقد و انتقاد، خوشحال می‌شویم بشنویم. فرم را
+            پر کنید تا زود با شما تماس بگیریم.
           </p>
 
           <div className="absolute -top-16 -left-12 hidden xl:block">

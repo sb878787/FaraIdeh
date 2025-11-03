@@ -24,11 +24,11 @@ const Projects = ({ projects }: { projects: ProjectsType[] }) => {
       <Container>
         <div className="relative w-full flex flex-col items-center justify-center mt-10 sm:mt-16 md:mt-20 px-4 sm:px-6 lg:px-0">
           <SmallLabel title="PROJECTS" color="#FF6633" bgColor="#FFF0EB" />
-          <LargeLabel label="PROJECTS" subLabel="ما خدمات گسترده‌ای به مشتریان ارائه می‌دهیم" />
+          <LargeLabel label="PROJECTS" subLabel="نمونه‌هایی از مسیر ساخت تا نتیجه" />
 
           <p className="text-text-description text-center font-iranYekan leading-5 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-2 font-light sm:font-medium lg:-mt-8 text-xs sm:text-base">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+            گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.
+            اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.
           </p>
         </div>
 
