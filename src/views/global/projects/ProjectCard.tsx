@@ -1,5 +1,8 @@
 'use client';
 
+// React Imports
+import { useEffect, useState } from 'react';
+
 // Next Imports
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,10 +13,14 @@ import { ProjectsType } from '@/types/ProjectsType';
 // Components
 import EyeIcon from '@/component/icons/EyeIcon';
 
+// Actions
+import { incrementProjectView } from '@/app/actions/incrementProjectView';
+
 // Utils
 import { normalizeUrl } from '@/utils/normalizeUrl';
 
 const ProjectCard = ({
+  id,
   name,
   description,
   photo,
@@ -24,10 +31,38 @@ const ProjectCard = ({
   year,
 }: ProjectsType) => {
   const href = normalizeUrl(projectLink);
+  const [hasViewed, setHasViewed] = useState(false);
+
+  useEffect(() => {
+    const viewedProjects = JSON.parse(localStorage.getItem('viewedProjects') || '[]') as number[];
+    setHasViewed(viewedProjects.includes(id));
+  }, [id]);
+
+  const handleProjectClick = async () => {
+    if (hasViewed) return;
+
+    try {
+      const success = await incrementProjectView(id);
+
+      if (success) {
+        const viewedProjects = JSON.parse(
+          localStorage.getItem('viewedProjects') || '[]',
+        ) as number[];
+
+        if (!viewedProjects.includes(id)) {
+          viewedProjects.push(id);
+          localStorage.setItem('viewedProjects', JSON.stringify(viewedProjects));
+          setHasViewed(true);
+        }
+      }
+    } catch (error) {
+      console.error('Failed to increment view count:', error);
+    }
+  };
 
   return (
-    <div className="group rounded-2xl overflow-hidden shadow-md relative">
-      <Link href={href} target="_blank" rel="noopener noreferrer">
+    <div className="group rounded-2xl overflow-hidden shadow-md relative ltr">
+      <Link href={href} target="_blank" rel="noopener noreferrer" onClick={handleProjectClick}>
         <div className="relative w-full h-72 overflow-hidden flex flex-row-reverse justify-end">
           <Image
             src={photo}

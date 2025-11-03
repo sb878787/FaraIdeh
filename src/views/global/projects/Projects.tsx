@@ -40,13 +40,15 @@ const Projects = ({ projects, selectedCategory }: ProjectsProps) => {
             </div>
           ) : (
             <>
+              {/* Mobile */}
               <div className="grid grid-cols-1 gap-10 lg:hidden">
                 {projects.map((project) => (
                   <ProjectCard key={`mobile-${project.id}`} {...project} />
                 ))}
               </div>
 
-              <div className="hidden lg:grid lg:grid-cols-3 lg:gap-x-10">
+              {/* Desktop */}
+              <div className="hidden lg:grid lg:grid-cols-3 lg:gap-x-10 rtl">
                 {columnisedProjects.map((columnProjects, columnIndex) => (
                   <div
                     key={`column-${columnIndex}`}

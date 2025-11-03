@@ -26,6 +26,25 @@
   --swiper-pagination-bullet-horizontal-gap: var(--bullet-gap);
 }
 
+/* Chromium/WebKit (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px; /* for horizontal bars */
+}
+*::-webkit-scrollbar-track {
+  /* background: var(--sb-track, #111827); */
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb, var(--color-orange));
+  /* border-radius: 8px; */
+  /* border: 2px solid var(--sb-track, #111827); */ /* creates a gap look */
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+  cursor: pointer;
+}
+
 .swiper-pagination-bullet {
   width: var(--bullet-size);
   height: var(--bullet-size);
@@ -54,4 +73,115 @@ html {
 
 .ltr {
   direction: ltr;
+}
+
+/* ==== WiFi Loader keyframes ==== */
+@keyframes circle-outer135 {
+  0% {
+    stroke-dashoffset: 25;
+  }
+  25% {
+    stroke-dashoffset: 0;
+  }
+  65% {
+    stroke-dashoffset: 301;
+  }
+  80% {
+    stroke-dashoffset: 276;
+  }
+  100% {
+    stroke-dashoffset: 276;
+  }
+}
+
+@keyframes circle-middle6123 {
+  0% {
+    stroke-dashoffset: 17;
+  }
+  25% {
+    stroke-dashoffset: 0;
+  }
+  65% {
+    stroke-dashoffset: 204;
+  }
+  80% {
+    stroke-dashoffset: 187;
+  }
+  100% {
+    stroke-dashoffset: 187;
+  }
+}
+
+@keyframes circle-inner162 {
+  0% {
+    stroke-dashoffset: 9;
+  }
+  25% {
+    stroke-dashoffset: 0;
+  }
+  65% {
+    stroke-dashoffset: 106;
+  }
+  80% {
+    stroke-dashoffset: 97;
+  }
+  100% {
+    stroke-dashoffset: 97;
+  }
+}
+
+@keyframes text-animation76 {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  50% {
+    clip-path: inset(0);
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+.wifi-text {
+  position: absolute;
+  bottom: -40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.wifi-text::before,
+.wifi-text::after {
+  content: attr(data-text);
+}
+
+.wifi-text::before {
+  color: var(--text-color, #414856);
+}
+
+.wifi-text::after {
+  color: var(--front-color, #4f29f0);
+  animation: text-animation76 3.6s ease infinite;
+  position: absolute;
+  left: 0;
+}
+
+/* Toast Animation */
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideFromRight {
+  animation: slideFromRight 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }

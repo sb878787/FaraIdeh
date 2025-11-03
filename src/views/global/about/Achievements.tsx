@@ -22,7 +22,10 @@ const Achievements = ({ achievements }: { achievements: AchievementType[] }) => 
           دستاوردی ثبت نشده!
         </p>
       ) : (
-        <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-10 lg:gap-20 rtl mt-8 lg:mt-20">
+        <div
+          className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-10 lg:gap-20 rtl mt-8 lg:mt-20"
+          id="achievements"
+        >
           {achievements.map((a) => (
             <Link
               key={a.id}

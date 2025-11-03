@@ -8,6 +8,7 @@ import Container from '@/component/Container';
 import SelectCategory from './SelectCategory';
 import FormRequest from './FormRequest';
 import ServicesSVGAbout from '@/component/icons/SVG/ServicesSVGAbout';
+import Toast from '@/component/Toast';
 
 // Actions
 import { createOrder } from '@/app/actions/createOrder';
@@ -15,6 +16,7 @@ import { createOrder } from '@/app/actions/createOrder';
 const SubmitRequest = () => {
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleFormSubmit = async (formData: {
     name: string;
@@ -23,7 +25,18 @@ const SubmitRequest = () => {
     email: string;
     message: string;
   }) => {
+    // Validate categories before submitting
+    if (selectedCategories.length === 0) {
+      setToast({
+        type: 'error',
+        message: 'لطفا حداقل یک دسته را انتخاب کنید',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
+    setToast(null);
+
     try {
       const result = await createOrder({
         categories: selectedCategories,
@@ -39,12 +52,22 @@ const SubmitRequest = () => {
       });
 
       if (!result.success) {
+        setToast({
+          type: 'error',
+          message: result.error || 'خطایی در ثبت سفارش رخ داد',
+        });
         throw new Error(result.error);
       }
+
+      setToast({
+        type: 'success',
+        message: result.message || 'سفارش شما با موفقیت ثبت شد',
+      });
 
       // Reset categories after successful submission
       setSelectedCategories([]);
     } catch (error) {
+      // Error already shown in toast
       throw error;
     } finally {
       setIsSubmitting(false);
@@ -52,26 +75,27 @@ const SubmitRequest = () => {
   };
 
   return (
-    <div
-      className="bg-[#F9F9F9] mt-14 lg:mt-32 rtl pb-10 pt-1 lg:py-28 lg:pt-32 relative"
-      id="services"
-    >
-      <Container>
-        <SelectCategory
-          selectedCategories={selectedCategories}
-          onCategoriesChange={setSelectedCategories}
-        />
-        <FormRequest
-          selectedCategories={selectedCategories}
-          onSubmit={handleFormSubmit}
-          isSubmitting={isSubmitting}
-        />
-      </Container>
+    <>
+      {/* Toast Notification */}
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
 
-      <div className="absolute right-0 -top-20 hidden xl:block">
-        <ServicesSVGAbout />
+      <div
+        className="bg-[#F9F9F9] mt-14 lg:mt-32 rtl pb-10 pt-1 lg:py-28 lg:pt-32 relative"
+        id="services"
+      >
+        <Container>
+          <SelectCategory
+            selectedCategories={selectedCategories}
+            onCategoriesChange={setSelectedCategories}
+          />
+          <FormRequest onSubmit={handleFormSubmit} isSubmitting={isSubmitting} />
+        </Container>
+
+        <div className="absolute right-0 -top-20 hidden xl:block">
+          <ServicesSVGAbout />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
