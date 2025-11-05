@@ -25,8 +25,8 @@ const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
           <LargeLabel label="OUR TEAM" subLabel="تیم فراایده" />
 
           <p className="text-text-description text-center font-iranYekan leading-5 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-2 font-light sm:font-medium lg:-mt-8 text-xs sm:text-base">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+            ما کنار هم مسئله را می‌شناسیم، راه‌حل می‌سازیم و با بازخورد واقعی بهترش می‌کنیم <br />{' '}
+            تیمی همدل برای خروجی‌های پایدار و قابل اعتماد.
           </p>
 
           <div className="grid w-full grid-cols-1 gap-6 mt-10 lg:mt-16 lg:grid-cols-2 xl:grid-cols-3">

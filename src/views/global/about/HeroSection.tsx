@@ -13,7 +13,7 @@ const HeroSection = () => {
         <Header colorIcon="black" />
 
         {/* Hero Section */}
-        <div className="lg:mt-44 mt-32 flex flex-col lg:flex-row items-center justify-between gap-x-28 gap-y-10">
+        <div className="lg:mt-30 mt-32 flex flex-col lg:flex-row items-center justify-between gap-x-28 gap-y-10">
           {/* Desktop */}
           <div className="flex-1 hidden xl:block">
             <HeroSVGAbout />
@@ -35,17 +35,16 @@ const HeroSection = () => {
               <HandSVGAbout />
             </div>
 
-            <p className="font-iranYekan text-2xl lg:text-4xl font-semibold leading-10 lg:leading-14 w-full xl::w-3/4 mt-4">
-              ما یک تیم دیجیتالی و آژانس نرم‌افزاری در ایران هستیم. <br /> استراتژی، طراحی و توسعه
-              در تمام سیستم عامل ها.
+            <p className="font-iranYekan text-2xl lg:text-4xl font-semibold text-justify leading-10 lg:leading-14 w-full xl::w-3/4 mt-4">
+              ما تیمی کوچک و چابک در ایرانیم که ایده‌ها را به تجربهٔ واقعی کاربر تبدیل می‌کنیم.{' '}
+              <br />
+              از کشف مسئله و استراتژی تا طراحی و توسعه، کنار شما می‌سازیم.
             </p>
             <p className="text-text-description font-iranYekan leading-7 text-justify lg:mt-6 mt-4">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
-              گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-              شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
-              باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان
-              را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-              خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام
+              برای ما نتیجه فقط تحویل نیست؛ تجربه‌ای است که کار کند و در خاطر بماند. با گفت‌وگوی
+              شفاف، مستندسازی و بهبودِ مستمر پیش می‌رویم؛ هر قدم قابل‌سنجش و همسو با اهداف شماست. به
+              جزئیات وسواس داریم، به زمان کاربر احترام می‌گذاریم و راه‌حل‌های ساده و قابلِ نگهداری
+              را ترجیح می‌دهیم.
             </p>
           </div>
         </div>

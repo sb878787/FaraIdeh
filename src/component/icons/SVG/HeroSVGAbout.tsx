@@ -5,7 +5,7 @@ interface IHeroSVGAboutProps {
   height?: string;
 }
 
-const HeroSVGAbout = ({ height = '662', width = '662' }: IHeroSVGAboutProps) => {
+const HeroSVGAbout = ({ height = '600', width = '600' }: IHeroSVGAboutProps) => {
   return (
     <svg
       width={width}
