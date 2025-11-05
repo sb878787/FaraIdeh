@@ -20,11 +20,11 @@ const HeroSection = () => {
           <div className="w-full rtl mt-32 sm:mt-0">
             <p className="font-iranYekan text-text-primary text-lg lg:text-xl">ثبت سفارش</p>
             <p className="font-iranYekan font-semibold text-2xl lg:text-4xl leading-9 lg:leading-11 mt-1 lg:mt-3">
-              برآورد کنید
+              درخواست پیشنهاد همکاری
             </p>
             <p className="text-text-description font-iranYekan text-justify leading-6 lg:leading-7 text-sm lg:text-base mt-3">
               این فرم ساده را پر کنید. تیم ما فوراً با شما تماس <br className="hidden sm:block" />{' '}
-              خواهد گرفت تا در مورد مراحل بعدی صحبت کند.
+              خواهد گرفت تا در مورد مراحل بعدی صحبت کنیم.
             </p>
           </div>
         </div>

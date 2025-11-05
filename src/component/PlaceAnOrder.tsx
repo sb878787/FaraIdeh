@@ -15,12 +15,12 @@ const PlaceAnOrder = () => {
       <div className="bg-[#2E58D1] w-full rounded-2xl rtl mt-16 lg:mt-24 p-6 lg:p-10 xl:p-16 flex flex-col lg:flex-row items-end gap-x-16 xl:gap-x-44 gap-y-5 relative">
         <div className="flex flex-col lg:flex-row items-start gap-x-16 xl:gap-x-44 gap-y-5">
           <p className="text-white font-iranYekan font-semibold text-2xl lg:text-3xl w-full leading-9 lg:leading-12">
-            اگر پروژه ای در ذهن دارید و یا قصد مشارکت دارید ما آماده ایم گوش کنیم
+            ایده‌ای برای پروژه دارید یا به همکاری فکر می‌کنید؟ ما آماده‌ایم بشنویم
           </p>
           <p className="text-white font-iranYekan font-light w-full text-justify text-sm sm:text-base leading-7">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-            است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی
-            تکنولوژی مورد نیاز
+            چند خط دربارهٔ نیازتان بنویسید تا سریع بررسی کنیم؛ شفاف جلو می‌ریم، زمان‌بندی و مراحل رو
+            روشن می‌کنیم، نسخهٔ اولیه رو زود به دستتون می‌رسونیم و با بازخورد شما سریع‌تر بهترش
+            می‌کنیم.
           </p>
         </div>
 
