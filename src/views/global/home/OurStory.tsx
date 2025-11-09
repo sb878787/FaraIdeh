@@ -14,11 +14,11 @@ const OurStory = () => {
     <Container>
       <div className="relative w-full flex flex-col items-center justify-center mt-10 sm:mt-16 md:mt-20 px-4 sm:px-6 lg:px-0">
         <SmallLabel title="OUR STORY" color="#34C759" bgColor="#EAFAEC" />
-        <LargeLabel label="OUR STORY" subLabel="ما بهترین گزینه را پیدا خواهیم کرد" />
+        <LargeLabel label="OUR STORY" subLabel="ایده‌ها که به تجربه تبدیل می‌شوند" />
 
         <p className="text-text-description text-center font-iranYekan leading-5 sm:leading-8 px-4 sm:px-12 md:px-24 lg:px-48 xl:px-96 rtl mt-2 font-light sm:font-medium lg:-mt-8 text-xs sm:text-base">
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-          است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+          ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده
+          شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.
         </p>
 
         <Link href="/about" className="mt-5 sm:mt-6 md:mt-7">
