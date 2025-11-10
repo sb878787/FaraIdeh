@@ -23,8 +23,8 @@ const HeroSection = () => {
               درخواست پیشنهاد همکاری
             </p>
             <p className="text-text-description font-iranYekan text-justify leading-6 lg:leading-7 text-sm lg:text-base mt-3">
-              این فرم ساده را پر کنید. تیم ما فوراً با شما تماس <br className="hidden sm:block" />{' '}
-              خواهد گرفت تا در مورد مراحل بعدی صحبت کنیم.
+              با تکمیل این فرم ساده، تیم ما جهت اجراء پروژه و تکمیل{' '}
+              <br className="hidden sm:block" /> مراحل بعدی سریعاً با شما تماس خواهد گرفت.
             </p>
           </div>
         </div>
