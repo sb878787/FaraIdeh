@@ -2,13 +2,14 @@
 
 interface IOrdersIcon {
   className?: string;
+  size?: string;
 }
 
-const OrdersIcon = ({ className }: IOrdersIcon) => {
+const OrdersIcon = ({ className, size = '28' }: IOrdersIcon) => {
   return (
     <svg
-      width="28"
-      height="28"
+      width={size}
+      height={size}
       className={className}
       viewBox="0 0 28 28"
       fill="none"

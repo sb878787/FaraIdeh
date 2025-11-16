@@ -2,13 +2,14 @@
 
 interface IFeedbackIcon {
   className?: string;
+  size?: string;
 }
 
-const FeedbackIcon = ({ className }: IFeedbackIcon) => {
+const FeedbackIcon = ({ className, size = '28' }: IFeedbackIcon) => {
   return (
     <svg
-      width="28"
-      height="28"
+      width={size}
+      height={size}
       className={className}
       viewBox="0 0 28 28"
       fill="none"

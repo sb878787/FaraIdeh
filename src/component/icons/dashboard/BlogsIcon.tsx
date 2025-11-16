@@ -2,13 +2,14 @@
 
 interface IBlogsIcon {
   className?: string;
+  size?: string;
 }
 
-const BlogsIcon = ({ className }: IBlogsIcon) => {
+const BlogsIcon = ({ className, size = '28' }: IBlogsIcon) => {
   return (
     <svg
-      width="28"
-      height="28"
+      width={size}
+      height={size}
       className={className}
       viewBox="0 0 28 28"
       fill="none"
