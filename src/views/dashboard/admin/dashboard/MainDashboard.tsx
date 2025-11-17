@@ -17,6 +17,9 @@ import EyeIcon from '@/component/icons/dashboard/EyeIcon';
 // Actions
 import type { DashboardStats } from '@/app/actions/getDashboardStats';
 
+// Utils
+import { formatNumberShort } from '@/utils/formatNumber';
+
 interface MainDashboardProps {
   stats: DashboardStats;
 }
@@ -26,37 +29,37 @@ const MainDashboard = ({ stats }: MainDashboardProps) => {
     {
       icon: <EyeIcon />,
       title: 'بازدید ها',
-      count: stats.totalViews,
+      count: formatNumberShort(stats.totalViews, 'en'),
       link: '#',
     },
     {
       icon: <TeamMemberIcon />,
       title: 'اعضای تیم',
-      count: stats.teamMembers,
+      count: formatNumberShort(stats.teamMembers, 'en'),
       link: '/admin/ourteam',
     },
     {
       icon: <ProjectsIcon className="text-black" size="40" />,
       title: 'پروژه ها',
-      count: stats.projects,
+      count: formatNumberShort(stats.projects, 'en'),
       link: '/admin/projects',
     },
     {
       icon: <BlogsIcon className="text-black" size="40" />,
       title: 'وبلاگ',
-      count: stats.blogs,
+      count: formatNumberShort(stats.blogs, 'en'),
       link: '/admin/blogs',
     },
     {
       icon: <OrdersIcon className="text-black" size="40" />,
       title: 'سفارشات',
-      count: stats.orders,
+      count: formatNumberShort(stats.orders, 'en'),
       link: '/admin/orders',
     },
     {
       icon: <FeedbackIcon className="text-black" size="40" />,
       title: 'بازخورد ها',
-      count: stats.contacts,
+      count: formatNumberShort(stats.contacts, 'en'),
       link: '/admin/feedbacks',
     },
   ];
