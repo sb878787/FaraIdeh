@@ -58,18 +58,18 @@ const MainDashboard = () => {
     <>
       <div className="grid grid-cols-3 gap-x-20 gap-y-10 px-12 mt-12 relative">
         {dashboardData.map((item, index) => (
-          <div key={index} className="w-full bg-white border border-[#D7D7D7] rounded-xl z-40">
+          <div key={index} className="w-full bg-white shadow rounded-xl z-40">
             <div className="py-8 px-8 flex items-center justify-between">
               <div>
                 {item.icon}
                 <p className="font-iranYekan font-semibold text-xl pt-3">{item.title}</p>
               </div>
 
-              <div className="relative">
+              <div className="font-yekanBakhFaNum font-semibold text-7xl pt-2 relative">
                 <div className="absolute -top-5 -right-9">
                   <ThreeWingsSVG />
                 </div>
-                <p className="font-yekanBakhFaNum font-semibold text-7xl pt-2">{item.count}</p>
+                {item.count}
               </div>
             </div>
 
