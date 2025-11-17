@@ -14,42 +14,49 @@ import CircleDashboardSVG from '@/component/icons/SVG/CircleDashboardSVG';
 import OurStoryHome from '@/component/icons/SVG/OurStoryHome';
 import EyeIcon from '@/component/icons/dashboard/EyeIcon';
 
-const MainDashboard = () => {
+// Actions
+import type { DashboardStats } from '@/app/actions/getDashboardStats';
+
+interface MainDashboardProps {
+  stats: DashboardStats;
+}
+
+const MainDashboard = ({ stats }: MainDashboardProps) => {
   const dashboardData = [
     {
       icon: <EyeIcon />,
       title: 'بازدید ها',
-      count: 16,
+      count: stats.totalViews,
       link: '#',
     },
     {
       icon: <TeamMemberIcon />,
       title: 'اعضای تیم',
-      count: 16,
+      count: stats.teamMembers,
       link: '/admin/ourteam',
     },
     {
       icon: <ProjectsIcon className="text-black" size="40" />,
       title: 'پروژه ها',
-      count: 16,
+      count: stats.projects,
       link: '/admin/projects',
     },
     {
       icon: <BlogsIcon className="text-black" size="40" />,
       title: 'وبلاگ',
-      count: 16,
+      count: stats.blogs,
       link: '/admin/blogs',
     },
     {
       icon: <OrdersIcon className="text-black" size="40" />,
       title: 'سفارشات',
-      count: 16,
+      count: stats.orders,
       link: '/admin/orders',
     },
     {
       icon: <FeedbackIcon className="text-black" size="40" />,
       title: 'بازخورد ها',
-      count: 16,
+      count: stats.contacts,
       link: '/admin/feedbacks',
     },
   ];
@@ -86,6 +93,7 @@ const MainDashboard = () => {
         </div>
       </div>
 
+      {/* Newsletter Section */}
       <div className="px-12 mt-16 relative">
         <div className="absolute -top-5 right-6">
           <OurStoryHome width="124" height="104" />

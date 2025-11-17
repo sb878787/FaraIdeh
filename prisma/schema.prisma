@@ -114,3 +114,13 @@ model Newsletter {
   @@index([email])
   @@index([isActive])
 }
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  ipAddress String
+  userAgent String?
+  visitedAt DateTime @default(now())
+  
+  @@index([ipAddress, visitedAt])
+  @@index([visitedAt])
+}
