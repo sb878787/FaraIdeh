@@ -4,6 +4,7 @@
 import Sidebar from '@/component/dashboard/Sidebar';
 import Header from '@/component/dashboard/Header';
 import MainDashboard from './MainDashboard';
+import Footer from '@/component/dashboard/Footer';
 
 const DashboardPageWrapper = () => {
   return (
@@ -11,6 +12,7 @@ const DashboardPageWrapper = () => {
       <div className="col-span-10 bg-[#F6F7FB] rtl">
         <Header />
         <MainDashboard />
+        <Footer />
       </div>
       <Sidebar />
     </div>
