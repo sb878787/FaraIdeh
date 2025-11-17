@@ -12,9 +12,16 @@ import OrdersIcon from '@/component/icons/dashboard/OrdersIcon';
 import FeedbackIcon from '@/component/icons/dashboard/FeedbackIcon';
 import CircleDashboardSVG from '@/component/icons/SVG/CircleDashboardSVG';
 import OurStoryHome from '@/component/icons/SVG/OurStoryHome';
+import EyeIcon from '@/component/icons/dashboard/EyeIcon';
 
 const MainDashboard = () => {
   const dashboardData = [
+    {
+      icon: <EyeIcon />,
+      title: 'بازدید ها',
+      count: 16,
+      link: '#',
+    },
     {
       icon: <TeamMemberIcon />,
       title: 'اعضای تیم',
