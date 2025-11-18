@@ -1,32 +1,34 @@
 'use server';
-
 import { prisma } from '@/lib/prisma';
 import { getTotalPageViews } from './trackPageView';
 import { DashboardStats } from '@/types/DashboardStatsType';
 
+/**
+ * Fetches all statistics needed for the admin dashboard
+ */
 export async function getDashboardStats(): Promise<DashboardStats> {
   try {
     const [teamMembers, projects, blogs, orders, contacts, totalViews] = await Promise.all([
-      // تعداد اعضای تیم
+      // Total number of team members
       prisma.teamMember.count(),
 
-      // تعداد پروژه‌های فعال
+      // Number of active projects
       prisma.project.count({
         where: { isActive: true },
       }),
 
-      // تعداد بلاگ‌های منتشر شده
+      // Number of published blog posts
       prisma.blogs.count({
         where: { published: true },
       }),
 
-      // تعداد سفارشات
+      // Total number of orders
       prisma.order.count(),
 
-      // تعداد پیام‌های تماس (بازخوردها)
+      // Total number of contact form submissions (feedback/messages)
       prisma.contact.count(),
 
-      // تعداد بازدیدهای یونیک سایت
+      // Total number of unique website visitors
       getTotalPageViews(),
     ]);
 

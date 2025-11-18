@@ -1,25 +1,24 @@
 'use server';
-
 import { headers } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 
 /**
- * ثبت بازدید جدید بر اساس IP
- * برای جلوگیری از ثبت تکراری، چک می‌کنیم که آیا این IP در 24 ساعت گذشته بازدید داشته یا نه
+ * Tracks a new page view based on visitor IP
+ * To prevent duplicate counting, we check if this IP has visited in the last 24 hours
  */
 export async function trackPageView(): Promise<{ success: boolean }> {
   try {
     const headersList = await headers();
 
-    // دریافت IP از headers
+    // Get IP from headers
     const forwarded = headersList.get('x-forwarded-for');
     const realIp = headersList.get('x-real-ip');
     const ipAddress = forwarded?.split(',')[0] || realIp || 'unknown';
 
-    // دریافت User Agent
+    // Get User Agent
     const userAgent = headersList.get('user-agent') || 'unknown';
 
-    // چک کردن اینکه آیا این IP در 24 ساعت گذشته بازدید داشته
+    // Check if this IP has visited in the last 24 hours
     const oneDayAgo = new Date();
     oneDayAgo.setHours(oneDayAgo.getHours() - 24);
 
@@ -32,7 +31,7 @@ export async function trackPageView(): Promise<{ success: boolean }> {
       },
     });
 
-    // اگر بازدید تکراری نبود، ثبت کن
+    // If no recent visit, record a new one
     if (!recentVisit) {
       await prisma.pageView.create({
         data: {
@@ -50,12 +49,11 @@ export async function trackPageView(): Promise<{ success: boolean }> {
 }
 
 /**
- * دریافت تعداد کل بازدیدهای یونیک
+ * Gets the total number of unique visitors (ever)
+ * Each IP is counted only once regardless of how many times they've visited
  */
 export async function getTotalPageViews(): Promise<number> {
   try {
-    // شمارش بازدیدهای یونیک بر اساس IP و تاریخ
-    // هر IP در هر روز فقط یک بار شمرده می‌شه
     const uniqueViews = await prisma.pageView.groupBy({
       by: ['ipAddress'],
       _count: {
@@ -71,14 +69,15 @@ export async function getTotalPageViews(): Promise<number> {
 }
 
 /**
- * دریافت آمار بازدید برای بازه زمانی خاص
+ * Gets page view statistics for a specific time range
+ * @param days - Number of days to look back (default: 30)
  */
 export async function getPageViewsStats(days: number = 30) {
   try {
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - days);
 
-    const views = await prisma.pageView.count({
+    const totalViews = await prisma.pageView.count({
       where: {
         visitedAt: {
           gte: startDate,
@@ -86,7 +85,7 @@ export async function getPageViewsStats(days: number = 30) {
       },
     });
 
-    // بازدیدهای یونیک در این بازه
+    // Unique visitors in this time period
     const uniqueViews = await prisma.pageView.groupBy({
       by: ['ipAddress'],
       where: {
@@ -100,7 +99,7 @@ export async function getPageViewsStats(days: number = 30) {
     });
 
     return {
-      total: views,
+      total: totalViews,
       unique: uniqueViews.length,
     };
   } catch (error) {
