@@ -6,19 +6,21 @@ import Header from '@/component/dashboard/Header';
 import MainDashboard from './MainDashboard';
 import Footer from '@/component/dashboard/Footer';
 
-// Actions
-import type { DashboardStats } from '@/app/actions/getDashboardStats';
+// Types
+import { DashboardStats } from '@/types/DashboardStatsType';
+import { NewsletterSubscription } from '@/types/NewsletterSubscriptionType';
 
 interface DashboardPageWrapperProps {
   stats: DashboardStats;
+  newsletterSubs: NewsletterSubscription[];
 }
 
-const DashboardPageWrapper = ({ stats }: DashboardPageWrapperProps) => {
+const DashboardPageWrapper = ({ stats, newsletterSubs }: DashboardPageWrapperProps) => {
   return (
     <div className="w-full h-screen grid grid-cols-12">
       <div className="col-span-10 bg-[#F6F7FB] rtl">
         <Header />
-        <MainDashboard stats={stats} />
+        <MainDashboard stats={stats} newsletterSubs={newsletterSubs} />
         <Footer />
       </div>
       <Sidebar />

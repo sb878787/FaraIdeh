@@ -3,11 +3,15 @@ import DashboardPageWrapper from '@/views/dashboard/admin/dashboard/_dashboardpa
 
 // Actions
 import { getDashboardStats } from '@/app/actions/getDashboardStats';
+import { getLatestNewsletterSubscriptions } from '@/app/actions/getNewsletterSubscriptions';
 
 const DashboardPage = async () => {
-  const stats = await getDashboardStats();
+  const [stats, newsletterSubs] = await Promise.all([
+    getDashboardStats(),
+    getLatestNewsletterSubscriptions(10),
+  ]);
 
-  return <DashboardPageWrapper stats={stats} />;
+  return <DashboardPageWrapper stats={stats} newsletterSubs={newsletterSubs} />;
 };
 
 export default DashboardPage;

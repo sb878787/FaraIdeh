@@ -14,17 +14,19 @@ import CircleDashboardSVG from '@/component/icons/SVG/CircleDashboardSVG';
 import OurStoryHome from '@/component/icons/SVG/OurStoryHome';
 import EyeIcon from '@/component/icons/dashboard/EyeIcon';
 
-// Actions
-import type { DashboardStats } from '@/app/actions/getDashboardStats';
+// Types
+import { DashboardStats } from '@/types/DashboardStatsType';
+import { NewsletterSubscription } from '@/types/NewsletterSubscriptionType';
 
 // Utils
 import { formatNumberShort } from '@/utils/formatNumber';
 
 interface MainDashboardProps {
   stats: DashboardStats;
+  newsletterSubs: NewsletterSubscription[];
 }
 
-const MainDashboard = ({ stats }: MainDashboardProps) => {
+const MainDashboard = ({ stats, newsletterSubs }: MainDashboardProps) => {
   const dashboardData = [
     {
       icon: <EyeIcon />,
@@ -104,35 +106,26 @@ const MainDashboard = ({ stats }: MainDashboardProps) => {
 
         <p className="font-iranYekan font-semibold text-2xl pr-27">خبرنامه</p>
 
-        <div className="w-full bg-white rounded-xl border border-[#D7D7D7] h-36 mt-3 overflow-y-scroll text-left px-5">
-          <p className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3">
-            example@gmail.com{' '}
-            <span className="font-yekanBakhFaNum text-xs text-gray-400 ml-3">1404/5/3</span>
-          </p>
-          <p className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3">
-            example@gmail.com{' '}
-            <span className="font-yekanBakhFaNum text-xs text-gray-400 ml-3">1404/5/3</span>
-          </p>
-          <p className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3">
-            example@gmail.com{' '}
-            <span className="font-yekanBakhFaNum text-xs text-gray-400 ml-3">1404/5/3</span>
-          </p>
-          <p className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3">
-            example@gmail.com{' '}
-            <span className="font-yekanBakhFaNum text-xs text-gray-400 ml-3">1404/5/3</span>
-          </p>
-          <p className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3">
-            example@gmail.com{' '}
-            <span className="font-yekanBakhFaNum text-xs text-gray-400 ml-3">1404/5/3</span>
-          </p>
-          <p className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3">
-            example@gmail.com{' '}
-            <span className="font-yekanBakhFaNum text-xs text-gray-400 ml-3">1404/5/3</span>
-          </p>
-          <p className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3">
-            example@gmail.com{' '}
-            <span className="font-yekanBakhFaNum text-xs text-gray-400 ml-3">1404/5/3</span>
-          </p>
+        <div className="w-full bg-white rounded-xl border border-[#D7D7D7] h-36 mt-3 overflow-y-scroll text-left px-5 py-3">
+          {newsletterSubs.length > 0 ? (
+            newsletterSubs.map((sub, index) => (
+              <p
+                key={index}
+                className="font-semibold border-b border-[#D7D7D7] pb-4 mt-3 last:border-b-0 last:pb-0"
+              >
+                {sub.email}{' '}
+                <span className="font-yekanBakhFaNum text-xs text-gray-400 mr-3">
+                  {sub.subscribedAt}
+                </span>
+              </p>
+            ))
+          ) : (
+            <div>
+              <p className="text-center font-iranYekan rtl text-gray-500 mt-12">
+                هیچ عضوی در خبرنامه ثبت‌نام نکرده است.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </>

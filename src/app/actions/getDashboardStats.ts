@@ -2,15 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 import { getTotalPageViews } from './trackPageView';
-
-export type DashboardStats = {
-  totalViews: number;
-  teamMembers: number;
-  projects: number;
-  blogs: number;
-  orders: number;
-  contacts: number;
-};
+import { DashboardStats } from '@/types/DashboardStatsType';
 
 export async function getDashboardStats(): Promise<DashboardStats> {
   try {
