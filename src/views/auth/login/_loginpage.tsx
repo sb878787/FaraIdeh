@@ -2,9 +2,15 @@
 
 // Components
 import LayoutLoginPage from './LayoutLoginPage';
+import LoginForm from './LoginForm';
 
 const LoginPageWrapper = () => {
-  return <LayoutLoginPage />;
+  return (
+    <>
+      <LayoutLoginPage />
+      <LoginForm />
+    </>
+  );
 };
 
 export default LoginPageWrapper;

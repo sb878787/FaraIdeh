@@ -16,9 +16,9 @@ import CircleSVG79X75 from '@/component/icons/SVG/login/CircleSVG79X75';
 const LayoutLoginPage = () => {
   return (
     <div className="grid grid-cols-12 rtl">
-      <div className="col-span-9 py-10 px-17">
+      <div className="col-span-9 py-10 px-17 relative">
         {/* Logo */}
-        <Link href="/home">
+        <Link href="/home" className="absolute z-20">
           <Image src={Logo} alt="logo" className="w-11" />
         </Link>
       </div>
@@ -28,7 +28,7 @@ const LayoutLoginPage = () => {
         <div className="absolute bottom-32 left-32">
           <CircleSVG38X39 />
         </div>
-        <div className="absolute top-32 right-32">
+        <div className="absolute top-22 right-32">
           <CircleSVG66X63 />
         </div>
         <div className="absolute top-14 left-14">
