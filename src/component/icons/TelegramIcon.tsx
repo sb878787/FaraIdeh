@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 type Props = {
   width?: number | string;
   height?: number | string;
@@ -13,7 +11,7 @@ export default function TelegramIcon({
   width = 40,
   height = 34,
   className,
-  title = 'Telegram icon',
+  title = 'Telegram',
 }: Props) {
   const w = typeof width === 'number' ? `${width}px` : width;
   const h = typeof height === 'number' ? `${height}px` : height;

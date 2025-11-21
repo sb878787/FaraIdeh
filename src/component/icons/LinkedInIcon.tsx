@@ -1,14 +1,12 @@
 'use client';
 
-import React from 'react';
-
 type Props = {
   size?: number | string;
   className?: string;
   title?: string;
 };
 
-export default function LinkedInIcon({ size = 40, className, title = 'LinkedIn icon' }: Props) {
+export default function LinkedInIcon({ size = 40, className, title = 'LinkedIn' }: Props) {
   const dimension = typeof size === 'number' ? `${size}px` : size;
   return (
     <svg
