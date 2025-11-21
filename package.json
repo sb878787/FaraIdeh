@@ -19,8 +19,14 @@
     "format": "prettier . --write",
     "typecheck": "tsc --noEmit"
   },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"commonjs\"} prisma/seed.ts"
+  },
   "dependencies": {
     "@prisma/client": "^6.16.2",
+    "bcryptjs": "^3.0.3",
+    "cookies": "^0.9.1",
+    "jose": "^6.1.2",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -34,6 +40,7 @@
     "@eslint/eslintrc": "^3",
     "@next/eslint-plugin-next": "^15.5.3",
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^3.0.0",
     "@types/node": "^20.19.17",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -48,6 +55,7 @@
     "prettier": "^3.6.2",
     "prisma": "^6.16.2",
     "tailwindcss": "^4.1.13",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8"
   }
