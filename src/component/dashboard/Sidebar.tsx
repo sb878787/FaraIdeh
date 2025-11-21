@@ -19,6 +19,9 @@ import OrdersIcon from '@/component/icons/dashboard/OrdersIcon';
 import FeedbackIcon from '@/component/icons/dashboard/FeedbackIcon';
 import LogOutIcon from '@/component/icons/dashboard/LogOutIcon';
 
+// Actions
+import { logoutUser } from '@/app/actions/logout';
+
 // Images
 import Logo from '@/assets/images/Logo.png';
 
@@ -96,13 +99,15 @@ const Sidebar = () => {
         })}
 
         <div className="absolute bottom-9">
-          <Link
-            href="#"
-            className="flex font-iranYekan gap-6 items-center group hover:text-[#DC3545] transition-all duration-200 w-full"
-          >
-            <LogOutIcon className="text-[#BBBBBB] group-hover:text-[#DC3545] transition-all" />
-            خروج از حساب کاربری
-          </Link>
+          <form action={logoutUser}>
+            <button
+              type="submit"
+              className="flex font-iranYekan gap-6 items-center group hover:text-[#DC3545] transition-all duration-200 w-full bg-transparent border-none cursor-pointer"
+            >
+              <LogOutIcon className="text-[#BBBBBB] group-hover:text-[#DC3545] transition-all" />
+              خروج از حساب کاربری
+            </button>
+          </form>
         </div>
       </div>
     </div>
