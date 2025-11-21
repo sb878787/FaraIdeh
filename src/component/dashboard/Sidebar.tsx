@@ -18,6 +18,7 @@ import TeamIcon from '@/component/icons/dashboard/TeamIcon';
 import OrdersIcon from '@/component/icons/dashboard/OrdersIcon';
 import FeedbackIcon from '@/component/icons/dashboard/FeedbackIcon';
 import LogOutIcon from '@/component/icons/dashboard/LogOutIcon';
+import AchievementIcon from '@/component/icons/dashboard/AchievementIcon';
 
 // Actions
 import { logoutUser } from '@/app/actions/logout';
@@ -63,6 +64,11 @@ const Sidebar = () => {
       icon: <FeedbackIcon />,
       title: 'بازخورد ها',
       link: '/admin/feedbacks',
+    },
+    {
+      icon: <AchievementIcon />,
+      title: 'دستاوردها',
+      link: '/admin/achievement',
     },
   ];
 
