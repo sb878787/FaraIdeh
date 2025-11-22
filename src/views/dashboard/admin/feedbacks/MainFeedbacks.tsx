@@ -24,7 +24,7 @@ const MainFeedbacks = ({ feedbacks }: MainFeedbacksProps) => {
             width={300}
             height={300}
           />
-          <p className="font-iranYekan text-[#BCBCBC] text-xl">هیچ سفارشی ندارید!</p>
+          <p className="font-iranYekan text-[#BCBCBC] text-xl">هیچ پیامی ندارید!</p>
         </div>
       </div>
     );
