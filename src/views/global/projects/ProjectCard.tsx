@@ -14,7 +14,7 @@ import { ProjectsType } from '@/types/ProjectsType';
 import EyeIcon from '@/component/icons/EyeIcon';
 
 // Actions
-import { incrementProjectView } from '@/app/actions/incrementProjectView';
+import { trackProjectView } from '@/app/actions/trackProjectView';
 
 // Utils
 import { normalizeUrl } from '@/utils/normalizeUrl';
@@ -42,7 +42,7 @@ const ProjectCard = ({
     if (hasViewed) return;
 
     try {
-      const success = await incrementProjectView(id);
+      const success = await trackProjectView(id);
 
       if (success) {
         const viewedProjects = JSON.parse(

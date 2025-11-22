@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 // Actions
 import { getBlogBySlug, getRelatedBlogs } from '@/app/actions/getBlogs';
+import { trackBlogView } from '@/app/actions/trackBlogViews';
 
 // Components
 import Container from '@/component/Container';
@@ -17,6 +18,7 @@ import InstagramIcon from '@/component/icons/InstagramIcon';
 import TelegramIcon from '@/component/icons/TelegramIcon';
 import LinkedInIcon from '@/component/icons/LinkedInIcon';
 import FacebookIcon from '@/component/icons/FacebookIcon';
+import EyeStrockIcon from '@/component/icons/blogs/EyeStrockIcon';
 
 // Utils
 import { formatDate } from '@/utils/formatDate';
@@ -37,6 +39,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
   if (!blog) {
     notFound();
   }
+
+  // Track view
+  await trackBlogView(blog.id);
 
   // Get related blogs
   const relatedBlogs = await getRelatedBlogs(blog.category, blog.slug, 3);
@@ -86,6 +91,14 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 </p>
               </div>
 
+              {/* Views */}
+              <div className="flex gap-2 items-center">
+                <EyeStrockIcon size="25" className="text-black" />
+                <p className="font-iranYekan">
+                  <span className="font-yekanBakhFaNum">{blog.views}</span> بازدید
+                </p>
+              </div>
+
               {/* Author */}
               <div className="flex gap-3 items-center">
                 <div className="rounded-full border-2 border-text-primary">
@@ -123,6 +136,14 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 <p className="font-iranYekan text-sm text-nowrap">
                   مطالعه <span className="font-yekanBakhFaNum">{blog.readingTimeMinutes}</span>{' '}
                   دقیقه
+                </p>
+              </div>
+
+              {/* Views */}
+              <div className="flex gap-2 items-center">
+                <EyeStrockIcon size="20" className="text-black" />
+                <p className="font-iranYekan text-sm text-nowrap">
+                  <span className="font-yekanBakhFaNum">{blog.views}</span> بازدید
                 </p>
               </div>
 

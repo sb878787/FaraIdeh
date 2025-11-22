@@ -11,6 +11,7 @@ export interface BlogPost {
   featuredImage: string | null;
   readingTimeMinutes: number;
   labels: string;
+  views: number;
   createdAt: Date;
   updatedAt: Date;
 }

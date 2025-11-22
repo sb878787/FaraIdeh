@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/prisma';
 
-export async function incrementProjectView(projectId: number): Promise<boolean> {
+export async function trackProjectView(projectId: number): Promise<boolean> {
   try {
     await prisma.project.update({
       where: { id: projectId },

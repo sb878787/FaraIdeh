@@ -35,11 +35,28 @@ model Blogs {
   featuredImage      String?
   readingTimeMinutes Int      @default(1)
   labels             Json     @default("[]")
+  views              Int      @default(0)
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
+  // Relation to BlogViews
+  blogViews          BlogView[]
+
   @@index([slug])
   @@index([published, createdAt])
+}
+
+model BlogView {
+  id        Int      @id @default(autoincrement())
+  blogId    Int
+  blog      Blogs    @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  ipAddress String
+  userAgent String?
+  viewedAt  DateTime @default(now())
+
+  @@unique([blogId, ipAddress])
+  @@index([blogId])
+  @@index([viewedAt])
 }
 
 model TeamMember {
