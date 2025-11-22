@@ -1,40 +1,87 @@
 'use client';
 
-const MainOrders = () => {
+// Next Imports
+import Image from 'next/image';
+
+// Utils
+import { formatDate } from '@/utils/formatDate';
+
+// Types
+import { Order } from '@/types/OrdersType';
+
+interface MainOrdersProps {
+  orders: Order[];
+}
+
+const MainOrders = ({ orders }: MainOrdersProps) => {
+  if (orders.length === 0) {
+    return (
+      <div className="px-12 mt-12">
+        <div className="bg-white border border-[#D7D7D7] px-16 rounded-3xl h-176 flex flex-col gap-3 items-center justify-center">
+          <Image
+            src="https://s6.uupload.ir/files/image_8_mict.png"
+            alt="EmptyImage"
+            width={300}
+            height={300}
+          />
+          <p className="font-iranYekan text-[#BCBCBC] text-xl">هیچ سفارشی ندارید!</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="px-12 mt-12">
       <div className="bg-white border border-[#D7D7D7] px-16 rounded-3xl h-176 overflow-y-scroll">
-        <div className="border-b border-[#D7D7D7] rtl flex flex-col gap-y-2 pb-8 mt-10">
-          <div className="flex items-start justify-between">
-            {/* Category */}
-            <h2 className="font-iranYekan font-semibold text-2xl">وبسایت</h2>
+        {orders.map((order) => {
+          const user = order.users && order.users.length > 0 ? order.users[0] : null;
+          const fullName = user ? `${user.firstName} ${user.lastName}` : 'نام نامشخص';
 
-            {/* Date */}
-            <span className="font-yekanBakhFaNum text-[#767676] font-medium">1402/6/8</span>
-          </div>
+          return (
+            <div
+              key={order.id}
+              className="border-b border-[#D7D7D7] rtl flex flex-col gap-y-2 pb-8 mt-10"
+            >
+              <div className="flex items-start justify-between">
+                {/* Category */}
+                <h2 className="font-iranYekan font-semibold text-2xl">
+                  {typeof order.category === 'string'
+                    ? order.category
+                    : Array.isArray(order.category)
+                      ? (order.category as string[]).join('، ')
+                      : 'نامشخص'}
+                </h2>
 
-          {/* Full Name */}
-          <p className="font-iranYekan text-[#767676] text-lg font-medium">احمد رضایی</p>
+                {/* Date */}
+                <span className="font-yekanBakhFaNum text-[#767676] font-medium">
+                  {formatDate(new Date(order.createdAt))}
+                </span>
+              </div>
 
-          {/* Phone Number */}
-          <p className="font-yekanBakhFaNum text-[#767676] font-medium text-lg">09335942415</p>
+              {/* Full Name */}
+              {user && (
+                <p className="font-iranYekan text-[#767676] text-lg font-medium">{fullName}</p>
+              )}
 
-          {/* Email */}
-          <p className="font-iranYekan text-[#767676] font-medium text-lg">example@gmail.com</p>
+              {/* Phone Number */}
+              {user && (
+                <p className="font-yekanBakhFaNum text-[#767676] font-medium text-lg">
+                  {user.contactNumber}
+                </p>
+              )}
 
-          {/* Description */}
-          <p className="font-iranYekan text-[#767676] text-justify leading-8">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-            فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-            کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-            طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
-            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری
-            موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
-            دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
-            گیرد.
-          </p>
-        </div>
+              {/* Email */}
+              {user && (
+                <p className="font-iranYekan text-[#767676] font-medium text-lg">{user.email}</p>
+              )}
+
+              {/* Description */}
+              <p className="font-iranYekan text-[#767676] text-justify leading-8">
+                {order.description}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
