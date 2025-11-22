@@ -1,40 +1,77 @@
 'use client';
 
-const MainFeedbacks = () => {
+// Next Imports
+import Image from 'next/image';
+
+// Utils
+import { formatDate } from '@/utils/formatDate';
+
+// Types
+import { Feedback } from '@/types/FeedbacksType';
+
+interface MainFeedbacksProps {
+  feedbacks: Feedback[];
+}
+
+const MainFeedbacks = ({ feedbacks }: MainFeedbacksProps) => {
+  if (feedbacks.length === 0) {
+    return (
+      <div className="px-12 mt-12">
+        <div className="bg-white border border-[#D7D7D7] px-16 rounded-3xl h-176 flex flex-col gap-3 items-center justify-center">
+          <Image
+            src="https://s6.uupload.ir/files/image_8_mict.png"
+            alt="EmptyImage"
+            width={300}
+            height={300}
+          />
+          <p className="font-iranYekan text-[#BCBCBC] text-xl">هیچ سفارشی ندارید!</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="px-12 mt-12">
       <div className="bg-white border border-[#D7D7D7] px-16 rounded-3xl h-176 overflow-y-scroll">
-        <div className="border-b border-[#D7D7D7] rtl flex flex-col gap-y-3 pb-8 mt-10">
-          <div className="flex items-start justify-between">
-            {/* Full Name */}
-            <h2 className="font-iranYekan font-semibold text-2xl">رضا علایی</h2>
+        {feedbacks.map((feedback) => {
+          const fullName = `${feedback.firstName} ${feedback.lastName}`;
 
-            {/* Date */}
-            <span className="font-yekanBakhFaNum text-[#767676] font-medium">1402/8/5</span>
-          </div>
+          return (
+            <div
+              key={feedback.id}
+              className="border-b border-[#D7D7D7] rtl flex flex-col gap-y-3 pb-8 mt-10"
+            >
+              <div className="flex items-start justify-between">
+                {/* Full Name */}
+                <h2 className="font-iranYekan font-semibold text-2xl">{fullName}</h2>
 
-          {/* Phone Number */}
-          <p className="font-yekanBakhFaNum text-[#767676] font-medium text-lg">09335942415</p>
+                {/* Date */}
+                <span className="font-yekanBakhFaNum text-[#767676] font-medium">
+                  {formatDate(new Date(feedback.createdAt))}
+                </span>
+              </div>
 
-          {/* Email */}
-          <p className="font-iranYekan text-[#767676] font-medium text-lg">example@gmail.com</p>
+              {/* Phone Number */}
+              {feedback.phone && (
+                <p className="font-yekanBakhFaNum text-[#767676] font-medium text-lg">
+                  {feedback.phone}
+                </p>
+              )}
 
-          {/* Description */}
-          <p className="font-iranYekan text-[#767676] text-justify leading-8">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک
-            است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط
-            فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-            کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-            طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و
-            فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری
-            موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی
-            دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار
-            گیرد. لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
-            گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای
-            شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-            کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را
-          </p>
-        </div>
+              {/* Email */}
+              {feedback.email && (
+                <p className="font-iranYekan text-[#767676] font-medium text-lg">
+                  {feedback.email}
+                </p>
+              )}
+
+              {/* Message */}
+              <p className="font-iranYekan text-[#767676] text-justify leading-8">
+                {feedback.message}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
