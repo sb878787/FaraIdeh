@@ -99,9 +99,9 @@ const Contact = () => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
                 >
                   نام
                 </label>
@@ -142,9 +142,9 @@ const Contact = () => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
                 >
                   نام خانوادگی
                 </label>
@@ -188,9 +188,9 @@ const Contact = () => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
                 >
                   شماره تماس
                 </label>
@@ -230,9 +230,9 @@ const Contact = () => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
                 >
                   ایمیل
                 </label>
@@ -273,9 +273,9 @@ const Contact = () => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
                 >
                   پیام
                 </label>

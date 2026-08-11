@@ -58,9 +58,9 @@ const Input = ({
             text-text-description
             top-1/2 -translate-y-1/2 text-base
             peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-            peer-[&:not(:placeholder-shown)]:top-0
-            peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-            peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+            peer-not-placeholder-shown:top-0
+            peer-not-placeholder-shown:-translate-y-1/2
+            peer-not-placeholder-shown:text-xs font-iranYekan"
         >
           {label}
         </label>

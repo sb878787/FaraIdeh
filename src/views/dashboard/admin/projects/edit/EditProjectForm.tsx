@@ -373,7 +373,7 @@ const EditProjectForm = ({ project, updateProjectAction }: EditProjectFormProps)
 
                 <label
                   htmlFor="description"
-                  className="absolute right-0 px-2 rounded py-1 bg-white pointer-events-none transition-all duration-200 ease-out text-text-description top-3 translate-y-0 text-base peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:-translate-y-1/2 peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                  className="absolute right-0 px-2 rounded py-1 bg-white pointer-events-none transition-all duration-200 ease-out text-text-description top-3 translate-y-0 text-base peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2 peer-not-placeholder-shown:text-xs font-iranYekan"
                 >
                   توضیحات
                 </label>

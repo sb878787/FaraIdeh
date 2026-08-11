@@ -32,7 +32,7 @@ const Toast = ({ message, type, onClose, duration = 5000 }: ToastProps) => {
         `}
       >
         {/* Icon */}
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           {type === 'success' ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -60,7 +60,7 @@ const Toast = ({ message, type, onClose, duration = 5000 }: ToastProps) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className={`flex-shrink-0 ${type === 'success' ? 'hover:bg-green-600' : 'hover:bg-red-600'} rounded-full p-1 transition-all duration-200 cursor-pointer`}
+          className={`shrink-0 ${type === 'success' ? 'hover:bg-green-600' : 'hover:bg-red-600'} rounded-full p-1 transition-all duration-200 cursor-pointer`}
           aria-label="بستن"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
