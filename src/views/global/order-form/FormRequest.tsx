@@ -17,6 +17,7 @@ interface FormRequestProps {
     phone: string;
     email: string;
     message: string;
+    website: string;
   }) => Promise<void>;
   isSubmitting: boolean;
 }
@@ -28,6 +29,7 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
     phone: '',
     email: '',
     message: '',
+    website: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,6 +52,7 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
         phone: '',
         email: '',
         message: '',
+        website: '',
       });
     } catch {
       // Error is handled by parent component via Toast
@@ -75,6 +78,19 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
         onSubmit={handleSubmit}
         className="grid grid-cols-1 lg:grid-cols-2 rtl mt-3 lg:mt-10 w-full gap-5"
       >
+        {/* Honeypot field */}
+        <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+          <input
+            type="text"
+            name="website"
+            id="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.website}
+            onChange={handleChange}
+          />
+        </div>
+
         {/* Name */}
         <div
           className="flex items-center justify-center pr-3 w-full bg-white rounded-lg shadow-md shadow-[#EDEFF1] transition ring-0
