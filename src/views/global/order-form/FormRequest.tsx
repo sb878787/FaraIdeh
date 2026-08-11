@@ -17,6 +17,7 @@ interface FormRequestProps {
     phone: string;
     email: string;
     message: string;
+    website: string;
   }) => Promise<void>;
   isSubmitting: boolean;
 }
@@ -28,6 +29,7 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
     phone: '',
     email: '',
     message: '',
+    website: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,6 +52,7 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
         phone: '',
         email: '',
         message: '',
+        website: '',
       });
     } catch {
       // Error is handled by parent component via Toast
@@ -58,7 +61,7 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
 
   return (
     <div className="flex flex-col lg:flex-row items-start justify-between xl:pl-32 lg:gap-x-44">
-      <div className="relative w-full lg:w-44 flex-shrink-0 -mt-10">
+      <div className="relative w-full lg:w-44 shrink-0 -mt-10">
         <p className="font-iranYekan text-[#D9D9D9] text-[140px] h-44 lg:h-auto lg:text-[200px] pr-7 lg:pr-0 text-right lg:text-center">
           ۲
         </p>
@@ -75,6 +78,19 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
         onSubmit={handleSubmit}
         className="grid grid-cols-1 lg:grid-cols-2 rtl mt-3 lg:mt-10 w-full gap-5"
       >
+        {/* Honeypot field */}
+        <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+          <input
+            type="text"
+            name="website"
+            id="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.website}
+            onChange={handleChange}
+          />
+        </div>
+
         {/* Name */}
         <div
           className="flex items-center justify-center pr-3 w-full bg-white rounded-lg shadow-md shadow-[#EDEFF1] transition ring-0
@@ -105,9 +121,9 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
             >
               نام*
             </label>
@@ -144,9 +160,9 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
             >
               نام خانوادگی*
             </label>
@@ -186,9 +202,9 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
             >
               شماره تماس*
             </label>
@@ -224,9 +240,9 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
                 text-text-description
                 top-1/2 -translate-y-1/2 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-sm
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs font-iranYekan"
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs font-iranYekan"
             >
               ایمیل
             </label>
@@ -262,9 +278,9 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
                 transition-all duration-200 ease-out text-text-description
                 top-3 translate-y-0 text-base
                 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs
-                peer-[&:not(:placeholder-shown)]:top-0
-                peer-[&:not(:placeholder-shown)]:-translate-y-1/2
-                peer-[&:not(:placeholder-shown)]:text-xs
+                peer-not-placeholder-shown:top-0
+                peer-not-placeholder-shown:-translate-y-1/2
+                peer-not-placeholder-shown:text-xs
                 font-iranYekan
               "
             >

@@ -48,7 +48,7 @@ const SelectCategory = ({ selectedCategories, onCategoriesChange }: SelectCatego
 
   return (
     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between xl:pl-32 lg:gap-x-44">
-      <div className="relative w-full lg:w-44 flex-shrink-0">
+      <div className="relative w-full lg:w-44 shrink-0">
         <p className="font-iranYekan text-[#D9D9D9] text-[140px] h-44 lg:h-auto lg:text-[200px] pr-7 lg:pr-0 text-right lg:text-center">
           ۱
         </p>
@@ -113,7 +113,7 @@ const SelectCategory = ({ selectedCategories, onCategoriesChange }: SelectCatego
                     <div
                       className={`w-6 h-6 rounded transition-all duration-200 flex items-center justify-center ${
                         isChecked
-                          ? 'bg-[#FF6300]/[0.42] border-2 border-[#FF6300]'
+                          ? 'bg-[#FF6300]/42 border-2 border-[#FF6300]'
                           : 'bg-white border-2 border-[#BBBBBB]'
                       }`}
                     >

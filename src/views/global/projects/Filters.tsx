@@ -66,7 +66,7 @@ const Filters = ({ selectedCategory }: FiltersProps) => {
           const Icon = item.icon;
 
           return (
-            <li key={item.key} className="whitespace-nowrap flex-shrink-0">
+            <li key={item.key} className="whitespace-nowrap shrink-0">
               <Link
                 href={getFilterUrl(item.key)}
                 scroll={false}
@@ -83,7 +83,7 @@ const Filters = ({ selectedCategory }: FiltersProps) => {
                 {Icon && (
                   <Icon
                     className={`
-                      transition-colors duration-200 
+                      transition-colors duration-200
                       ${isActive ? 'text-primary' : 'text-[#4C4C4C] group-hover:text-primary'}
                     `}
                   />

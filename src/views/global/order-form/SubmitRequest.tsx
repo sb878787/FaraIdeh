@@ -24,6 +24,7 @@ const SubmitRequest = () => {
     phone: string;
     email: string;
     message: string;
+    website: string;
   }) => {
     // Validate categories before submitting
     if (selectedCategories.length === 0) {
@@ -49,6 +50,7 @@ const SubmitRequest = () => {
           },
         ],
         description: formData.message,
+        website: formData.website,
       });
 
       if (!result.success) {

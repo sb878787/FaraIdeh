@@ -2,14 +2,15 @@
 
 <div align="center">
   <img src="https://s6.uupload.ir/files/logo_k380.png" alt="FaraIdeh Logo" width="200"/>
-  
-  ### Transforming Ideas into Real Digital Experiences
-  
-  [![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-  [![React](https://img.shields.io/badge/React-19.1-61dafb?style=flat-square&logo=react)](https://reactjs.org/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
-  [![Prisma](https://img.shields.io/badge/Prisma-6.16-2d3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
+
+### Transforming Ideas into Real Digital Experiences
+
+[![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1-61dafb?style=flat-square&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.1-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Prisma](https://img.shields.io/badge/Prisma-6.16-2d3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
+
   <!-- [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE) -->
 
 [🌐 Website](https://fara-ideh.ir) • [📧 Contact Us](https://fara-ideh.ir/contact) • [📝 Blog](https://fara-ideh.ir/blogs)
@@ -186,7 +187,7 @@ This project includes a Content Management System (CMS), professional blog, proj
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/sb878787/FaraIdeh.git
+git clone https://github.com/mohammad-ali-saberi/FaraIdeh.git
 
 # 2. Navigate to project directory
 cd FaraIdeh
@@ -471,7 +472,7 @@ Your contribution to improving this project is valuable! To contribute:
 
 ### Ideas and Bugs
 
-- To report bugs or suggest new features, create an [Issue](https://github.com/sb878787/FaraIdeh/issues)
+- To report bugs or suggest new features, create an [Issue](https://github.com/mohammad-ali-saberi/FaraIdeh/issues)
 - Check existing Issues before creating a new one
 
 ---
@@ -481,10 +482,10 @@ Your contribution to improving this project is valuable! To contribute:
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/sb878787.png" width="100px;" alt="MohammadAli Saberi"/><br />
+      <img src="https://github.com/mohammad-ali-saberi.png" width="100px;" alt="MohammadAli Saberi"/><br />
       <sub><b>MohammadAli Saberi</b></sub><br />
       <sub>Full-Stack Developer & Project Manager</sub><br />
-      <a href="https://github.com/sb878787">GitHub</a> •
+      <a href="https://github.com/mohammad-ali-saberi">GitHub</a> •
       <a href="https://linkedin.com/in/mohammad-ali-saberi">LinkedIn</a>
     </td>
   </tr>
@@ -495,7 +496,7 @@ Your contribution to improving this project is valuable! To contribute:
 ## 🔗 Important Links
 
 - **🌐 Official Website**: [fara-ideh.ir](https://fara-ideh.ir)
-- **📦 Repository**: [github.com/sb878787/FaraIdeh](https://github.com/sb878787/FaraIdeh)
+- **📦 Repository**: [github.com/mohammad-ali-saberi/FaraIdeh](https://github.com/mohammad-ali-saberi/FaraIdeh)
 - **💼 LinkedIn**: [mohammad-ali-saberi](https://linkedin.com/in/mohammad-ali-saberi)
 - **📸 Instagram**: [@mohammad_ali_saberi87](https://www.instagram.com/mohammad_ali_saberi87)
 - **💬 Telegram**: [@M_sb87_Developer](https://web.telegram.org/k/#@M_sb87_Developer)
@@ -522,7 +523,7 @@ If you found this project useful:
 ---
 
 <div align="center">
-  
+
 ### Made with ❤️ by FaraIdeh Team
 
 **[⬆ Back to top](#faraideh)**
