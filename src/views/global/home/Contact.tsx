@@ -1,7 +1,7 @@
 'use client';
 
 // React Imports
-import { useActionState, useEffect, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 
 // Components
 import Container from '@/components/Container';
@@ -23,6 +23,19 @@ import { createContact } from '@/app/actions/createContact';
 const Contact = () => {
   const [state, formAction] = useActionState(createContact, null);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * The landing page streams in behind a Suspense boundary, so a link from
+   * another page to /#contact arrives before this section exists in the DOM and
+   * the browser's native hash scroll finds nothing. Handle it here instead,
+   * where the section is guaranteed to be mounted.
+   */
+  useEffect(() => {
+    if (window.location.hash !== '#contact') return;
+
+    contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, []);
 
   useEffect(() => {
     if (!state) return;
@@ -48,7 +61,8 @@ const Contact = () => {
       <Container>
         <div
           id="contact"
-          className="relative w-full flex flex-col items-center justify-center mt-16 lg:mt-36 lg:py-20 py-12 px-4 sm:px-6 lg:px-0 bg-[#F2F3F5] rounded-2xl"
+          ref={contactRef}
+          className="relative w-full flex flex-col items-center justify-center scroll-mt-28 mt-16 lg:mt-36 lg:py-20 py-12 px-4 sm:px-6 lg:px-0 bg-[#F2F3F5] rounded-2xl"
         >
           <SmallLabel title="CONTACTS" color="#3361FF" bgColor="#DFE5F6" />
           <LargeLabel
