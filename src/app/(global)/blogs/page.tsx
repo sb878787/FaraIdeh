@@ -1,5 +1,10 @@
 // Components
 import BlogsPageWrapper from '@/views/global/blogs/BlogsPage';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
+import ItemListSchema from '@/components/ItemListSchema';
+
+// Libs
+import { SITE_URL } from '@/libs/siteConfig';
 
 // Actions
 import { getPublishedBlogs } from '@/app/actions/getPublicBlogs';
@@ -31,11 +36,26 @@ const BlogsPage = async () => {
   ]);
 
   return (
-    <BlogsPageWrapper
-      initialBlogs={blogsData.blogs}
-      hasMore={blogsData.hasMore}
-      latestBlogs={latestBlogsData.blogs}
-    />
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'خانه', url: SITE_URL },
+          { name: 'وبلاگ', url: `${SITE_URL}/blogs` },
+        ]}
+      />
+      <ItemListSchema
+        path="/blogs"
+        items={blogsData.blogs.map((blog) => ({
+          name: blog.title,
+          url: `${SITE_URL}/blogs/${blog.slug}`,
+        }))}
+      />
+      <BlogsPageWrapper
+        initialBlogs={blogsData.blogs}
+        hasMore={blogsData.hasMore}
+        latestBlogs={latestBlogsData.blogs}
+      />
+    </>
   );
 };
 

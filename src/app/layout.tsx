@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import PageViewTracker from '@/components/PageViewTracker';
 import OrganizationSchema from '@/components/OrganizationSchema';
+import WebSiteSchema from '@/components/WebSiteSchema';
 import { SITE_URL } from '@/libs/siteConfig';
 
 const iranYekan = localFont({
@@ -131,6 +132,7 @@ export default function RootLayout({
       <body>
         <PageViewTracker />
         <OrganizationSchema />
+        <WebSiteSchema />
         {children}
       </body>
     </html>

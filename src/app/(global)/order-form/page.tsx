@@ -1,5 +1,9 @@
 // Components
 import OrderFormPageWrapper from '@/views/global/order-form/OrderFormPage';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
+
+// Libs
+import { SITE_URL } from '@/libs/siteConfig';
 
 // Types
 import { Metadata } from 'next';
@@ -21,7 +25,17 @@ export const metadata: Metadata = {
 };
 
 const OrderFormPage = () => {
-  return <OrderFormPageWrapper />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'خانه', url: SITE_URL },
+          { name: 'ثبت سفارش', url: `${SITE_URL}/order-form` },
+        ]}
+      />
+      <OrderFormPageWrapper />
+    </>
+  );
 };
 
 export default OrderFormPage;

@@ -11,6 +11,10 @@ import { getTeamMembers } from '@/app/actions/getTeamMembers';
 
 // Components
 import AboutPageWrapper from '@/views/global/about/AboutPage';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
+
+// Libs
+import { SITE_URL } from '@/libs/siteConfig';
 
 export const metadata: Metadata = {
   title: 'درباره ما',
@@ -39,7 +43,17 @@ const AboutPage = async () => {
     getAchievements(),
   ]);
 
-  return <AboutPageWrapper slides={slides} members={members} achievements={achievements} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'خانه', url: SITE_URL },
+          { name: 'درباره ما', url: `${SITE_URL}/about` },
+        ]}
+      />
+      <AboutPageWrapper slides={slides} members={members} achievements={achievements} />
+    </>
+  );
 };
 
 export default AboutPage;
