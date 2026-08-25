@@ -66,7 +66,7 @@ const ProjectCard = ({
         <div className="relative w-full h-72 overflow-hidden flex flex-row-reverse justify-end">
           <Image
             src={photo}
-            alt="ProjectImage"
+            alt={name}
             fill
             className="absolute object-cover object-center -z-10"
             sizes="(max-width: 768px) 100vw, 50vw"

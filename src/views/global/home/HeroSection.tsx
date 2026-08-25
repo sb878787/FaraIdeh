@@ -28,7 +28,7 @@ const HeroSection = () => {
     <div ref={heroRef} className="relative min-h-screen w-full">
       <Image
         src={heroImage}
-        alt="Hero background"
+        alt="تیم فراایده در حال طراحی و توسعه وب‌سایت و اپلیکیشن"
         fill
         priority
         className="object-cover"

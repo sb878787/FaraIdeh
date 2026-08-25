@@ -236,7 +236,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 <div className="rounded-full border-2 border-text-primary">
                   <Image
                     src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
-                    alt="AuthorImage"
+                    alt={blog.author}
                     width={25}
                     height={25}
                     className="rounded-full object-cover object-center"
@@ -284,7 +284,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 <div className="rounded-full border-2 border-text-primary w-[25px] h-[25px]">
                   <Image
                     src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
-                    alt="AuthorImage"
+                    alt={blog.author}
                     width={25}
                     height={25}
                     className="rounded-full object-cover object-center"
@@ -301,7 +301,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                   blog.featuredImage ||
                   'https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/images_eusf_eshcob'
                 }
-                alt="BlogImage"
+                alt={blog.title}
                 fill
                 className="object-cover object-center"
               />
