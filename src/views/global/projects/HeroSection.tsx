@@ -28,12 +28,12 @@ const HeroSection = () => {
           </div>
 
           <div className="w-full rtl">
-            <p className="font-iranYekan text-text-primary text-lg lg:text-xl">
+            <h1 className="font-iranYekan text-text-primary text-lg lg:text-xl">
               نمونه کارهای فراایده
-            </p>
-            <p className="font-iranYekan font-semibold lg:font-bold text-xl lg:text-3xl leading-9 lg:leading-11 mt-1 lg:mt-4">
+            </h1>
+            <h2 className="font-iranYekan font-semibold lg:font-bold text-xl lg:text-3xl leading-9 lg:leading-11 mt-1 lg:mt-4">
               از ایده تا خروجیِ قابل‌سنجش <br /> وب‌سایت‌ها و تجربه‌هایی که کار می‌کنند
-            </p>
+            </h2>
             <p className="text-text-description font-iranYekan text-justify leading-7 lg:leading-8 text-sm lg:text-base mt-3 lg:mt-5">
               گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و اجرای تمیز انجام شده‌اند.
               اینجا می‌بینید چگونه مسیر طراحی تا لانچ به نتایجی واقعی و پایدار رسیده است.

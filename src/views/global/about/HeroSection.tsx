@@ -31,14 +31,14 @@ const HeroSection = () => {
 
           <div className="rtl flex-1">
             <div className="flex items-end">
-              <h5 className="text-text-primary font-iranYekan">سلام! ما تیم فراایده هستیم.</h5>
+              <span className="text-text-primary font-iranYekan">سلام! ما تیم فراایده هستیم.</span>
               <AboutHandIcon />
             </div>
 
-            <p className="font-iranYekan text-2xl lg:text-3xl font-extrabold text-justify leading-10 lg:leading-12 w-full xl::w-3/4 mt-4">
+            <h1 className="font-iranYekan text-2xl lg:text-3xl font-extrabold text-justify leading-10 lg:leading-12 w-full xl::w-3/4 mt-4">
               ما تیمی کوچک و چابک در ایرانیم که ایده‌ها را به تجربه‌ای واقعی تبدیل می‌کنیم. از کشف
               مسئله و استراتژی تا طراحی و توسعه، کنار شما هستیم.
-            </p>
+            </h1>
             <p className="text-text-description font-iranYekan leading-7 text-justify lg:mt-6 mt-4">
               برای ما نتیجه فقط تحویل نیست؛ تجربه‌ای است که کار کند و در خاطر بماند. با گفت‌وگوی
               شفاف، مستندسازی و بهبودِ مستمر پیش می‌رویم؛ هر قدم قابل‌سنجش و همسو با اهداف شماست. در

@@ -311,7 +311,15 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             <div
               className={`mt-5 md:mt-6 lg:mt-9 font-iranYekan text-sm md:text-base rtl ${styles.markdown}`}
             >
-              <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm, remarkBreaks]}
+                components={{
+                  // The page title above is already the single <h1>. Authors
+                  // often repeat it as `# ...` at the top of the body, which
+                  // would give the page two H1s — demote it, keeping the look.
+                  h1: ({ children }) => <h2 className={styles.contentTitle}>{children}</h2>,
+                }}
+              >
                 {blog.content}
               </ReactMarkdown>
             </div>
