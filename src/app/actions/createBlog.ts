@@ -2,7 +2,9 @@
 
 import { prisma } from '@/libs/prisma';
 import { CreateBlogInput } from '@/types/BlogsType';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+
+import { CACHE_TAGS } from '@/libs/cacheTags';
 
 export async function createBlog(data: CreateBlogInput) {
   try {
@@ -37,6 +39,7 @@ export async function createBlog(data: CreateBlogInput) {
     });
 
     // Revalidate related pages
+    revalidateTag(CACHE_TAGS.blogs);
     revalidatePath('/admin/blogs');
     revalidatePath('/blogs');
 

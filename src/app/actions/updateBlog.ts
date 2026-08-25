@@ -2,7 +2,9 @@
 
 import { prisma } from '@/libs/prisma';
 import { UpdateBlogInput, UpdateBlogResponse } from '@/types/BlogsType';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+
+import { CACHE_TAGS } from '@/libs/cacheTags';
 
 export async function updateBlog(data: UpdateBlogInput): Promise<UpdateBlogResponse> {
   try {
@@ -50,6 +52,7 @@ export async function updateBlog(data: UpdateBlogInput): Promise<UpdateBlogRespo
     });
 
     // Revalidate related pages
+    revalidateTag(CACHE_TAGS.blogs);
     revalidatePath('/admin/blogs');
     revalidatePath('/blogs');
     revalidatePath(`/blogs/${updatedBlog.slug}`);

@@ -1,5 +1,8 @@
 'use server';
 
+import { revalidateTag } from 'next/cache';
+
+import { CACHE_TAGS } from '@/libs/cacheTags';
 import { prisma } from '@/libs/prisma';
 import { SocialMediaData } from '@/types/SocialMediaType';
 
@@ -14,6 +17,8 @@ export const updateSocialMedia = async (data: SocialMediaData) => {
       data,
     });
   }
+
+  revalidateTag(CACHE_TAGS.socialMedia);
 
   return socialMedia;
 };

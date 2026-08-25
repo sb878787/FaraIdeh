@@ -4,6 +4,13 @@ import { prisma } from '@/libs/prisma';
 import { BlogPost, GetBlogsParams } from '@/types/BlogsType';
 import { Prisma } from '@prisma/client';
 
+/**
+ * Paginated blog list for the client-side "load more" button.
+ *
+ * Server-rendered reads use the cached helpers in `getPublicBlogs.ts` instead —
+ * actions are never cached, so awaiting one during render makes the page
+ * dynamic.
+ */
 export async function getBlogs(params?: GetBlogsParams) {
   try {
     const { limit = 6, skip = 0 } = params || {};

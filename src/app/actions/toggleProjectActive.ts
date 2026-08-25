@@ -1,7 +1,8 @@
 'use server';
 
 import { prisma } from '@/libs/prisma';
-import { revalidatePath } from 'next/cache';
+import { CACHE_TAGS } from '@/libs/cacheTags';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 export async function toggleProjectActive(projectId: number, currentStatus: boolean) {
   try {
@@ -11,6 +12,7 @@ export async function toggleProjectActive(projectId: number, currentStatus: bool
     });
 
     // Revalidate relevant paths
+    revalidateTag(CACHE_TAGS.projects);
     revalidatePath('/admin/projects');
     revalidatePath('/projects');
 

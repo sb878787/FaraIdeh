@@ -2,7 +2,7 @@
 import BlogsPageWrapper from '@/views/global/blogs/BlogsPage';
 
 // Actions
-import { getBlogs } from '@/app/actions/getBlogs';
+import { getPublishedBlogs } from '@/app/actions/getPublicBlogs';
 
 // Types
 import { Metadata } from 'next';
@@ -25,8 +25,10 @@ export const metadata: Metadata = {
 
 const BlogsPage = async () => {
   // Fetch initial blogs on server
-  const blogsData = await getBlogs({ limit: 6 });
-  const latestBlogsData = await getBlogs({ limit: 5 });
+  const [blogsData, latestBlogsData] = await Promise.all([
+    getPublishedBlogs(6),
+    getPublishedBlogs(5),
+  ]);
 
   return (
     <BlogsPageWrapper
