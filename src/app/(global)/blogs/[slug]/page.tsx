@@ -328,7 +328,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
           {/* Related Articles & Labels & Share */}
           <div className="w-full xl:w-3/5">
             {/* Related Articles Title */}
-            <p className="font-iranYekan font-medium text-2xl mt-10 xl:mt-0">مقاله های مرتبط</p>
+            <h2 className="font-iranYekan font-medium text-2xl mt-10 xl:mt-0">مقاله های مرتبط</h2>
 
             {/* Related Articles */}
             <div className="lg:mt-8 mt-6 flex flex-col gap-y-5 lg:max-xl:grid lg:max-xl:grid-cols-2 lg:max-xl:gap-x-7 lg:max-xl:gap-y-3">
@@ -373,9 +373,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                         </div>
 
                         {/* Title */}
-                        <p className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
+                        <h3 className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
                           {relatedBlog.title}
-                        </p>
+                        </h3>
 
                         {/* Excerpt */}
                         <p className="font-iranYekan text-[#4C4C4C] line-clamp-2 text-sm text-justify leading-6 mt-2 font-medium">
@@ -393,7 +393,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             </div>
 
             {/* Labels Title */}
-            <p className="font-iranYekan font-medium text-2xl mt-5 lg:mt-8 xl:mt-12">برچسب ها</p>
+            <h2 className="font-iranYekan font-medium text-2xl mt-5 lg:mt-8 xl:mt-12">برچسب ها</h2>
 
             {/* Labels */}
             <div className="flex flex-wrap gap-3 mt-3 lg:mt-5">
@@ -416,7 +416,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Share */}
             <div className="w-full flex flex-col items-center justify-center mt-10 sm:mt-12 lg:mt-16">
               {/* Share Title */}
-              <p className="font-iranYekan font-medium text-lg">اشتراک گذاری</p>
+              <h2 className="font-iranYekan font-medium text-lg">اشتراک گذاری</h2>
 
               {/* Share Icons */}
               <div className="flex items-center mt-1">

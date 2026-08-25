@@ -66,9 +66,9 @@ const BlogCards = ({ blogs }: IBlogCardsProps) => {
               </div> */}
 
               {/* Title */}
-              <p className="font-iranYekan font-semibold text-xl lg:text-2xl mt-2 md:mt-3 line-clamp-1">
+              <h3 className="font-iranYekan font-semibold text-xl lg:text-2xl mt-2 md:mt-3 line-clamp-1">
                 {blog.title}
-              </p>
+              </h3>
 
               {/* Excerpt */}
               <p className="font-iranYekan text-[#505050] mt-2 md:mt-3 line-clamp-2 leading-7 text-justify">
