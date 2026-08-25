@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import SiteIcon from '@/components/icons/services/SiteIcon';
 

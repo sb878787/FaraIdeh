@@ -1,5 +1,3 @@
-'use client';
-
 interface ISmallLabelProps {
   title: string;
   color: string;

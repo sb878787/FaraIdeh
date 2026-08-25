@@ -1,5 +1,3 @@
-'use client';
-
 interface IContainerProps {
   children: React.ReactNode;
   className?: string;

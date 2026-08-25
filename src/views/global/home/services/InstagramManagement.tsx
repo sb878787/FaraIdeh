@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import InstagramIcon from '@/components/icons/services/InstagramIcon';
 

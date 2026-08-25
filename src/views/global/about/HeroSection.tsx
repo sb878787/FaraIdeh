@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import Container from '@/components/Container';
 import Header from '@/components/Header';

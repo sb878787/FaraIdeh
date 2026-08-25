@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import StartUpIcon from '@/components/icons/services/StartUpIcon';
 

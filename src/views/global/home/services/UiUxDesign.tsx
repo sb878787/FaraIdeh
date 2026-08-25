@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import UiUxIcon from '@/components/icons/services/UiUxIcon';
 

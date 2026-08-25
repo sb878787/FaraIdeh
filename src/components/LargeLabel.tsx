@@ -1,5 +1,3 @@
-'use client';
-
 interface ILargeLabelProps {
   label: string;
   subLabel: string;

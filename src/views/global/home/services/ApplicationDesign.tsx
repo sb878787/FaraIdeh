@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import PhoneIcon from '@/components/icons/services/PhoneIcon';
 

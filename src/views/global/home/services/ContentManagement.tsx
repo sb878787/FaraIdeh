@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import ContentManagementIcon from '@/components/icons/services/ContentManagementIcon';
 
