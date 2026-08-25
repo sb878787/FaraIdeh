@@ -319,6 +319,8 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 }
                 alt={blog.title}
                 fill
+                priority
+                sizes="(max-width: 1280px) 100vw, 60vw"
                 className="object-cover object-center"
               />
             </div>
@@ -361,6 +363,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                           }
                           alt={relatedBlog.title}
                           fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 30vw, 20vw"
                           className="object-cover object-center"
                         />
                       </div>

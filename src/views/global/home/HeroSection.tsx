@@ -31,6 +31,7 @@ const HeroSection = () => {
         alt="تیم فراایده در حال طراحی و توسعه وب‌سایت و اپلیکیشن"
         fill
         priority
+        sizes="100vw"
         className="object-cover"
         placeholder="empty"
       />

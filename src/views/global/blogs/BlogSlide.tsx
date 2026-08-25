@@ -29,6 +29,7 @@ const BlogSlide = ({ blog }: IBlogSlideProps) => {
           }
           alt={blog.title}
           fill
+          sizes="100vw"
           className="absolute object-cover object-center -z-10"
         />
 
