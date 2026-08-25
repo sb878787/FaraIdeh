@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     title: 'ثبت سفارش | فراایده',
     description:
       'در فراایده می‌توانید سفارش توسعه نرم‌افزار، طراحی محصول یا راهکارهای استارتاپی خود را ثبت کنید. تیم متخصص ما آماده همکاری در اجرای پروژه‌های نوآورانه است.',
-    url: 'https://fara-ideh.ir/order-form',
+    url: '/order-form',
     images: ['/images/og-image.png'],
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir/order-form',
+    canonical: '/order-form',
   },
 };
 

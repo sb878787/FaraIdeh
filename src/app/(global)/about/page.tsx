@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     title: 'درباره فراایده',
     description:
       'ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.',
-    url: 'https://fara-ideh.ir/about',
+    url: '/about',
     images: ['/images/og-image.png'],
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir/about',
+    canonical: '/about',
   },
 };
 

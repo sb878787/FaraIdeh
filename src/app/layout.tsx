@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import PageViewTracker from '@/components/PageViewTracker';
 import OrganizationSchema from '@/components/OrganizationSchema';
+import { SITE_URL } from '@/libs/siteConfig';
 
 const iranYekan = localFont({
   src: [
@@ -41,7 +42,7 @@ const yekanBakhFaNum = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://fara-ideh.ir'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
     template: '%s | فراایده',
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fa_IR',
-    url: 'https://fara-ideh.ir',
+    url: '/',
     siteName: 'فراایده',
     title: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
     description:
@@ -116,7 +117,7 @@ export const metadata: Metadata = {
 
   // Alternate languages
   alternates: {
-    canonical: 'https://fara-ideh.ir',
+    canonical: '/',
   },
 };
 

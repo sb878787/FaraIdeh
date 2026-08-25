@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     title: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
     description:
       'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام ارائه می‌دهد.',
-    url: 'https://fara-ideh.ir',
+    url: '/',
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir',
+    canonical: '/',
   },
 };
 

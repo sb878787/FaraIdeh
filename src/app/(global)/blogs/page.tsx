@@ -15,11 +15,11 @@ export const metadata: Metadata = {
     title: 'بلاگ فراایده',
     description:
       'در بلاگ فراایده از تجربه‌های واقعی پروژه‌ها می‌نویسیم؛ نکته‌های عملی طراحی، محتوا و رشد محصول کوتاه، شفاف و قابل‌اجرا برای امروزِ کسب‌وکار شما.',
-    url: 'https://fara-ideh.ir/blogs',
+    url: '/blogs',
     images: ['/images/og-image.png'],
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir/blogs',
+    canonical: '/blogs',
   },
 };
 

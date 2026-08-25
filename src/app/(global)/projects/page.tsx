@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     title: 'پروژه‌های فراایده',
     description:
       'گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.',
-    url: 'https://fara-ideh.ir/projects',
+    url: '/projects',
     images: ['/images/og-image.png'],
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir/projects',
+    canonical: '/projects',
   },
 };
 

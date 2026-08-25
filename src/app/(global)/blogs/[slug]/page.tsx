@@ -30,6 +30,9 @@ import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 // Utils
 import { formatDate } from '@/utils/formatDate';
 
+// Libs
+import { SITE_URL } from '@/libs/siteConfig';
+
 // Types
 import { RelatedBlog } from '@/types/BlogsType';
 
@@ -88,7 +91,7 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
       publishedTime: blog.createdAt?.toISOString(),
       modifiedTime: blog.updatedAt?.toISOString(),
       authors: [blog.author || 'فراایده'],
-      url: `https://fara-ideh.ir/blogs/${blog.slug}`,
+      url: `/blogs/${blog.slug}`,
       images: [
         {
           // Using Dynamic OG Image
@@ -110,7 +113,7 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
     },
 
     alternates: {
-      canonical: `https://fara-ideh.ir/blogs/${blog.slug}`,
+      canonical: `/blogs/${blog.slug}`,
     },
   };
 }
@@ -154,7 +157,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             '@type': 'BlogPosting',
             headline: blog.title,
             description: blog.excerpt,
-            image: blog.featuredImage || 'https://fara-ideh.ir/images/og-image.png',
+            image: blog.featuredImage || `${SITE_URL}/images/og-image.png`,
             datePublished: blog.createdAt?.toISOString(),
             dateModified: blog.updatedAt?.toISOString(),
             author: {
@@ -166,12 +169,12 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
               name: 'فراایده',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://fara-ideh.ir/images/logo.png',
+                url: `${SITE_URL}/images/logo.png`,
               },
             },
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://fara-ideh.ir/blogs/${blog.slug}`,
+              '@id': `${SITE_URL}/blogs/${blog.slug}`,
             },
           }),
         }}
@@ -180,9 +183,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
       {/* Breadcrumb Schema */}
       <BreadcrumbSchema
         items={[
-          { name: 'خانه', url: 'https://fara-ideh.ir' },
-          { name: 'بلاگ', url: 'https://fara-ideh.ir/blogs' },
-          { name: blog.title, url: `https://fara-ideh.ir/blogs/${blog.slug}` },
+          { name: 'خانه', url: SITE_URL },
+          { name: 'بلاگ', url: `${SITE_URL}/blogs` },
+          { name: blog.title, url: `${SITE_URL}/blogs/${blog.slug}` },
         ]}
       />
 
