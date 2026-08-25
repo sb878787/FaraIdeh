@@ -1,5 +1,3 @@
-'use client';
-
 interface IBlogsIcon {
   className?: string;
   size?: string;

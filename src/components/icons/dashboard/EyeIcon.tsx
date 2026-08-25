@@ -1,5 +1,3 @@
-'use client';
-
 interface IEyeIconProps {
   size?: string;
   className?: string;

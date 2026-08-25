@@ -1,5 +1,3 @@
-'use client';
-
 const OrderIcon = () => {
   return (
     <div>

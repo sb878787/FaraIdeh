@@ -1,5 +1,3 @@
-'use client';
-
 interface IUnlockIconProps {
   size?: string;
   className?: string;

@@ -1,5 +1,3 @@
-'use client';
-
 interface IContentManagementIconProps {
   fill?: string;
   width?: string;

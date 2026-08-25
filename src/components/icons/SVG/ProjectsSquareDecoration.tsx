@@ -1,5 +1,3 @@
-'use client';
-
 const ProjectsSquareDecoration = () => {
   return (
     <svg

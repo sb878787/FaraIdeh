@@ -1,5 +1,3 @@
-'use client';
-
 interface ICategoryIconProps {
   size?: string;
   className?: string;

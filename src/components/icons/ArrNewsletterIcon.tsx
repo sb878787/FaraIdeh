@@ -1,5 +1,3 @@
-'use client';
-
 interface IArrNewsletterIconProps {
   className?: string;
 }

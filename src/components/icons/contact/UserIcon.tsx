@@ -1,5 +1,3 @@
-'use client';
-
 interface IUserIconProps {
   size?: string;
 }

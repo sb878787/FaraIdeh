@@ -1,5 +1,3 @@
-'use client';
-
 interface IFeedbackIcon {
   className?: string;
   size?: string;

@@ -1,5 +1,3 @@
-'use client';
-
 interface IEmailIconProps {
   width?: string;
   height?: string;

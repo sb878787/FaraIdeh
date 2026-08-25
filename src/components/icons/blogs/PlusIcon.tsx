@@ -1,5 +1,3 @@
-'use client';
-
 interface IPlusIconProps {
   size?: string;
   className?: string;

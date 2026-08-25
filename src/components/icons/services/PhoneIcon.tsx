@@ -1,5 +1,3 @@
-'use client';
-
 interface IPhoneIconProps {
   fill?: string;
   width?: string;

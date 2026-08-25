@@ -1,5 +1,3 @@
-'use client';
-
 interface IEyeStrockIconProps {
   size?: string;
   className?: string;

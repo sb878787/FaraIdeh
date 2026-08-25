@@ -1,5 +1,3 @@
-'use client';
-
 const OrderCenterDecoration = () => {
   return (
     <svg

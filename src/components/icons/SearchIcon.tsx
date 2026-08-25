@@ -1,5 +1,3 @@
-'use client';
-
 type Props = {
   size?: number | string;
   strokeWidth?: number;

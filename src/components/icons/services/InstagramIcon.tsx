@@ -1,5 +1,3 @@
-'use client';
-
 interface IInstagramIconProps {
   fill?: string;
   width?: string;

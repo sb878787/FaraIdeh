@@ -1,5 +1,3 @@
-'use client';
-
 interface ILockIconProps {
   size?: string;
   className?: string;

@@ -1,5 +1,3 @@
-'use client';
-
 interface ITimeIconProps {
   size?: string;
   className?: string;

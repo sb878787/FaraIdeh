@@ -1,5 +1,3 @@
-'use client';
-
 interface ITrashIconProps {
   size?: string;
   className?: string;

@@ -1,5 +1,3 @@
-'use client';
-
 interface IAchievementIcon {
   className?: string;
   size?: string;
