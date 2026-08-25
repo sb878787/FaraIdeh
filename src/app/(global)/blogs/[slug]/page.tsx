@@ -10,10 +10,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 // Actions
-import { getBlogBySlug, getRelatedBlogs } from '@/app/actions/getBlogs';
-import { trackBlogView } from '@/app/actions/trackBlogViews';
+import {
+  getPublishedBlogBySlug,
+  getPublishedBlogSlugs,
+  getPublishedRelatedBlogs,
+} from '@/app/actions/getPublicBlogs';
 
 // Components
+import BlogViewTracker from '@/components/BlogViewTracker';
 import Container from '@/components/Container';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -57,7 +61,7 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
     };
   }
 
-  const blog = await getBlogBySlug(blogSlug);
+  const blog = await getPublishedBlogBySlug(blogSlug);
 
   if (!blog) {
     return {
@@ -118,6 +122,19 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
   };
 }
 
+/**
+ * Prerender every published article at build time; new ones are rendered on
+ * first request and then cached (`dynamicParams` defaults to true).
+ */
+export async function generateStaticParams() {
+  const slugs = await getPublishedBlogSlugs();
+
+  return slugs.map((slug) => ({ slug }));
+}
+
+/** Re-check the content hourly; admin edits invalidate the `blogs` tag anyway. */
+export const revalidate = 3600;
+
 const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
   const { slug: blogSlug } = await params;
 
@@ -125,17 +142,14 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
     notFound();
   }
 
-  const blog = await getBlogBySlug(blogSlug);
+  const blog = await getPublishedBlogBySlug(blogSlug);
 
   if (!blog) {
     notFound();
   }
 
-  // Track view
-  await trackBlogView(blog.id);
-
   // Get related blogs
-  const relatedBlogs = await getRelatedBlogs(blog.category, blog.slug, 3);
+  const relatedBlogs = await getPublishedRelatedBlogs(blog.category, blog.slug, 3);
 
   // Parse labels
   const labels = (() => {
@@ -148,6 +162,8 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
 
   return (
     <>
+      <BlogViewTracker blogId={blog.id} />
+
       {/* JSON-LD Structured Data for Google */}
       <script
         type="application/ld+json"
