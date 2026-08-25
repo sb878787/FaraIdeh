@@ -1,43 +1,15 @@
 import { prisma } from '@/libs/prisma';
+import { SITE_URL } from '@/libs/siteConfig';
 import { MetadataRoute } from 'next';
 
+/**
+ * Build timestamp for pages whose content is not tracked in the database.
+ * Using `new Date()` inline would report "just now" on every crawl, which
+ * search engines learn to ignore.
+ */
+const buildDate = new Date();
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://fara-ideh.ir';
-
-  // Static Pages
-  const staticPages = [
-    {
-      url: `${baseUrl}`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/blogs`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/order-form`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-  ];
-
   // Published blogs
   const blogs = await prisma.blogs.findMany({
     where: { published: true },
@@ -50,10 +22,53 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   });
 
-  const blogPages = blogs.map((blog) => ({
-    url: `${baseUrl}/blogs/${blog.slug}`,
-    lastModified: blog.updatedAt || new Date(),
-    changeFrequency: 'weekly' as const,
+  // Latest content change, used as `lastModified` for the listing pages.
+  const latestBlogUpdate = blogs[0]?.updatedAt ?? buildDate;
+
+  const latestProject = await prisma.project.findFirst({
+    where: { isActive: true },
+    select: { updatedAt: true },
+    orderBy: { updatedAt: 'desc' },
+  });
+
+  // Static Pages
+  const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}`,
+      lastModified: latestBlogUpdate,
+      changeFrequency: 'daily',
+      priority: 1,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified: buildDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/projects`,
+      lastModified: latestProject?.updatedAt ?? buildDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/blogs`,
+      lastModified: latestBlogUpdate,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/order-form`,
+      lastModified: buildDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+  ];
+
+  const blogPages: MetadataRoute.Sitemap = blogs.map((blog) => ({
+    url: `${SITE_URL}/blogs/${blog.slug}`,
+    lastModified: blog.updatedAt || buildDate,
+    changeFrequency: 'weekly',
     priority: 0.7,
   }));
 

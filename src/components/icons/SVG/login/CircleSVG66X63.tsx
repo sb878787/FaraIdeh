@@ -1,5 +1,3 @@
-'use client';
-
 const CircleSVG66X63 = () => {
   return (
     <svg width="66" height="63" viewBox="0 0 66 63" fill="none" xmlns="http://www.w3.org/2000/svg">

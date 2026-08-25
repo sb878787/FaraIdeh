@@ -1,5 +1,3 @@
-'use client';
-
 const AboutHandIcon = () => {
   return (
     <svg width="49" height="46" viewBox="0 0 49 46" fill="none" xmlns="http://www.w3.org/2000/svg">

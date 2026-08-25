@@ -1,5 +1,3 @@
-'use client';
-
 interface IHomeStoryDecorationProps {
   width?: string;
   height?: string;

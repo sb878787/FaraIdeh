@@ -1,16 +1,12 @@
-// React Imports
-import { Suspense, use } from 'react';
-
 // Next Imports
 import type { Metadata } from 'next';
 
 // Components
-import WifiLoader from '@/components/WifiLoader';
 import LandingPageWrapper from '@/views/global/home/HomePage';
 
 // Actions
 import { getProjects } from '@/app/actions/getProjects';
-import { getSocialMedia } from '@/app/actions/getSocialMedia';
+import { getPublicSocialMedia } from '@/app/actions/getPublicSocialMedia';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
@@ -25,15 +21,25 @@ export const metadata: Metadata = {
     title: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
     description:
       'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام ارائه می‌دهد.',
-    url: 'https://fara-ideh.ir',
+    url: '/',
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir',
+    canonical: '/',
   },
 };
 
-function ProjectsSection() {
-  const rows = use(getProjects());
+/**
+ * Rendered on the server without a page-level `<Suspense>` fallback.
+ *
+ * The previous version wrapped the whole page in `<Suspense fallback={<WifiLoader />}>`
+ * and read the data with `use()`, so the first HTML byte a crawler (or a user on
+ * a slow connection) received was a loading spinner instead of the hero — bad
+ * for LCP and for indexing. Both reads are cached, so this awaits nothing on a
+ * warm cache and the page can be prerendered.
+ */
+const LandingPage = async () => {
+  const [rows, socialMedia] = await Promise.all([getProjects(), getPublicSocialMedia()]);
+
   const projects: ProjectsType[] = rows.map((p) => ({
     id: p.id,
     name: p.name,
@@ -47,17 +53,7 @@ function ProjectsSection() {
     category: p.category,
   }));
 
-  const socialMedia = use(getSocialMedia());
-
   return <LandingPageWrapper projects={projects} socialMedia={socialMedia} />;
-}
-
-const LandingPage = async () => {
-  return (
-    <Suspense fallback={<WifiLoader />}>
-      <ProjectsSection />
-    </Suspense>
-  );
 };
 
 export default LandingPage;

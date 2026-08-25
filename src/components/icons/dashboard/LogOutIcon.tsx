@@ -1,5 +1,3 @@
-'use client';
-
 interface ILogOutIcon {
   className?: string;
 }

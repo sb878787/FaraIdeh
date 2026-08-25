@@ -1,5 +1,3 @@
-'use client';
-
 interface IOrdersIcon {
   className?: string;
   size?: string;

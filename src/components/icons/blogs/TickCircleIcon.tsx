@@ -1,5 +1,3 @@
-'use client';
-
 interface ITickCircleIconProps {
   size?: string;
   className?: string;

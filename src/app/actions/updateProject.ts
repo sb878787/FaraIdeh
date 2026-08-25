@@ -2,7 +2,9 @@
 
 import { prisma } from '@/libs/prisma';
 import { UpdateProjectInput, UpdateProjectResponse } from '@/types/ProjectsType';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+
+import { CACHE_TAGS } from '@/libs/cacheTags';
 
 export async function updateProject(data: UpdateProjectInput): Promise<UpdateProjectResponse> {
   try {
@@ -56,6 +58,7 @@ export async function updateProject(data: UpdateProjectInput): Promise<UpdatePro
     });
 
     // Revalidate paths
+    revalidateTag(CACHE_TAGS.projects);
     revalidatePath('/admin/projects');
     revalidatePath('/projects');
     revalidatePath(`/admin/projects/edit/${data.id}`);

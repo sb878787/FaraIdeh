@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import Container from '@/components/Container';
 import Header from '@/components/Header';
@@ -18,10 +16,10 @@ const HeroSection = () => {
           </div>
 
           <div className="w-full rtl mt-40 sm:mt-0">
-            <p className="font-iranYekan text-text-primary text-lg lg:text-xl">ثبت سفارش</p>
-            <p className="font-iranYekan font-semibold text-2xl lg:text-4xl leading-9 lg:leading-11 mt-1 lg:mt-3">
+            <h1 className="font-iranYekan text-text-primary text-lg lg:text-xl">ثبت سفارش</h1>
+            <h2 className="font-iranYekan font-semibold text-2xl lg:text-4xl leading-9 lg:leading-11 mt-1 lg:mt-3">
               درخواست پیشنهاد همکاری
-            </p>
+            </h2>
             <p className="text-text-description font-iranYekan text-justify leading-6 lg:leading-7 text-sm lg:text-base mt-3">
               با تکمیل این فرم ساده، تیم ما جهت اجراء پروژه و تکمیل{' '}
               <br className="hidden sm:block" /> مراحل بعدی سریعاً با شما تماس خواهد گرفت.

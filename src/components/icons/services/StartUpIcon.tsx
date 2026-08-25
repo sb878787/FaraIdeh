@@ -1,5 +1,3 @@
-'use client';
-
 interface IStartUpIconProps {
   fill?: string;
   width?: string;

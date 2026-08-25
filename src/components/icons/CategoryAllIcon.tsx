@@ -1,5 +1,3 @@
-'use client';
-
 type ICategoryAllIconProps = {
   size?: number | string;
   className?: string;

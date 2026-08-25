@@ -1,5 +1,3 @@
-'use client';
-
 interface IUiUxIconProps {
   fill?: string;
   width?: string;

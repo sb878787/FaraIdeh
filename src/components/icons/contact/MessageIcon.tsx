@@ -1,5 +1,3 @@
-'use client';
-
 interface IMessageIconProps {
   size?: string;
   className?: string;

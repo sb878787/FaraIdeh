@@ -10,10 +10,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 // Actions
-import { getBlogBySlug, getRelatedBlogs } from '@/app/actions/getBlogs';
-import { trackBlogView } from '@/app/actions/trackBlogViews';
+import {
+  getPublishedBlogBySlug,
+  getPublishedBlogSlugs,
+  getPublishedRelatedBlogs,
+} from '@/app/actions/getPublicBlogs';
 
 // Components
+import BlogViewTracker from '@/components/BlogViewTracker';
 import Container from '@/components/Container';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -29,6 +33,9 @@ import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 // Utils
 import { formatDate } from '@/utils/formatDate';
+
+// Libs
+import { SITE_URL } from '@/libs/siteConfig';
 
 // Types
 import { RelatedBlog } from '@/types/BlogsType';
@@ -54,7 +61,7 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
     };
   }
 
-  const blog = await getBlogBySlug(blogSlug);
+  const blog = await getPublishedBlogBySlug(blogSlug);
 
   if (!blog) {
     return {
@@ -88,7 +95,7 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
       publishedTime: blog.createdAt?.toISOString(),
       modifiedTime: blog.updatedAt?.toISOString(),
       authors: [blog.author || 'فراایده'],
-      url: `https://fara-ideh.ir/blogs/${blog.slug}`,
+      url: `/blogs/${blog.slug}`,
       images: [
         {
           // Using Dynamic OG Image
@@ -110,10 +117,23 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
     },
 
     alternates: {
-      canonical: `https://fara-ideh.ir/blogs/${blog.slug}`,
+      canonical: `/blogs/${blog.slug}`,
     },
   };
 }
+
+/**
+ * Prerender every published article at build time; new ones are rendered on
+ * first request and then cached (`dynamicParams` defaults to true).
+ */
+export async function generateStaticParams() {
+  const slugs = await getPublishedBlogSlugs();
+
+  return slugs.map((slug) => ({ slug }));
+}
+
+/** Re-check the content hourly; admin edits invalidate the `blogs` tag anyway. */
+export const revalidate = 3600;
 
 const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
   const { slug: blogSlug } = await params;
@@ -122,17 +142,14 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
     notFound();
   }
 
-  const blog = await getBlogBySlug(blogSlug);
+  const blog = await getPublishedBlogBySlug(blogSlug);
 
   if (!blog) {
     notFound();
   }
 
-  // Track view
-  await trackBlogView(blog.id);
-
   // Get related blogs
-  const relatedBlogs = await getRelatedBlogs(blog.category, blog.slug, 3);
+  const relatedBlogs = await getPublishedRelatedBlogs(blog.category, blog.slug, 3);
 
   // Parse labels
   const labels = (() => {
@@ -145,6 +162,8 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
 
   return (
     <>
+      <BlogViewTracker blogId={blog.id} />
+
       {/* JSON-LD Structured Data for Google */}
       <script
         type="application/ld+json"
@@ -154,7 +173,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             '@type': 'BlogPosting',
             headline: blog.title,
             description: blog.excerpt,
-            image: blog.featuredImage || 'https://fara-ideh.ir/images/og-image.png',
+            image: blog.featuredImage || `${SITE_URL}/images/og-image.png`,
             datePublished: blog.createdAt?.toISOString(),
             dateModified: blog.updatedAt?.toISOString(),
             author: {
@@ -166,12 +185,12 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
               name: 'فراایده',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://fara-ideh.ir/images/logo.png',
+                url: `${SITE_URL}/images/logo.png`,
               },
             },
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://fara-ideh.ir/blogs/${blog.slug}`,
+              '@id': `${SITE_URL}/blogs/${blog.slug}`,
             },
           }),
         }}
@@ -180,9 +199,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
       {/* Breadcrumb Schema */}
       <BreadcrumbSchema
         items={[
-          { name: 'خانه', url: 'https://fara-ideh.ir' },
-          { name: 'بلاگ', url: 'https://fara-ideh.ir/blogs' },
-          { name: blog.title, url: `https://fara-ideh.ir/blogs/${blog.slug}` },
+          { name: 'خانه', url: SITE_URL },
+          { name: 'بلاگ', url: `${SITE_URL}/blogs` },
+          { name: blog.title, url: `${SITE_URL}/blogs/${blog.slug}` },
         ]}
       />
 
@@ -233,7 +252,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 <div className="rounded-full border-2 border-text-primary">
                   <Image
                     src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
-                    alt="AuthorImage"
+                    alt={blog.author}
                     width={25}
                     height={25}
                     className="rounded-full object-cover object-center"
@@ -281,7 +300,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 <div className="rounded-full border-2 border-text-primary w-[25px] h-[25px]">
                   <Image
                     src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
-                    alt="AuthorImage"
+                    alt={blog.author}
                     width={25}
                     height={25}
                     className="rounded-full object-cover object-center"
@@ -298,8 +317,10 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                   blog.featuredImage ||
                   'https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/images_eusf_eshcob'
                 }
-                alt="BlogImage"
+                alt={blog.title}
                 fill
+                priority
+                sizes="(max-width: 1280px) 100vw, 60vw"
                 className="object-cover object-center"
               />
             </div>
@@ -308,7 +329,15 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             <div
               className={`mt-5 md:mt-6 lg:mt-9 font-iranYekan text-sm md:text-base rtl ${styles.markdown}`}
             >
-              <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm, remarkBreaks]}
+                components={{
+                  // The page title above is already the single <h1>. Authors
+                  // often repeat it as `# ...` at the top of the body, which
+                  // would give the page two H1s — demote it, keeping the look.
+                  h1: ({ children }) => <h2 className={styles.contentTitle}>{children}</h2>,
+                }}
+              >
                 {blog.content}
               </ReactMarkdown>
             </div>
@@ -317,7 +346,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
           {/* Related Articles & Labels & Share */}
           <div className="w-full xl:w-3/5">
             {/* Related Articles Title */}
-            <p className="font-iranYekan font-medium text-2xl mt-10 xl:mt-0">مقاله های مرتبط</p>
+            <h2 className="font-iranYekan font-medium text-2xl mt-10 xl:mt-0">مقاله های مرتبط</h2>
 
             {/* Related Articles */}
             <div className="lg:mt-8 mt-6 flex flex-col gap-y-5 lg:max-xl:grid lg:max-xl:grid-cols-2 lg:max-xl:gap-x-7 lg:max-xl:gap-y-3">
@@ -334,6 +363,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                           }
                           alt={relatedBlog.title}
                           fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 30vw, 20vw"
                           className="object-cover object-center"
                         />
                       </div>
@@ -362,9 +392,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                         </div>
 
                         {/* Title */}
-                        <p className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
+                        <h3 className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
                           {relatedBlog.title}
-                        </p>
+                        </h3>
 
                         {/* Excerpt */}
                         <p className="font-iranYekan text-[#4C4C4C] line-clamp-2 text-sm text-justify leading-6 mt-2 font-medium">
@@ -382,7 +412,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             </div>
 
             {/* Labels Title */}
-            <p className="font-iranYekan font-medium text-2xl mt-5 lg:mt-8 xl:mt-12">برچسب ها</p>
+            <h2 className="font-iranYekan font-medium text-2xl mt-5 lg:mt-8 xl:mt-12">برچسب ها</h2>
 
             {/* Labels */}
             <div className="flex flex-wrap gap-3 mt-3 lg:mt-5">
@@ -405,12 +435,12 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Share */}
             <div className="w-full flex flex-col items-center justify-center mt-10 sm:mt-12 lg:mt-16">
               {/* Share Title */}
-              <p className="font-iranYekan font-medium text-lg">اشتراک گذاری</p>
+              <h2 className="font-iranYekan font-medium text-lg">اشتراک گذاری</h2>
 
               {/* Share Icons */}
               <div className="flex items-center mt-1">
                 <Link
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${blog.slug}`)}`}
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
@@ -419,7 +449,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 </Link>
 
                 <Link
-                  href={`https://t.me/share/url?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${blog.slug}`)}&text=${encodeURIComponent(blog.title)}`}
+                  href={`https://t.me/share/url?url=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}&text=${encodeURIComponent(blog.title)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
@@ -437,7 +467,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 </Link>
 
                 <Link
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${blog.slug}`)}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"

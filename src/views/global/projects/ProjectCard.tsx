@@ -66,7 +66,7 @@ const ProjectCard = ({
         <div className="relative w-full h-72 overflow-hidden flex flex-row-reverse justify-end">
           <Image
             src={photo}
-            alt="ProjectImage"
+            alt={name}
             fill
             className="absolute object-cover object-center -z-10"
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -82,9 +82,9 @@ const ProjectCard = ({
           </div>
         </div>
         <div className="py-5 px-7 rtl">
-          <p className="text-[#6B7A99] font-iranYekan font-extrabold text-xl line-clamp-1">
+          <h3 className="text-[#6B7A99] font-iranYekan font-extrabold text-xl line-clamp-1">
             {name}
-          </p>
+          </h3>
           <p className="text-[#ADB8CC] font-iranYekan font-medium mt-2 leading-8 line-clamp-2">
             {description}
           </p>

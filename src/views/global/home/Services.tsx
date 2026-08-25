@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import Container from '@/components/Container';
 import LargeLabel from '@/components/LargeLabel';

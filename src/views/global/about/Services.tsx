@@ -1,8 +1,5 @@
-'use client';
-
 // Next Imports
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 // Components
 import Container from '@/components/Container';
@@ -42,23 +39,10 @@ const Services = () => {
     },
   ];
 
-  const router = useRouter();
-
-  const handleContactClick = () => {
-    router.push('/');
-
-    setTimeout(() => {
-      const el = document.getElementById('contact');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 500);
-  };
-
   return (
     <div className="bg-[#F9F9F9] mt-10 lg:mt-22 xl:mt-32 rtl py-10 lg:py-20 relative" id="services">
       <Container>
-        <h1 className="font-iranYekan font-semibold text-3xl">خدمات فراایده</h1>
+        <h2 className="font-iranYekan font-semibold text-3xl">خدمات فراایده</h2>
 
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10 mt-6 lg:mt-10 xl:mt-12">
           <div className="w-full grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-10">
@@ -84,13 +68,14 @@ const Services = () => {
                 </button>
               </Link>
 
-              <button
-                type="button"
-                onClick={handleContactClick}
-                className="text-white w-full lg:w-auto font-iranYekan font-semibold cursor-pointer bg-primary rounded-md text-center px-12 py-4 hover:bg-[#00229b] hover:-translate-y-1 transition-all duration-200"
-              >
-                در تماس باشید
-              </button>
+              <Link href="/#contact">
+                <button
+                  type="button"
+                  className="text-white w-full lg:w-auto font-iranYekan font-semibold cursor-pointer bg-primary rounded-md text-center px-12 py-4 hover:bg-[#00229b] hover:-translate-y-1 transition-all duration-200"
+                >
+                  در تماس باشید
+                </button>
+              </Link>
             </div>
           </div>
 

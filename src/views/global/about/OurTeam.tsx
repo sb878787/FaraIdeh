@@ -1,5 +1,3 @@
-'use client';
-
 // Next Imports
 import Image from 'next/image';
 import Link from 'next/link';
@@ -53,9 +51,9 @@ const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
                   />
 
                   <div className="bg-primary absolute bottom-0 w-full px-6 py-4 z-30">
-                    <p className="text-white font-iranYekan font-semibold text-lg lg:text-xl">
+                    <h3 className="text-white font-iranYekan font-semibold text-lg lg:text-xl">
                       {m.fullName}
-                    </p>
+                    </h3>
 
                     <div className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-y-1">
                       <p className="text-white font-iranYekan text-sm pt-1 line-clamp-1">

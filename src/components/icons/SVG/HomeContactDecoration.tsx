@@ -1,5 +1,3 @@
-'use client';
-
 interface IHomeContactDecorationProps {
   className?: string;
 }

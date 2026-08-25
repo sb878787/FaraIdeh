@@ -1,5 +1,3 @@
-'use client';
-
 interface IEditIconProps {
   size?: string;
   className?: string;

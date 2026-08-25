@@ -81,7 +81,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-9 rtl items-end">
             {/* Bio */}
             <div>
-              <Image src={LogoType} alt="logoType" className="w-60" />
+              <Image src={LogoType} alt="فراایده" className="w-60" />
 
               <p className="text-white font-iranYekan text-justify leading-8 mt-5">
                 اینجا جایی‌ست که ایده‌ها جان می‌گیرند. ما کنار شماییم تا مسیر را کوتاه، شفاف و

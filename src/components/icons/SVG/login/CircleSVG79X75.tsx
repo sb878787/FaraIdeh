@@ -1,5 +1,3 @@
-'use client';
-
 const CircleSVG79X75 = () => {
   return (
     <svg width="79" height="75" viewBox="0 0 79 75" fill="none" xmlns="http://www.w3.org/2000/svg">

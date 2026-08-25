@@ -1,5 +1,3 @@
-'use client';
-
 interface ISearchIcon {
   size?: string;
   className?: string;

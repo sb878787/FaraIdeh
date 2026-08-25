@@ -1,5 +1,3 @@
-'use client';
-
 // Next Imports
 import Image from 'next/image';
 import Link from 'next/link';
@@ -43,7 +41,7 @@ const Achievements = ({ achievements }: { achievements: AchievementType[] }) => 
                   />
 
                   <div className="lg:pr-60 relative h-full lg:pl-2 p-5 lg:p-0">
-                    <p className="font-iranYekan font-semibold text-xl pt-1">{a.title}</p>
+                    <h3 className="font-iranYekan font-semibold text-xl pt-1">{a.title}</h3>
 
                     <p className="text-[#4D4D4D] font-iranYekan pt-2 leading-7">{a.description}</p>
 

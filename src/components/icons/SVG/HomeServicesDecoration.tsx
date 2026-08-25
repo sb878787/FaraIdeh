@@ -1,5 +1,3 @@
-'use client';
-
 const HomeServicesDecoration = () => {
   return (
     <svg

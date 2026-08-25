@@ -1,5 +1,3 @@
-'use client';
-
 interface INotFoundDecorationProps {
   size?: string;
 }

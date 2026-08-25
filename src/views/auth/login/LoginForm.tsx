@@ -52,6 +52,7 @@ const LoginForm = () => {
           src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/newletter-join-us-sign-up_l8df_dj1quo"
           alt="ImageLogin"
           fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
         />
       </div>
 

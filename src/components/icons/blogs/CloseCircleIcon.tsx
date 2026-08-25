@@ -1,5 +1,3 @@
-'use client';
-
 interface ICloseCircleIconProps {
   size?: string;
   className?: string;

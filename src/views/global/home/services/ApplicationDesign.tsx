@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import PhoneIcon from '@/components/icons/services/PhoneIcon';
 
@@ -10,9 +8,9 @@ const ApplicationDesign = () => {
         <PhoneIcon fill="#12D6D5" />
       </div>
 
-      <p className="text-[#343434] font-iranYekan font-semibold text-lg sm:text-xl mt-4 sm:mt-5">
+      <h3 className="text-[#343434] font-iranYekan font-semibold text-lg sm:text-xl mt-4 sm:mt-5">
         طراحی اپلیکیشن
-      </p>
+      </h3>
       <p className="text-[#808080] font-iranYekan mt-2 sm:mt-3 leading-6 sm:leading-7 text-justify rtl text-sm sm:text-base">
         از وایرفریم تا پروتوتایپ تعاملی؛ طراحی iOS/Android با تمرکز بر سادگی مسیر کاربر، سرعت، و یک
         سیستم طراحی منسجم برای توسعهٔ سریع‌تر.

@@ -1,5 +1,3 @@
-'use client';
-
 // Next Imports
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,6 +27,7 @@ const BlogSlide = ({ blog }: IBlogSlideProps) => {
           }
           alt={blog.title}
           fill
+          sizes="100vw"
           className="absolute object-cover object-center -z-10"
         />
 
@@ -52,9 +51,9 @@ const BlogSlide = ({ blog }: IBlogSlideProps) => {
               </div>
             </div>
 
-            <p className="text-white font-iranYekan font-extrabold text-2xl lg:text-3xl line-clamp-1 pl-4">
+            <h3 className="text-white font-iranYekan font-extrabold text-2xl lg:text-3xl line-clamp-1 pl-4">
               {blog.title}
-            </p>
+            </h3>
           </div>
         </div>
       </div>

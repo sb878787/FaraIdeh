@@ -11,6 +11,10 @@ import { getTeamMembers } from '@/app/actions/getTeamMembers';
 
 // Components
 import AboutPageWrapper from '@/views/global/about/AboutPage';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
+
+// Libs
+import { SITE_URL } from '@/libs/siteConfig';
 
 export const metadata: Metadata = {
   title: 'درباره ما',
@@ -20,11 +24,11 @@ export const metadata: Metadata = {
     title: 'درباره فراایده',
     description:
       'ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.',
-    url: 'https://fara-ideh.ir/about',
+    url: '/about',
     images: ['/images/og-image.png'],
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir/about',
+    canonical: '/about',
   },
 };
 
@@ -39,7 +43,17 @@ const AboutPage = async () => {
     getAchievements(),
   ]);
 
-  return <AboutPageWrapper slides={slides} members={members} achievements={achievements} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'خانه', url: SITE_URL },
+          { name: 'درباره ما', url: `${SITE_URL}/about` },
+        ]}
+      />
+      <AboutPageWrapper slides={slides} members={members} achievements={achievements} />
+    </>
+  );
 };
 
 export default AboutPage;

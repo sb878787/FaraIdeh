@@ -1,5 +1,3 @@
-'use client';
-
 type WifiLoaderProps = {
   size?: string;
   text?: string;

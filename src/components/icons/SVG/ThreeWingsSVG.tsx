@@ -1,5 +1,3 @@
-'use client';
-
 const ThreeWingsSVG = () => {
   return (
     <svg width="39" height="53" viewBox="0 0 39 53" fill="none" xmlns="http://www.w3.org/2000/svg">

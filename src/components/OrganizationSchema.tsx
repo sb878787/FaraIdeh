@@ -1,12 +1,27 @@
+import { categoryLabels, PROJECT_CATEGORIES } from '@/features/projects/categories';
+import { SITE_URL } from '@/libs/siteConfig';
+
+/** Persian service labels, reused from the project category source of truth. */
+const services = Object.values(PROJECT_CATEGORIES)
+  .filter((category) => category !== PROJECT_CATEGORIES.all)
+  .map((category) => categoryLabels[category]);
+
 export default function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': ['Organization', 'ProfessionalService'],
+    '@id': `${SITE_URL}/#organization`,
     name: 'فراایده',
     alternateName: 'FaraIdeh',
-    url: 'https://fara-ideh.ir',
-    logo: 'https://fara-ideh.ir/images/logo.png',
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo.png`,
+    image: `${SITE_URL}/images/og-image.png`,
     description: 'تیم توسعه نرم‌افزار و استارتاپی فراایده',
+    knowsAbout: services,
+    areaServed: {
+      '@type': 'Country',
+      name: 'Iran',
+    },
 
     contactPoint: {
       '@type': 'ContactPoint',
@@ -18,8 +33,8 @@ export default function OrganizationSchema() {
     sameAs: [
       'https://www.instagram.com/mohammad_ali_saberi87', // Instagram
       'https://linkedin.com/in/mohammad-ali-saberi', // LinkedIn
-      'https://github.com/sb878787', // Github
-      'https://web.telegram.org/k/#@M_sb87_Developer', // Telegram
+      'https://github.com/mohammad-ali-saberi', // Github
+      'https://t.me/M_sb87_Developer', // Telegram
     ],
 
     address: {

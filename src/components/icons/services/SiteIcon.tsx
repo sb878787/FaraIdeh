@@ -1,5 +1,3 @@
-'use client';
-
 interface ISiteIconProps {
   fill?: string;
   width?: string;

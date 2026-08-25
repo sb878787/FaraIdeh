@@ -1,5 +1,3 @@
-'use client';
-
 interface IInformationIconProps {
   size?: string;
   className?: string;

@@ -1,5 +1,3 @@
-'use client';
-
 interface IProjectsIcon {
   className?: string;
   size?: string;

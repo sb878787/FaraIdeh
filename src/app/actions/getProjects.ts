@@ -1,7 +1,8 @@
+import { CACHE_TAGS } from '@/libs/cacheTags';
 import { prisma } from '@/libs/prisma';
 import { ProjectsType } from '@/types/ProjectsType';
 import { Prisma } from '@prisma/client';
-import { unstable_noStore as noStore } from 'next/cache';
+import { unstable_cache } from 'next/cache';
 import 'server-only';
 
 /**
@@ -13,9 +14,7 @@ import 'server-only';
  * DB index recommendation (optional but good for performance):
  *   @@index([isActive, category, createdAt])
  */
-export async function getProjects(category?: string): Promise<ProjectsType[]> {
-  noStore();
-
+async function fetchProjects(category?: string): Promise<ProjectsType[]> {
   // Strongly-typed where to satisfy ESLint rule: no-explicit-any
   const where: Prisma.ProjectWhereInput = {
     isActive: true,
@@ -62,3 +61,18 @@ export async function getProjects(category?: string): Promise<ProjectsType[]> {
     };
   });
 }
+
+/**
+ * Cached public read. Previously this used `noStore()`, which forced `/` and
+ * `/projects` to render dynamically on every request. The admin actions
+ * (`createProject`, `updateProject`, `toggleProjectActive`) invalidate the
+ * `projects` tag, so edits still show up immediately.
+ *
+ * `viewCount` therefore lags by up to `revalidate` seconds — `trackProjectView`
+ * deliberately does not invalidate the tag, since a click must not undo the
+ * cache for everyone else.
+ */
+export const getProjects = unstable_cache(fetchProjects, ['projects'], {
+  tags: [CACHE_TAGS.projects],
+  revalidate: 3600,
+});

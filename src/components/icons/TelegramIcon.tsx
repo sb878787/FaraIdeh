@@ -1,5 +1,3 @@
-'use client';
-
 type ITelegramIconProps = {
   size?: string;
   className?: string;

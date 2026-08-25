@@ -1,5 +1,3 @@
-'use client';
-
 interface ITeamIcon {
   className?: string;
   size?: string;

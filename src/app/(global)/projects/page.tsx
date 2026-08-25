@@ -1,5 +1,10 @@
 // Components
 import ProjectsPageWrapper from '@/views/global/projects/ProjectsPage';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
+import ItemListSchema from '@/components/ItemListSchema';
+
+// Libs
+import { SITE_URL } from '@/libs/siteConfig';
 
 // Actions
 import { getProjects } from '@/app/actions/getProjects';
@@ -21,11 +26,11 @@ export const metadata: Metadata = {
     title: 'پروژه‌های فراایده',
     description:
       'گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.',
-    url: 'https://fara-ideh.ir/projects',
+    url: '/projects',
     images: ['/images/og-image.png'],
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir/projects',
+    canonical: '/projects',
   },
 };
 
@@ -51,7 +56,23 @@ const ProjectsPage = async ({ searchParams }: PageProps) => {
     category: p.category,
   }));
 
-  return <ProjectsPageWrapper projects={projects} selectedCategory={selectedCategory} />;
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'خانه', url: SITE_URL },
+          { name: 'پروژه ها', url: `${SITE_URL}/projects` },
+        ]}
+      />
+      {/*
+       * Projects have no detail page of their own, so each entry is name-only.
+       * Emitting the external `projectLink` here would tell search engines the
+       * list points off-site, which is not what this page is.
+       */}
+      <ItemListSchema path="/projects" items={projects.map((p) => ({ name: p.name }))} />
+      <ProjectsPageWrapper projects={projects} selectedCategory={selectedCategory} />
+    </>
+  );
 };
 
 export default ProjectsPage;

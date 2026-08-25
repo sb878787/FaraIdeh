@@ -6,11 +6,18 @@
 }
 
 /* ===== Headings ===== */
-.markdown h1 {
+/*
+ * A `# heading` in the article body is rendered as an <h2> (the page title is
+ * already the one <h1>), so this class restores the old h1 look on it.
+ */
+.markdown h1,
+.markdown h2.contentTitle {
   font-size: 2rem;
   font-weight: 700;
   margin: 2.5rem 0 1.25rem;
   color: #1f2937;
+  border-right: none;
+  padding-right: 0;
 }
 
 .markdown h2 {

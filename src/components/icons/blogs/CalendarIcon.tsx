@@ -1,5 +1,3 @@
-'use client';
-
 interface ICalendarIconProps {
   size?: string;
   className?: string;

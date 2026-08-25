@@ -1,6 +1,9 @@
 'use server';
 
 import { prisma } from '@/libs/prisma';
+import { revalidatePath, revalidateTag } from 'next/cache';
+
+import { CACHE_TAGS } from '@/libs/cacheTags';
 
 export async function toggleBlogPublish(
   blogId: number,
@@ -11,6 +14,10 @@ export async function toggleBlogPublish(
       where: { id: blogId },
       data: { published: !currentStatus },
     });
+
+    revalidateTag(CACHE_TAGS.blogs);
+    revalidatePath('/admin/blogs');
+    revalidatePath('/blogs');
 
     return {
       success: true,

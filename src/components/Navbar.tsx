@@ -56,7 +56,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link href="/">
-          <Image src={Logo} alt="logo" className="w-5 sm:w-6" />
+          <Image src={Logo} alt="فراایده — صفحه اصلی" className="w-5 sm:w-6" />
         </Link>
 
         {/* Desktop Navigation */}

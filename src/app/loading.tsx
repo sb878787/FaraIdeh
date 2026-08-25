@@ -1,5 +1,3 @@
-'use client';
-
 // Components
 import WifiLoader from '@/components/WifiLoader';
 

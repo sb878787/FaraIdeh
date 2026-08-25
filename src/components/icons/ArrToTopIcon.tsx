@@ -1,5 +1,3 @@
-'use client';
-
 interface IArrToTopIconProps {
   size?: string;
   className?: string;

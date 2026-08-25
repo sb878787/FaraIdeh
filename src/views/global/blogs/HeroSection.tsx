@@ -32,6 +32,12 @@ const HeroSection = ({ latestBlogs }: IHeroSectionProps) => {
     <div className="relative w-full pt-4 sm:pt-6 md:pt-8">
       <Header colorIcon="black" />
 
+      {/*
+        The design opens straight into the slider with no visible page title, so
+        this stays visually hidden while still giving the page a single H1.
+      */}
+      <h1 className="sr-only">وبلاگ فراایده | مقالات طراحی سایت، اپلیکیشن، UI/UX و رشد کسب‌وکار</h1>
+
       {/* Hero Section */}
       {latestBlogs.length !== 0 ? (
         <div className="relative w-full mt-32 sm:mt-36 lg:mt-44 pr-4 lg:pr-10 xl:pr-20">

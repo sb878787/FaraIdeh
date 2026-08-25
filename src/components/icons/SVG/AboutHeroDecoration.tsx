@@ -1,5 +1,3 @@
-'use client';
-
 interface IAboutHeroDecorationProps {
   width?: string;
   height?: string;
