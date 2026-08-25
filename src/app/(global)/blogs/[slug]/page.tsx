@@ -440,7 +440,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
               {/* Share Icons */}
               <div className="flex items-center mt-1">
                 <Link
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${blog.slug}`)}`}
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
@@ -449,7 +449,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 </Link>
 
                 <Link
-                  href={`https://t.me/share/url?url=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${blog.slug}`)}&text=${encodeURIComponent(blog.title)}`}
+                  href={`https://t.me/share/url?url=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}&text=${encodeURIComponent(blog.title)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
@@ -467,7 +467,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 </Link>
 
                 <Link
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${blog.slug}`)}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
