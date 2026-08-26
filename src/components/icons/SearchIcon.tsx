@@ -27,7 +27,6 @@ export default function SearchIcon({
     >
       <circle cx="11" cy="11" r="7" stroke={color} strokeWidth={strokeWidth} />
       <path d="M20 20L16.65 16.65" stroke={color} strokeWidth={strokeWidth} strokeLinecap="round" />
-      <title>{title}</title>
     </svg>
   );
 }

@@ -13,6 +13,7 @@ export default function LinkedInIcon({ size = 40, className, title = 'LinkedIn' 
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
       aria-label={title}
       className={className}
     >
@@ -22,7 +23,6 @@ export default function LinkedInIcon({ size = 40, className, title = 'LinkedIn' 
           fill="currentColor"
         />
       </g>
-      <title>{title}</title>
     </svg>
   );
 }

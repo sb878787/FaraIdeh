@@ -3,7 +3,7 @@ import OrderFormPageWrapper from '@/views/global/order-form/OrderFormPage';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 // Libs
-import { SITE_URL } from '@/libs/siteConfig';
+import { OG_DEFAULTS, SITE_URL } from '@/libs/siteConfig';
 
 // Types
 import { Metadata } from 'next';
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   description:
     'در فراایده می‌توانید سفارش توسعه نرم‌افزار، طراحی محصول یا راهکارهای استارتاپی خود را ثبت کنید. تیم متخصص ما آماده همکاری در اجرای پروژه‌های نوآورانه است.',
   openGraph: {
+    ...OG_DEFAULTS,
     title: 'ثبت سفارش | فراایده',
     description:
       'در فراایده می‌توانید سفارش توسعه نرم‌افزار، طراحی محصول یا راهکارهای استارتاپی خود را ثبت کنید. تیم متخصص ما آماده همکاری در اجرای پروژه‌های نوآورانه است.',
