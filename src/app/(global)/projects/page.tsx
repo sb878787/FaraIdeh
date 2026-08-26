@@ -4,7 +4,7 @@ import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import ItemListSchema from '@/components/ItemListSchema';
 
 // Libs
-import { SITE_URL } from '@/libs/siteConfig';
+import { OG_DEFAULTS, SITE_URL } from '@/libs/siteConfig';
 
 // Actions
 import { getProjects } from '@/app/actions/getProjects';
@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description:
     'گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.',
   openGraph: {
+    ...OG_DEFAULTS,
     title: 'پروژه‌های فراایده',
     description:
       'گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.',

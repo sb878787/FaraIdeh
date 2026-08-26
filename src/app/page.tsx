@@ -11,6 +11,9 @@ import { getPublicSocialMedia } from '@/app/actions/getPublicSocialMedia';
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
 
+// Libs
+import { OG_DEFAULTS } from '@/libs/siteConfig';
+
 export const metadata: Metadata = {
   title: {
     absolute: 'فراایده | صفحه اصلی',
@@ -18,6 +21,7 @@ export const metadata: Metadata = {
   description:
     'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام ارائه می‌دهد.',
   openGraph: {
+    ...OG_DEFAULTS,
     title: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
     description:
       'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام ارائه می‌دهد.',

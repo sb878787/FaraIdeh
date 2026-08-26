@@ -4,7 +4,7 @@ import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import ItemListSchema from '@/components/ItemListSchema';
 
 // Libs
-import { SITE_URL } from '@/libs/siteConfig';
+import { OG_DEFAULTS, SITE_URL } from '@/libs/siteConfig';
 
 // Actions
 import { getPublishedBlogs } from '@/app/actions/getPublicBlogs';
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description:
     'در بلاگ فراایده از تجربه‌های واقعی پروژه‌ها می‌نویسیم؛ نکته‌های عملی طراحی، محتوا و رشد محصول کوتاه، شفاف و قابل‌اجرا برای امروزِ کسب‌وکار شما.',
   openGraph: {
+    ...OG_DEFAULTS,
     title: 'بلاگ فراایده',
     description:
       'در بلاگ فراایده از تجربه‌های واقعی پروژه‌ها می‌نویسیم؛ نکته‌های عملی طراحی، محتوا و رشد محصول کوتاه، شفاف و قابل‌اجرا برای امروزِ کسب‌وکار شما.',

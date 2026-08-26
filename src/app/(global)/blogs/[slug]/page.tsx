@@ -35,7 +35,7 @@ import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 import { formatDate } from '@/utils/formatDate';
 
 // Libs
-import { SITE_URL } from '@/libs/siteConfig';
+import { OG_DEFAULTS, SITE_URL } from '@/libs/siteConfig';
 
 // Types
 import { RelatedBlog } from '@/types/BlogsType';
@@ -89,6 +89,7 @@ export async function generateMetadata({ params }: IBlogDetailPageProps): Promis
     authors: [{ name: blog.author || 'فراایده' }],
 
     openGraph: {
+      ...OG_DEFAULTS,
       title: blog.title,
       description: blog.excerpt || blog.content.substring(0, 160),
       type: 'article',

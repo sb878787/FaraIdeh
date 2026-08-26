@@ -14,13 +14,14 @@ import AboutPageWrapper from '@/views/global/about/AboutPage';
 import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 // Libs
-import { SITE_URL } from '@/libs/siteConfig';
+import { OG_DEFAULTS, SITE_URL } from '@/libs/siteConfig';
 
 export const metadata: Metadata = {
   title: 'درباره ما',
   description:
     'ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.',
   openGraph: {
+    ...OG_DEFAULTS,
     title: 'درباره فراایده',
     description:
       'ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.',
